@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class CodeExecutionController extends Controller
 {
@@ -113,7 +114,7 @@ class CodeExecutionController extends Controller
 
             return null;
         } catch (\Exception $e) {
-            \Log::debug('JDoodle failed, will try fallback', [
+            Log::debug('JDoodle failed, will try fallback', [
                 'error' => $e->getMessage()
             ]);
             return null;
@@ -126,6 +127,7 @@ class CodeExecutionController extends Controller
             $response = Http::timeout(30)
                 ->connectTimeout(10)
                 ->retry(2, 1000)
+                ->withHeaders(['Authorization' => 'Token 0c946e96-6644-4632-8419-798836587093'])
                 ->post('https://run.glot.io/languages/c/latest', [
                     'files' => [
                         [
@@ -133,8 +135,6 @@ class CodeExecutionController extends Controller
                             'content' => $code
                         ]
                     ]
-                ], [
-                    'Authorization' => 'Token 0c946e96-6644-4632-8419-798836587093'
                 ]);
 
             if ($response->successful()) {
@@ -224,7 +224,7 @@ class CodeExecutionController extends Controller
 
             return null;
         } catch (\Exception $e) {
-            \Log::error('Local GCC Error:', [
+            Log::error('Local GCC Error:', [
                 'message' => $e->getMessage()
             ]);
             return null;
