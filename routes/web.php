@@ -15,13 +15,13 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     // API untuk menjalankan kode C
     Route::post('/api/execute-c', [CodeExecutionController::class, 'executeC'])->name('execute.c');
-    
+
     // Debug route untuk test koneksi
     Route::get('/api/test-connectivity', [CodeExecutionController::class, 'testConnectivity'])->name('test.connectivity');
-    
+
     // Route untuk check environment
     Route::get('/api/system-info', [CodeExecutionController::class, 'systemInfo'])->name('system.info');
-    
+
     // Rute untuk dashboard utama guru
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -37,7 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/sessions/{session}', [SessionController::class, 'update'])->name('sessions.update');
     Route::patch('/sessions/{session}/toggle', [SessionController::class, 'toggle'])->name('sessions.toggle');
     Route::delete('/sessions/{session}', [SessionController::class, 'destroy'])->name('sessions.destroy');
-    
+
     // Rute Evaluasi
     Route::get('/sessions/{session}/evaluations', [SessionController::class, 'evaluations'])->name('sessions.evaluations');
     Route::get('/groups/{group}/work', [EvaluationController::class, 'show'])->name('groups.work');

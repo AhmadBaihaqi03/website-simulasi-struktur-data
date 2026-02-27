@@ -103,7 +103,7 @@ class CodeExecutionController extends Controller
 
             if ($response->successful()) {
                 $data = $response->json();
-                
+
                 return response()->json([
                     'stdout' => $data['output'] ?? '',
                     'stderr' => $data['error'] ?? '',
@@ -181,24 +181,24 @@ class CodeExecutionController extends Controller
 
             // Execute the compiled program with timeout
             $execCmd = "\"{$exeFile}\" 2>&1";
-            
+
             // Use proc_open to control execution with timeout
             $descriptors = [
                 0 => ['pipe', 'r'],
                 1 => ['pipe', 'w'],
                 2 => ['pipe', 'w']
             ];
-            
+
             $process = proc_open($execCmd, $descriptors, $pipes);
-            
+
             if (is_resource($process)) {
                 fclose($pipes[0]);
-                
+
                 // Read output with timeout (5 seconds max)
                 $output = '';
                 $startTime = time();
                 $timeout = 5;
-                
+
                 while (!feof($pipes[1])) {
                     if (time() - $startTime > $timeout) {
                         proc_terminate($process);
@@ -207,15 +207,15 @@ class CodeExecutionController extends Controller
                     }
                     $output .= fgets($pipes[1], 1024);
                 }
-                
+
                 fclose($pipes[1]);
                 fclose($pipes[2]);
                 proc_close($process);
-                
+
                 // Cleanup
                 if (file_exists($exeFile)) unlink($exeFile);
                 if (file_exists($sourceFile)) unlink($sourceFile);
-                
+
                 return response()->json([
                     'stdout' => $output,
                     'stderr' => ''
@@ -271,12 +271,12 @@ class CodeExecutionController extends Controller
     {
         // Simple parser untuk detect output dari code
         $output = '';
-        
+
         // Check untuk printf/puts arguments
         if (preg_match('/printf\s*\(\s*"([^"]+)"/', $code, $matches)) {
             $output = $matches[1] . "\n";
         }
-        
+
         // Check untuk puts
         if (preg_match('/puts\s*\(\s*"([^"]+)"/', $code, $matches)) {
             $output .= $matches[1] . "\n";
