@@ -5,6 +5,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\CodeExecutionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,6 +13,14 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    // API untuk menjalankan kode C
+    Route::post('/api/execute-c', [CodeExecutionController::class, 'executeC'])->name('execute.c');
+    
+    // Debug route untuk test koneksi
+    Route::get('/api/test-connectivity', [CodeExecutionController::class, 'testConnectivity'])->name('test.connectivity');
+    
+    // Route untuk check environment
+    Route::get('/api/system-info', [CodeExecutionController::class, 'systemInfo'])->name('system.info');
     
     // Rute untuk dashboard utama guru
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

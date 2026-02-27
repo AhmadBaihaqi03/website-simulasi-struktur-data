@@ -1,3 +1,5 @@
+Test JDoodle connectivity dulu
+
 <x-workspace-layout>
     <style>
         body { background-color: #f8fafc; }
@@ -250,51 +252,49 @@
             const outputBox = document.getElementById('cOutput');
             const btn = document.getElementById('runBtn');
             
-            // Ambil konten kode (mendukung textarea biasa atau CodeMirror)
             const codeContent = typeof cEditor !== 'undefined' && cEditor.getValue 
                                 ? cEditor.getValue() 
                                 : document.getElementById('cEditor').value;
 
-            // UI Loading State
             btn.disabled = true;
             btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Menjalankan...';
-            outputBox.innerText = "> Sedang mengirim ke server Glot.io...";
-            outputBox.style.color = "#fbbf24"; 
+            outputBox.innerText = "> Sedang menjalankan kode...";
+            outputBox.style.color = "#fbbf24";
 
             try {
-                const response = await fetch('https://run.glot.io/languages/c/latest', {
+                const response = await fetch('{{ route("execute.c") }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': 'Token 0c946e96-6644-4632-8419-798836587093' // Public Token
+                        'X-CSRF-Token': '{{ csrf_token() }}'
                     },
-                    body: JSON.stringify({
-                        "files": [
-                            {
-                                "name": "main.c",
-                                "content": codeContent
-                            }
-                        ]
-                    })
+                    body: JSON.stringify({ code: codeContent })
                 });
 
                 const data = await response.json();
                 
+                // Check if demo mode
+                if (data._mode === 'demo') {
+                    outputBox.style.color = "#fbbf24";
+                    outputBox.innerText = (data.stdout || '') + (data.stderr ? '\n' + data.stderr : '');
+                    return;
+                }
+
                 if (data.stdout) {
                     outputBox.innerText = data.stdout;
-                    outputBox.style.color = "#34d399"; // Hijau sukses
+                    outputBox.style.color = "#34d399";
                 } else if (data.stderr) {
                     outputBox.innerText = "ERROR:\n" + data.stderr;
-                    outputBox.style.color = "#f87171"; // Merah error
+                    outputBox.style.color = "#f87171";
                 } else if (data.error) {
-                    outputBox.innerText = "SYSTEM ERROR:\n" + data.error;
+                    outputBox.innerText = "ERROR:\n" + data.error;
                     outputBox.style.color = "#f87171";
                 } else {
                     outputBox.innerText = "> Program selesai (tidak ada output).";
                     outputBox.style.color = "#94a3b8";
                 }
             } catch (error) {
-                outputBox.innerText = "Gagal terhubung ke API. Periksa koneksi internet.";
+                outputBox.innerText = "Error: " + error.message;
                 outputBox.style.color = "#f87171";
                 console.error(error);
             } finally {
