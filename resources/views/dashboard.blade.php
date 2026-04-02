@@ -44,15 +44,15 @@
         @endif
         
         <div class="mb-4">
-            <h1 class="fw-bold h2 mb-1">Good morning, {{ Auth::user()->name }}</h1>
-            <p class="text-muted">Manage your problem-based learning sessions and student evaluations.</p>
+            <h1 class="fw-bold h2 mb-1">Selamat Pagi, {{ Auth::user()->name }}</h1>
+            <p class="text-muted">Kelola sesi pembelajaran berbasis masalah (Problem-Based Learning) Anda</p>
         </div>
 
         <div class="row g-3 mb-4">
             <div class="col-md-4">
                 <div class="card card-stat shadow-sm p-3 border-0">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
-                        <span>NEED GRADING</span>
+                        <span>BELUM PENILAIAN</span>
                         <i class="bi bi-pencil-square text-warning"></i>
                     </div>
                     <h1 class="fw-bold mt-2 mb-0 display-6 text-indigo">{{ sprintf('%02d', $stats['pending']) }}</h1>
@@ -61,7 +61,7 @@
             <div class="col-md-4">
                 <div class="card card-stat shadow-sm p-3 border-0">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
-                        <span>GRADED GROUPS</span>
+                        <span>SUDAH DINILAI</span>
                         <i class="bi bi-check-all text-success"></i>
                     </div>
                     <h1 class="fw-bold mt-2 mb-0 display-6 text-indigo">{{ sprintf('%02d', $stats['graded']) }}</h1>
@@ -70,7 +70,7 @@
             <div class="col-md-4">
                 <div class="card card-stat shadow-sm p-3 border-0">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
-                        <span>TOTAL GROUPS</span>
+                        <span>TOTAL KELOMPOK</span>
                         <i class="bi bi-people text-primary"></i>
                     </div>
                     <h1 class="fw-bold mt-2 mb-0 display-6 text-indigo">{{ sprintf('%02d', $stats['total_groups']) }}</h1>
@@ -79,7 +79,7 @@
             <div class="col-md-4">
                 <div class="card card-stat shadow-sm p-3 border-0">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
-                        <span>ACTIVE SESSIONS</span>
+                        <span>SESI AKTIF</span>
                         <i class="bi bi-broadcast text-success"></i>
                     </div>
                     <h1 class="fw-bold mt-2 mb-0 display-6 text-indigo">{{ sprintf('%02d', $stats['active']) }}</h1>
@@ -88,7 +88,7 @@
             <div class="col-md-4">
                 <div class="card card-stat shadow-sm p-3 border-0">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
-                        <span>INACTIVE SESSIONS</span>
+                        <span>SESI TIDAK AKTIF</span>
                         <i class="bi bi-pause-circle text-secondary"></i>
                     </div>
                     <h1 class="fw-bold mt-2 mb-0 display-6 text-indigo">{{ sprintf('%02d', $stats['total'] - $stats['active']) }}</h1>
@@ -97,7 +97,7 @@
             <div class="col-md-4">
                 <div class="card card-stat shadow-sm p-3 border-0">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
-                        <span>TOTAL SESSIONS</span>
+                        <span>TOTAL SESI</span>
                         <i class="bi bi-layers text-indigo"></i>
                     </div>
                     <h1 class="fw-bold mt-2 mb-0 display-6 text-indigo">{{ sprintf('%02d', $stats['total']) }}</h1>
@@ -126,11 +126,11 @@
                     <table class="table align-middle" id="sessionTable">
                         <thead class="text-muted small">
                             <tr>
-                                <th>SESSION NAME</th>
-                                <th>CODE</th>
-                                <th>STUDENTS</th>
+                                <th>NAMA SESI</th>
+                                <th>KODE</th>
+                                <th>MURID</th>
                                 <th>STATUS</th>
-                                <th class="text-end">ACTIONS</th>
+                                <th class="text-end">AKSI</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -138,21 +138,21 @@
                             <tr>
                                 <td>
                                     <div class="fw-bold text-dark session-title">{{ $session->title }}</div>
-                                    <small class="text-muted">Created: {{ $session->created_at->format('d M Y') }}</small>
+                                    <small class="text-muted">Dibuat: {{ $session->created_at->format('d M Y') }}</small>
                                 </td>
                                 <td>
                                     <span class="badge bg-light text-dark border px-2 py-1 font-monospace session-code">{{ $session->session_code }}</span>
                                 </td>
                                 <td>
                                     <span class="text-muted small">
-                                        <i class="bi bi-people me-1"></i> {{ $session->groups_count ?? $session->groups->count() }} Groups
+                                        <i class="bi bi-people me-1"></i> {{ $session->groups_count ?? $session->groups->count() }} Kelompok
                                     </span>
                                 </td>
                                 <td>
                                     @if($session->is_active)
-                                        <span class="status-badge bg-success-subtle text-success border border-success">ACTIVE</span>
+                                        <span class="status-badge bg-success-subtle text-success border border-success">Aktif</span>
                                     @else
-                                        <span class="status-badge bg-light text-muted border">INACTIVE</span>
+                                        <span class="status-badge bg-light text-muted border">Tidak Aktif</span>
                                     @endif
                                 </td>
                                 <td class="text-end">

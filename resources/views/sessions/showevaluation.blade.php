@@ -286,14 +286,14 @@
                         --}}
                         
                         <div class="mb-4">
-                            <label class="label-mini d-block mb-2">Feedback</label>
+                            <label class="label-mini d-block mb-2">Umpan Balik</label>
                             <textarea name="feedback_comment" class="form-control bg-light border-0 p-3" 
                                 rows="6" style="border-radius: 18px; font-size: 0.9rem;"
                                 placeholder="Tulis feedback..." required>{{ $group->evaluation->feedback_comment ?? '' }}</textarea>
                         </div>
 
                         <button type="submit" class="btn bg-indigo text-white w-100 py-3 fw-bold shadow-sm hover-lift" style="border-radius: 15px;">
-                            SIMPAN FEEDBACK
+                            SIMPAN UMPAN BALIK
                         </button>
                     </form>
                 </div>

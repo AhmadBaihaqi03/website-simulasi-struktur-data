@@ -24,7 +24,7 @@
             border-radius: 15px; 
             padding: 20px;
         }
-w
+
         .label-mini { font-size: 0.65rem; font-weight: 800; letter-spacing: 1px; color: #94a3b8; text-transform: uppercase; }
         .phase-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
         .icon-box { 

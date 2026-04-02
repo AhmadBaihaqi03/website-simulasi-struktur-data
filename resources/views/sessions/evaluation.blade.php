@@ -51,11 +51,11 @@
     <div class="container py-5" style="max-width: 900px;">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <div>
-                <h2 class="fw-bold text-indigo mb-0">Evaluation Panel</h2>
-                <p class="text-muted mb-0">Session: <span class="text-dark fw-semibold">{{ $session->title }}</span></p>
+                <h2 class="fw-bold text-indigo mb-0">Panel Evaluasi</h2>
+                <p class="text-muted mb-0">Sesi: <span class="text-dark fw-semibold">{{ $session->title }}</span></p>
             </div>
             <div class="text-end">
-                <span class="d-block text-muted small text-uppercase fw-bold mb-1" style="font-size: 0.7rem;">Session Code</span>
+                <span class="d-block text-muted small text-uppercase fw-bold mb-1" style="font-size: 0.7rem;">Kode Sesi</span>
                 <div class="session-code-box shadow-sm">
                     <h4 class="fw-bold text-indigo font-monospace mb-0" style="letter-spacing: 1px;">
                         {{ $session->session_code }}

@@ -32,7 +32,7 @@
             <div class="w-full max-w-md mx-auto bg-white border border-indigo-50 rounded-[2.5rem] p-10 shadow-[0_25px_70px_rgba(79,70,229,0.07)]">
                 <div class="mb-10 text-center lg:text-left">
                     <h2 class="text-2xl font-bold text-slate-900">Selamat Datang Kembali</h2>
-                    <p class="text-sm text-slate-500 mt-2 font-medium">Khusus akses Guru & Administrasi</p>
+                    <p class="text-sm text-slate-500 mt-2 font-medium">Khusus akses Guru</p>
                 </div>
 
                 <x-auth-session-status class="mb-6" :status="session('status')" />

@@ -76,7 +76,7 @@
                 <div class="mt-8 text-center pt-8 border-t border-slate-50">
                     <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">
                         Sudah punya akun? 
-                        <a href="{{ route('login') }}" class="text-indigo-600 hover:underline ml-1">Log in Sekarang</a>
+                        <a href="{{ route('login') }}" class="text-indigo-600 hover:underline ml-1">Masuk Sekarang</a>
                     </p>
                 </div>
             </div>

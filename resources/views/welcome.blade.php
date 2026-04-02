@@ -43,7 +43,7 @@
                                 Akses Guru
                             </span>
                             <a href="{{ route('login') }}" class="text-[13px] font-bold text-slate-600 hover:text-indigo-600 transition leading-none">
-                                Log in
+                                Masuk
                             </a>
                         </div>
                         <div class="h-8 w-[1px] bg-slate-200"></div>
