@@ -55,6 +55,70 @@
         </div>
     </div>
 
+    <div class="bg-white border border-slate-200 rounded-[3rem] p-8 md:p-10 shadow-sm transition-all hover:shadow-md">
+        <div class="mb-10 p-6 bg-amber-50 border-l-4 border-amber-400 rounded-r-3xl">
+            <div class="flex gap-4 items-center">
+                <div>
+                    <h6 class="font-bold text-amber-900 !text-base">Zona Bebas Eksplorasi!</h6>
+                    <p class="!text-sm text-amber-800/80 leading-relaxed">
+                        Instruksi di bawah ini hanyalah <b>titik awal</b>. Jangan takut salah—kamu bebas mencoba kombinasi apapun di Console Kendali. Perhatikan baik-baik bagaimana kotak-kotak data di bawah berinteraksi!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h5 class="text-2xl font-extrabold text-slate-800 flex items-center gap-3">
+                    <i data-lucide="compass" class="text-indigo-600"></i> Misi Eksplorasi
+                </h5>
+                <p class="!text-sm text-slate-500 mt-2">Cobalah skenario berikut untuk melihat keajaiban List:</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-indigo-200 shadow-sm">
+                <div class="bg-indigo-100 p-2 rounded-xl text-indigo-600">
+                    <i data-lucide="move-right" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Efek "Geser" Data</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Masukkan data baru pada <b>Target Indeks 1</b>. Amati bagaimana data yang sudah ada otomatis bergeser untuk memberi ruang.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-indigo-200 shadow-sm">
+                <div class="bg-slate-200 p-2 rounded-xl text-slate-600">
+                    <i data-lucide="shrink" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Efek "Rapat" Data</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Hapus salah satu data di tengah. Perhatikan bagaimana indeks di belakangnya "maju" untuk menutup celah kosong.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-indigo-200 shadow-sm">
+                <div class="bg-amber-100 p-2 rounded-xl text-amber-600">
+                    <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Uji Batas Indeks</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Coba isi <b>Target Indeks 10</b> padahal data hanya ada 3. Apa respon simulator terhadap indeks yang tidak ada?</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-indigo-200 shadow-sm">
+                <div class="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-100">
+                    <i data-lucide="layers" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Lupakan Batas</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Tambahkan terus data tanpa mengisi Target Indeks. Lihat seberapa panjang List bisa menampung datamu!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="grid grid-cols-3 divide-x divide-slate-200 py-6 rounded-3xl bg-slate-50 border border-slate-100 text-center shadow-inner shadow-slate-100">
         <div>
             <p class="text-[10px] uppercase tracking-widest font-black text-slate-400 mb-1">Jumlah Elemen</p>

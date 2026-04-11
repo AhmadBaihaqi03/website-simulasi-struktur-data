@@ -236,7 +236,7 @@
                         <div class="card phase-card p-4 text-center border-0">
                             <div class="mb-4">
                                 <h5 class="mb-1" style="font-size: 1rem; font-weight:700;">FINALISASI SESI</h5>
-                                <p style="font-size: 1rem;">Tinjau kembali data sebelum deploy</p>
+                                <p style="font-size: 1rem;">Tinjau kembali data sebelum membuat sesi</p>
                             </div>
                             
                             <hr class="mb-4 opacity-50">

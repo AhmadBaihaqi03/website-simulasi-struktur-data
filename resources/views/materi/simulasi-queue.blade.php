@@ -49,9 +49,73 @@
         <div class="p-5 rounded-[2rem] bg-slate-500 text-white shadow-lg shadow-slate-100 transition-transform hover:scale-[1.02]">
             <div class="flex items-center gap-3 mb-2">
                 <i data-lucide="eye" class="w-5 h-5"></i>
-                <h6 class="font-bold text-sm">Peek / Front</h6>
+                <h6 class="font-bold text-sm">Front</h6>
             </div>
             <p class="text-[11px] text-slate-100 leading-relaxed">Melihat siapa yang ada di urutan terdepan tanpa mengeluarkannya dari antrean.</p>
+        </div>
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-[3rem] p-8 md:p-10 shadow-sm transition-all hover:shadow-md">
+        <div class="mb-10 p-6 bg-amber-50 border-l-4 border-amber-400 rounded-r-3xl">
+            <div class="flex gap-4 items-center">
+                <div>
+                    <h6 class="font-bold text-amber-900 !text-base">Zona Bebas Eksplorasi!</h6>
+                    <p class="!text-sm text-amber-800/80 leading-relaxed">
+                        Instruksi di bawah ini adalah <b>titik awal</b> untuk memahami antrean. Cobalah berbagai kombinasi untuk melihat bagaimana sistem mengelola urutan data secara adil!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h5 class="text-2xl font-extrabold text-slate-800 flex items-center gap-3">
+                    <i data-lucide="compass" class="text-indigo-600"></i> Misi Eksplorasi
+                </h5>
+                <p class="!text-sm text-slate-500 mt-2">Uji skenario berikut untuk melihat cara kerja Queue:</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-indigo-200 shadow-sm">
+                <div class="bg-indigo-100 p-2 rounded-xl text-indigo-600">
+                    <i data-lucide="user-plus" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Siapa di Belakang?</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Gunakan <b>Enqueue</b> beberapa kali. Amati bagaimana data baru selalu masuk di posisi <b>Rear</b> (paling belakang).</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-rose-200 shadow-sm">
+                <div class="bg-rose-100 p-2 rounded-xl text-rose-600">
+                    <i data-lucide="user-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Prinsip Keadilan (FIFO)</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Klik <b>Dequeue</b>. Perhatikan bahwa data yang <b>paling lama</b> mengantre (Front) adalah yang dihapus pertama kali.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-amber-200 shadow-sm">
+                <div class="bg-amber-100 p-2 rounded-xl text-amber-600">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Intip Antrean</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Gunakan tombol <b>Front</b>. Apakah data di posisi terdepan berubah atau hilang? Bandingkan dengan efek tombol Dequeue.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-indigo-600 shadow-sm">
+                <div class="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-100">
+                    <i data-lucide="database" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Uji Kondisi Kosong</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Klik <b>Reset</b>, lalu coba lakukan <b>Dequeue</b> atau <b>Front</b>. Amati pesan peringatan yang muncul di simulator!</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -97,7 +161,7 @@
                 <i data-lucide="log-out" class="w-4 h-4"></i> DEQUEUE
             </button>
             <button @click="peek()" class="flex items-center gap-2 bg-slate-500 hover:bg-slate-600 text-white px-6 py-3 rounded-2xl font-bold shadow-lg shadow-slate-100 transition-all active:scale-95 text-xs tracking-wide">
-                <i data-lucide="eye" class="w-4 h-4"></i> PEEK
+                <i data-lucide="eye" class="w-4 h-4"></i> FRONT
             </button>
             <button @click="resetQueue()" class="flex items-center gap-2 bg-slate-300 hover:bg-slate-400 text-slate-700 px-6 py-3 rounded-2xl font-bold transition-all active:scale-95 text-xs tracking-wide">
                 <i data-lucide="rotate-ccw" class="w-4 h-4"></i> RESET

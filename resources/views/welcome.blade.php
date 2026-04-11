@@ -67,8 +67,8 @@
                 Belajar Struktur Data dengan Simulasi Interaktif
             </h4>
             
-            <p class="text-slate-500 max-w-2xl mx-auto text-lg leading-relaxed">
-                Pilih modul di bawah atau bergabung ke sesi belajar aktif untuk menyelesasikan tantangan dari guru
+            <p class="text-slate-700 max-w-2xl mx-auto text-lg leading-relaxed">
+                Pilih materi di bawah atau bergabung ke sesi belajar aktif untuk menyelesasikan tantangan dari guru
             </p>
 
             <form action="{{ route('student.join.check') }}" method="POST" class="max-w-lg mx-auto bg-white p-2 rounded-3xl shadow-2xl shadow-indigo-100/50 border border-indigo-50 flex items-center gap-2">
@@ -91,6 +91,32 @@
             @endif
         </section>
 
+        <div class="max-w-lg mx-auto mt-6 animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-300">
+            <div class="bg-indigo-50 border border-indigo-100/60 rounded-[2rem] p-6 flex flex-col items-center gap-5 shadow-inner transition-all hover:bg-white hover:shadow-xl hover:shadow-indigo-500/5 group">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-100 group-hover:scale-110 transition-transform">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
+                    <h5 class="text-sm font-bold text-slate-800 tracking-tight">Butuh Bantuan Penggunaan?</h5>
+                </div>
+
+                <div class="flex items-center gap-3 w-full">
+                    <a href="{{ asset('dokumen/PanduanPenggunaan.pdf') }}" target="_blank" class="flex-1 text-center py-3 bg-white text-indigo-700 rounded-2xl font-extrabold text-[11px] tracking-widest border border-indigo-100 shadow-sm hover:bg-indigo-600 hover:text-white hover:shadow-indigo-200 transition-all">
+                        BUKA PANDUAN LENGKAP UNTUK GURU DAN SISWA
+                    </a>
+                    
+                    <a href="{{ asset('dokumen/PanduanPenggunaan.pdf') }}" download="Panduan_Vilogic.pdf" class="p-3  text-indigo-700 hover:bg-indigo-100/50 rounded-xl transition-all group-hover:opacity-100 opacity-60">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    
         <section id="materi" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-16">
             @php
                 $modules = [

@@ -240,7 +240,7 @@
 
                             <div class="mt-4 p-3 bg-light rounded-4">
                                 <p class="text-muted mb-0" style="font-size: 0.9rem; line-height: 1.4;">
-                                    Siswa akan langsung melihat perubahan ini pada dashboard mereka setelah Anda menekan tombol Update.
+                                    Siswa akan langsung melihat perubahan ini pada dashboard mereka setelah Anda menekan tombol perbarui sesi.
                                 </p>
                             </div>
                         </div>

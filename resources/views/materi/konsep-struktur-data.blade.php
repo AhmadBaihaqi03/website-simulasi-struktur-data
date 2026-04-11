@@ -7,164 +7,132 @@
         Konsep <span class="text-indigo-600">Struktur Data</span>
     </h1>
 @endsection
-
 @section('content')
-    <div class="mb-12 mt-4">
+    <div class="mb-16 mt-4">
         <h5 class="text-2xl font-extrabold text-slate-800 mb-6 flex items-center gap-3">
-            <i data-lucide="book-open text-indigo-600"></i> Pengertian Struktur Data
-        </h5>
-        <div class="ml-0 md:ml-10">
-            <p class="text-lg text-slate-600 leading-relaxed border-l-4 border-indigo-500 ps-6">
-                Struktur data adalah metode untuk mengorganisasikan data di dalam komputer sehingga data dapat diakses, diproses, dan diperbarui secara efisien. Dengan struktur data yang tepat, program menjadi lebih rapi, mudah dikembangkan, dan bekerja lebih cepat.
-            </p>
-        </div>
-    </div>
-
-    <div class="mb-12">
-        <h5 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
-            <i data-lucide="award" class="text-indigo-600"></i> Fungsi dan Manfaat Struktur Data
-        </h5>
-        <div class="ml-0 md:ml-10">
-            <p class="text-sm text-slate-400 font-bold uppercase tracking-widest mb-6">Struktur data memiliki beberapa fungsi penting:</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                @php
-                    $manfaat = [
-                        'Mengorganisasi data agar tersusun rapi.',
-                        'Mempermudah akses data (membaca & mengubah).',
-                        'Meningkatkan efisiensi memori dan waktu proses.',
-                        'Memudahkan pengembangan program karena alur jelas.',
-                        'Mengurangi kesalahan pengolahan data.'
-                    ];
-                @endphp
-                @foreach($manfaat as $m)
-                    <div class="flex items-center gap-3 p-4 bg-slate-50 rounded-2xl border border-slate-100 transition hover:border-indigo-200">
-                        <i data-lucide="check-circle-2" class="text-indigo-600 w-5 h-5 flex-shrink-0"></i>
-                        <span class="text-slate-600 text-sm font-medium">{{ $m }}</span>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-
-    <div class="mb-12">
-        <h5 class="text-xl font-bold text-slate-800 mb-8 flex items-center gap-2">
-            <i data-lucide="box" class="text-indigo-600"></i> Jenis Struktur Data
+            <i data-lucide="info" class="text-indigo-600"></i>Pengertian Struktur Data
         </h5>
         <div class="ml-0 md:ml-10 space-y-6">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div class="p-8 bg-white border border-indigo-50 rounded-[2.5rem] shadow-sm hover:shadow-md transition">
-                    <h6 class="font-bold text-indigo-600 mb-3 uppercase tracking-wider text-sm">1) Struktur Data Linear</h6>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-4">
-                        Elemen disusun secara berurutan atau sejajar. Setiap elemen memiliki satu posisi tertentu dalam urutan tersebut.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-[10px] font-black rounded-full uppercase">List</span>
-                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-[10px] font-black rounded-full uppercase">Stack</span>
-                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 text-[10px] font-black rounded-full uppercase">Queue</span>
-                    </div>
-                </div>
-
-                <div class="p-8 bg-white border border-indigo-50 rounded-[2.5rem] shadow-sm hover:shadow-md transition">
-                    <h6 class="font-bold text-indigo-600 mb-3 uppercase tracking-wider text-sm">2) Struktur Data Non-Linear</h6>
-                    <p class="text-slate-500 text-sm leading-relaxed mb-4">
-                        Elemen tidak tersusun lurus, melainkan bercabang atau saling terhubung untuk menangani permasalahan yang lebih kompleks.
-                    </p>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="px-3 py-1 bg-slate-50 text-slate-500 text-[10px] font-black rounded-full uppercase">Tree</span>
-                        <span class="px-3 py-1 bg-slate-50 text-slate-500 text-[10px] font-black rounded-full uppercase">Graph</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="p-5 bg-slate-50 rounded-2xl flex items-center gap-4 border border-transparent hover:border-slate-200 transition">
-                    <div class="font-black text-indigo-600 text-xs uppercase tracking-tighter bg-white px-3 py-1 rounded-lg shadow-sm">3) Statis</div>
-                    <div class="h-6 w-[1px] bg-slate-300"></div>
-                    <p class="text-[12px] text-slate-500">Ukuran tetap dan tidak berubah selama digunakan.</p>
-                </div>
-                <div class="p-5 bg-slate-50 rounded-2xl flex items-center gap-4 border border-transparent hover:border-slate-200 transition">
-                    <div class="font-black text-indigo-600 text-xs uppercase tracking-tighter bg-white px-3 py-1 rounded-lg shadow-sm">4) Dinamis</div>
-                    <div class="h-6 w-[1px] bg-slate-300"></div>
-                    <p class="text-[12px] text-slate-500">Ukuran dapat berubah (tambah/kurang) sesuai kebutuhan.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="mb-12">
-        <h5 class="text-xl font-bold text-slate-800 mb-8 flex items-center gap-2">
-            <i data-lucide="zap" class="text-indigo-600"></i> Karakteristik Struktur Data yang Baik
-        </h5>
-        <div class="ml-0 md:ml-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-            @php
-                $chars = [
-                    ['icon' => 'layout-grid', 'title' => 'Teratur'],
-                    ['icon' => 'zap', 'title' => 'Efisien'],
-                    ['icon' => 'unlock', 'title' => 'Mudah Diakses'],
-                    ['icon' => 'target', 'title' => 'Sesuai Kebutuhan']
-                ];
-            @endphp
-            @foreach($chars as $c)
-                <div class="p-6 bg-white border border-slate-100 rounded-3xl text-center shadow-sm hover:shadow-md transition group">
-                    <div class="text-indigo-600 mb-3 flex justify-center group-hover:scale-110 transition-transform">
-                        <i data-lucide="{{ $c['icon'] }}"></i>
-                    </div>
-                    <span class="text-xs font-bold text-slate-700 uppercase tracking-wider">{{ $c['title'] }}</span>
-                </div>
-            @endforeach
-        </div>
-    </div>
-
-    <div class="mb-12">
-        <h5 class="text-xl font-extrabold text-slate-800 mb-8 flex items-center gap-2 border-b border-slate-100 pb-4">
-            <i data-lucide="code-2" class="text-indigo-600"></i> Struktur Data dengan Python
-        </h5>
-        
-        <div class="ml-0 md:ml-10 space-y-12">
-            <div class="relative pl-0 md:pl-16">
-                <div class="hidden md:flex absolute left-0 top-0 text-indigo-600 bg-indigo-50 p-3 rounded-2xl border border-indigo-100">
-                    <i data-lucide="list-ordered" class="w-6 h-6"></i>
-                </div>
-                <h6 class="text-lg font-bold text-slate-800 mb-3 flex items-center gap-2">
-                    <span class="md:hidden text-indigo-600 font-black">1.</span> List
-                </h6>
-                <p class="text-slate-600 text-base leading-relaxed">
-                    List merupakan struktur data linear yang digunakan untuk menyimpan sekumpulan data dalam satu variabel. Data pada list disusun secara berurutan dan dapat diakses menggunakan indeks. List dalam Python bersifat dinamis sehingga jumlah elemennya dapat bertambah atau berkurang sesuai kebutuhan program. List banyak digunakan untuk menyimpan kumpulan data seperti daftar nama, nilai, atau data layanan dalam suatu sistem.
+            <p class="!text-base text-slate-600 leading-relaxed border-l-4 border-indigo-500 ps-6">
+                Dalam pemrograman, data merupakan komponen utama. Namun, data saja tidak cukup. Data perlu diatur agar dapat digunakan secara efektif. <b>Struktur data</b> adalah metode untuk mengorganisasikan data di dalam komputer sehingga dapat disimpan, diakses, dan diperbarui dengan lebih mudah.
+            </p>
+            <div class="bg-indigo-50/50 p-6 rounded-3xl border border-indigo-100 italic">
+                <p class="!text-base text-slate-700 leading-relaxed">
+                    "Bayangkan layanan Tata Usaha (TU). Tanpa pengelolaan yang baik, antrean menjadi tidak tertib dan data murid sulit ditemukan. Struktur data membantu menyelesaikan masalah ini secara sistematis."
                 </p>
             </div>
+        </div>
+    </div>
 
-            <div class="relative pl-0 md:pl-16">
-                <div class="hidden md:flex absolute left-0 top-0 text-indigo-600 bg-indigo-50 p-3 rounded-2xl border border-indigo-100">
-                    <i data-lucide="users" class="w-6 h-6"></i>
+    <div class="mb-16">
+        <h5 class="text-xl font-bold text-slate-800 mb-8 flex items-center gap-2">
+            <i data-lucide="layers" class="text-indigo-600"></i>Fungsi Struktur Data
+        </h5>
+        <div class="ml-0 md:ml-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition group">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <i data-lucide="zap"></i>
+                    </div>
+                    <h6 class="font-bold text-slate-800 mb-2">1. Meningkatkan Efisiensi</h6>
+                    <p class="text-slate-500 !text-sm leading-relaxed">Optimalisasi penggunaan memori dan waktu proses, terutama saat mengelola data dalam jumlah banyak.</p>
                 </div>
-                <h6 class="text-lg font-bold text-slate-800 mb-3 flex items-center gap-2">
-                    <span class="md:hidden text-indigo-600 font-black">2.</span> Queue (Antrean)
-                </h6>
-                <div class="space-y-4">
-                    <p class="text-slate-600 text-base leading-relaxed">
-                        Queue merupakan struktur data yang menerapkan prinsip <strong>FIFO (First In First Out)</strong>, yaitu data yang pertama masuk akan menjadi data pertama yang keluar. Prinsip ini meniru sistem antrean dalam kehidupan sehari-hari, seperti antrean murid di Tata Usaha, di mana murid yang datang lebih dulu akan dilayani lebih dulu.
-                    </p>
-                    <p class="text-slate-600 text-base leading-relaxed bg-slate-50 p-6 rounded-2xl border-l-4 border-indigo-300">
-                        Dalam Python, queue dapat direpresentasikan menggunakan list. Proses menambahkan data disebut <strong>enqueue</strong>, sedangkan mengeluarkan data disebut <strong>dequeue</strong>. Penambahan data dilakukan di bagian belakang, sedangkan penghapusan dilakukan dari bagian depan. Struktur ini sangat sesuai untuk sistem pelayanan dan pengelolaan antrean.
-                    </p>
+                <div class="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition group">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <i data-lucide="layout-list"></i>
+                    </div>
+                    <h6 class="font-bold text-slate-800 mb-2">2. Mempermudah Pengelolaan</h6>
+                    <p class="text-slate-500 !text-sm leading-relaxed">Proses menambah, menghapus, dan memperbarui data menjadi lebih teratur dan tidak membingungkan.</p>
+                </div>
+                <div class="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition group">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <i data-lucide="git-branch"></i>
+                    </div>
+                    <h6 class="font-bold text-slate-800 mb-2">3. Mendukung Pengembangan</h6>
+                    <p class="text-slate-500 !text-sm leading-relaxed">Program lebih mudah dipahami oleh pengembang untuk perbaikan maupun pengembangan lanjutan.</p>
+                </div>
+                <div class="p-6 bg-white border border-slate-100 rounded-3xl shadow-sm hover:shadow-md transition group">
+                    <div class="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <i data-lucide="shield-alert"></i>
+                    </div>
+                    <h6 class="font-bold text-slate-800 mb-2">4. Mengurangi Kesalahan</h6>
+                    <p class="text-slate-500 !text-sm leading-relaxed">Meminimalisir kemungkinan kesalahan pada proses input, pengolahan, maupun output data.</p>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="relative pl-0 md:pl-16">
-                <div class="hidden md:flex absolute left-0 top-0 text-indigo-600 bg-indigo-50 p-3 rounded-2xl border border-indigo-100">
-                    <i data-lucide="layers-2" class="w-6 h-6"></i>
+    <div class="mb-16">
+        <h5 class="text-xl font-bold text-slate-800 mb-8 flex items-center gap-2">
+            <i data-lucide="component" class="text-indigo-600"></i>Klasifikasi Struktur Data
+        </h5>
+        <div class="ml-0 md:ml-10 space-y-8">
+            <p class="!text-base text-slate-600 leading-relaxed">
+                Berdasarkan penyusunannya, struktur data dibagi menjadi dua kategori utama:
+            </p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-indigo-600 rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-xl shadow-indigo-100">
+                    <div class="relative z-10">
+                        <div class="inline-block px-4 py-1 bg-white/20 backdrop-blur-md rounded-full !text-[10px] font-black uppercase tracking-widest mb-4">Fokus Pembelajaran</div>
+                        <h6 class="text-2xl font-bold mb-4">Struktur Data Linear</h6>
+                        <p class="!text-sm leading-relaxed opacity-90 mb-6">
+                            Elemen disusun secara <b>berurutan dalam satu garis</b> lurus. Setiap elemen memiliki hubungan langsung dengan elemen sebelum dan sesudahnya.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-3 !text-sm font-semibold bg-white/10 p-3 rounded-2xl border border-white/10">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i> List (Daftar)
+                            </li>
+                            <li class="flex items-center gap-3 !text-sm font-semibold bg-white/10 p-3 rounded-2xl border border-white/10">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i> Stack (Tumpukan - LIFO)
+                            </li>
+                            <li class="flex items-center gap-3 !text-sm font-semibold bg-white/10 p-3 rounded-2xl border border-white/10">
+                                <i data-lucide="check-circle" class="w-4 h-4"></i> Queue (Antrean - FIFO)
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <h6 class="text-lg font-bold text-slate-800 mb-3 flex items-center gap-2">
-                    <span class="md:hidden text-indigo-600 font-black">3.</span> Stack (Tumpukan)
-                </h6>
-                <div class="space-y-4">
-                    <p class="text-slate-600 text-base leading-relaxed">
-                        Stack merupakan struktur data yang menerapkan prinsip <strong>LIFO (Last In First Out)</strong>, yaitu data yang terakhir masuk akan menjadi data pertama yang keluar. Prinsip ini dianalogikan seperti tumpukan buku, di mana buku yang terakhir diletakkan di atas akan menjadi buku pertama yang diambil.
+
+                <div class="bg-slate-50 rounded-[2.5rem] p-8 border border-slate-200 group transition-all">
+                    <div class="inline-block px-4 py-1 bg-slate-200 text-slate-600 rounded-full !text-[10px] font-black uppercase tracking-widest mb-4">Materi Lanjutan</div>
+                    <h6 class="text-2xl font-bold text-slate-800 mb-4 group-hover:text-indigo-600 transition-colors">Struktur Data Non-Linear</h6>
+                    <p class="!text-sm text-slate-500 leading-relaxed mb-6">
+                        Elemen tidak disusun berurutan, melainkan memiliki hubungan kompleks seperti <b>bercabang atau saling terhubung</b>.
                     </p>
-                    <p class="text-slate-600 text-base leading-relaxed bg-slate-50 p-6 rounded-2xl border-l-4 border-indigo-300">
-                        Dalam Python, stack direpresentasikan menggunakan list. Proses menambah data disebut <strong>push</strong>, dan mengeluarkan data disebut <strong>pop</strong>. Keduanya dilakukan pada bagian yang sama, yaitu bagian atas tumpukan. Struktur ini sering digunakan untuk mekanisme <strong>undo</strong> atau riwayat aktivitas.
-                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 bg-white rounded-2xl border border-slate-100 text-center">
+                            <i data-lucide="network" class="w-8 h-8 text-slate-300 mx-auto mb-2"></i>
+                            <span class="!text-xs font-bold text-slate-400">TREE</span>
+                        </div>
+                        <div class="p-4 bg-white rounded-2xl border border-slate-100 text-center">
+                            <i data-lucide="share-2" class="w-8 h-8 text-slate-300 mx-auto mb-2"></i>
+                            <span class="!text-xs font-bold text-slate-400">GRAPH</span>
+                        </div>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-16">
+        <h5 class="text-xl font-bold text-slate-800 mb-8 flex items-center gap-2">
+            <i data-lucide="component" class="text-indigo-600"></i>Karakteristik Struktur Data Linear
+        </h5>
+        <div class="ml-0 md:ml-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm flex flex-col items-center text-center">
+                <span class="w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-black mb-4">1</span>
+                <h6 class="font-bold text-slate-800 !text-sm mb-2 uppercase">Berurutan</h6>
+                <p class="text-slate-500 !text-[12px] leading-relaxed">Data dapat diakses berdasarkan posisi atau indeksnya.</p>
+            </div>
+            <div class="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm flex flex-col items-center text-center">
+                <span class="w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-black mb-4">2</span>
+                <h6 class="font-bold text-slate-800 !text-sm mb-2 uppercase">Terhubung</h6>
+                <p class="text-slate-500 !text-[12px] leading-relaxed">Setiap elemen terhubung dengan elemen sebelum dan sesudahnya.</p>
+            </div>
+            <div class="p-8 bg-white border border-slate-100 rounded-[2rem] shadow-sm flex flex-col items-center text-center">
+                <span class="w-12 h-12 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center font-black mb-4">3</span>
+                <h6 class="font-bold text-slate-800 !text-sm mb-2 uppercase">Aturan Khusus</h6>
+                <p class="text-slate-500 !text-[12px] leading-relaxed">Memiliki aturan pengelolaan data tersendiri (LIFO/FIFO).</p>
             </div>
         </div>
     </div>
@@ -173,7 +141,7 @@
         <a href="{{ url('/materi/pengantar-struktur-data') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
             <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i> Kembali ke Pengantar
         </a>
-         <a href="{{ url('/materi/materi-list') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
+        <a href="{{ url('/materi/materi-list') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
             Lanjut ke Materi List
             <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
         </a>

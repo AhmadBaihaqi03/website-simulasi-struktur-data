@@ -148,6 +148,7 @@ class StudentController extends Controller
         // Update data jika lolos validasi
         $group->update([
             'f3_answers' => $request->f3_answers,
+            'f4_link'    => $request->f4_link,
             'f4_code' => $request->f4_code,
             'f4_answers' => $request->f4_answers,
             'f5_answers' => $request->f5_answers,

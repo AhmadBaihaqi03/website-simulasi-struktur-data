@@ -24,18 +24,18 @@
                         <div class="bg-indigo-600 text-white rounded-2xl p-3 shadow-lg shadow-indigo-100">
                             <i data-lucide="users" class="w-6 h-6"></i>
                         </div>
-                        <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Fase 1: Orientasi Masalah & 2: Organisasi Siswa</h2>
+                        <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Orientasi Masalah dan Pembentukan Kelompok</h2>
                     </div>
 
                     <div class="mb-8">
-                        <label class="block text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Konteks Masalah:</label>
+                        <label class="block text-[12px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Konteks Masalah:</label>
                         <div class="p-6 bg-slate-50 border border-slate-100 rounded-2xl text-slate-700 leading-relaxed italic whitespace-pre-line text-justify">
                             "{{ $session->f1_context }}"
                         </div>
                     </div>
 
                     <div class="bg-white border border-slate-100 rounded-[2rem] p-8 md:p-10 shadow-sm relative overflow-hidden mb-8">
-                        <label class="block text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Tujuan Pembelajaran:</label>
+                        <label class="block text-[12px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Tujuan Pembelajaran:</label>
                         <div class="text-slate-600 text-base leading-relaxed">
                             @if(is_array($session->f1_learning_objectives))
                                 <ul class="list-disc ml-5 space-y-2">
@@ -50,7 +50,7 @@
                     </div>
 
                     <div>
-                        <label class="block text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Anggota Tim:</label>
+                        <label class="block text-[12px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Anggota Tim:</label>
                         <div class="flex flex-wrap gap-2">
                             @php $members = $group->student_data['members'] ?? []; @endphp
                             @forelse($members as $member)
@@ -69,7 +69,7 @@
                         <div class="bg-indigo-600 text-white rounded-2xl p-3 shadow-lg shadow-indigo-100">
                             <i data-lucide="message-square" class="w-6 h-6"></i>
                         </div>
-                        <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Fase 3: Penyelidikan</h2>
+                        <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Penyelidikan</h2>
                     </div>
 
                     <div class="space-y-8">
@@ -90,13 +90,35 @@
                         <div class="bg-indigo-600 text-white rounded-2xl p-3 shadow-lg shadow-indigo-100">
                             <i data-lucide="code" class="w-6 h-6"></i>
                         </div>
-                        <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Fase 4: Mengembangkan & Menyajikan Solusi</h2>
+                        <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Mengembangkan dan Menyajikan Solusi</h2>
                     </div>
 
                     <div class="space-y-4 mt-10 mb-4">
                         <p class="font-bold text-slate-800 leading-snug whitespace-pre-line text-justify">{{ $session->f4_instruction }}</p>
                     </div>
 
+                    @if($group->f4_link)
+                    <div class="mb-8">
+                        <label class="block text-[12px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Tautan Eksternal Pekerjaan:</label>
+                        <a href="{{ $group->f4_link }}" target="_blank" 
+                        class="group flex items-center gap-6 p-6 bg-slate-50 border-2 border-indigo-500 rounded-[2rem] transition-all hover:bg-indigo-50 hover:scale-[1.01] shadow-sm">
+                            
+                            <div class="bg-indigo-600 text-white p-4 rounded-2xl shadow-lg shadow-indigo-200">
+                                <i data-lucide="external-link" class="w-8 h-8"></i>
+                            </div>
+
+                            <div class="overflow-hidden flex-grow">
+                                <div class="text-indigo-600 font-black text-sm truncate tracking-tight mb-1">
+                                    {{ $group->f4_link }}
+                                </div>
+                                <p class="text-slate-500 text-sm font-bold uppercase tracking-widest flex items-center gap-2">
+                                    Klik untuk meninjau hasil di Google Colab <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+
+                    @else
                     <div class="rounded-2xl overflow-hidden border border-slate-200 mb-6">
                         <div class="bg-[#1e1e2e] px-5 py-3 flex items-center justify-between border-b border-white/5">
                             <div class="flex gap-1.5">
@@ -110,6 +132,7 @@
                             <pre class="font-mono text-sm text-indigo-100 leading-relaxed"><code>{{ $group->f4_code ?? '// Tidak ada kode.' }}</code></pre>
                         </div>
                     </div>
+                    @endif
 
                     <div class="space-y-4 mt-10 mb-4">
                         <p class="font-bold text-slate-800 leading-snug whitespace-pre-line text-justify">{{ $session->f4_question }}</p>
@@ -125,7 +148,7 @@
                         <div class="bg-indigo-600 text-white rounded-2xl p-3 shadow-lg shadow-indigo-100">
                             <i data-lucide="sparkles" class="w-6 h-6"></i>
                         </div>
-                        <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Fase 5: Refleksi</h2>
+                        <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Evaluasi</h2>
                     </div>
 
                     <div class="space-y-8">

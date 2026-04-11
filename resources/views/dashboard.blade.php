@@ -44,7 +44,7 @@
         @endif
         
         <div class="mb-4">
-            <h1 class="fw-bold h2 mb-1">Selamat Pagi, {{ Auth::user()->name }}</h1>
+            <h1 class="fw-bold h2 mb-1">Halo, {{ Auth::user()->name }}</h1>
             <p class="text-muted">Kelola sesi pembelajaran berbasis masalah (Problem-Based Learning) Anda</p>
         </div>
 

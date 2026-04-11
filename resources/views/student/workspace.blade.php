@@ -36,18 +36,18 @@
                             <div class="bg-indigo-600 text-white rounded-2xl p-3 shadow-lg shadow-indigo-100">
                                 <i data-lucide="users" class="w-6 h-6"></i>
                             </div>
-                            <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Fase 1: Orientasi Masalah & Fase 2: Organisasi Siswa</h2>
+                            <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Orientasi Masalah & Kelompok Siswa</h2>
                         </div>
 
                         <div class="mb-8">
-                            <label class="block text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Konteks Masalah:</label>
+                            <label class="block text-[12px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Konteks Masalah:</label>
                             <div class="p-6 bg-slate-50 border border-slate-100 rounded-2xl text-slate-700 leading-relaxed italic whitespace-pre-line text-justify">
                                 "{{ $session->f1_context }}"
                             </div>
                         </div>
 
                         <div class="bg-white border border-slate-100 rounded-[2rem] p-8 md:p-10 shadow-sm relative overflow-hidden mb-8">
-                            <label class="block text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Tujuan Pembelajaran:</label>
+                            <label class="block text-[12px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Tujuan Pembelajaran:</label>
                             <div class="text-slate-600 text-base leading-relaxed">
                                 @if(is_array($session->f1_learning_objectives))
                                     <ul class="list-disc ml-5 space-y-2">
@@ -62,7 +62,7 @@
                         </div>
 
                         <div>
-                            <label class="block text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Anggota Tim:</label>
+                            <label class="block text-[12px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">Anggota Tim:</label>
                             <div id="members-container" class="space-y-3">
                                 @php $members = $group->student_data['members'] ?? ['']; @endphp
                                 @foreach($members as $index => $member)
@@ -75,7 +75,7 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <button type="button" id="add-member" class="inline-flex items-center gap-2 mt-4 text-[11px] font-black text-indigo-600 uppercase tracking-widest hover:opacity-70 transition-opacity">
+                            <button type="button" id="add-member" class="inline-flex items-center gap-2 mt-4 text-[12px] font-black text-indigo-600 uppercase tracking-widest hover:opacity-70 transition-opacity">
                                 <i data-lucide="plus-circle" class="w-4 h-4"></i> Tambah Anggota
                             </button>
                         </div>
@@ -86,7 +86,7 @@
                             <div class="bg-indigo-600 text-white rounded-2xl p-3 shadow-lg shadow-indigo-100">
                                 <i data-lucide="message-square" class="w-6 h-6"></i>
                             </div>
-                            <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Fase 3: Penyelidikan</h2>
+                            <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Penyelidikan</h2>
                         </div>
 
                         <div class="space-y-6">
@@ -106,12 +106,41 @@
                             <div class="bg-indigo-600 text-white rounded-2xl p-3 shadow-lg shadow-indigo-100">
                                 <i data-lucide="code" class="w-6 h-6"></i>
                             </div>
-                            <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Fase 4: Mengembangkan & Menyajikan Solusi</h2>
+                            <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Mengembangkan Dan Menyajikan Solusi</h2>
                         </div>
                         
                         <div class="space-y-4 mt-10 mb-4">
                             <p class="font-bold text-slate-800 leading-snug whitespace-pre-line text-justify">{{ $session->f4_instruction }}</p>
                         </div>
+
+                        <div class="bg-indigo-50/40 border border-indigo-100 rounded-2xl p-6 mb-6">
+                            <label class="block text-[12px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-3">
+                                Lampiran Link Google Colab
+                            </label>
+
+                            <p class="text-base text-slate-700 leading-relaxed mb-4 text-justify">
+                                Kembangkan solusi melalui google colab 
+                                <a href="https://colab.research.google.com/" 
+                                target="_blank"
+                                class="font-bold text-indigo-600 hover:text-indigo-800 underline underline-offset-4">
+                                Google Colab
+                                </a>
+                                lalu tempelkan link hasil pekerjaan pada kolom berikut.
+                            </p>
+
+                            <input 
+                                type="url"
+                                name="f4_link"
+                                value="{{ old('f4_link', $group->f4_link ?? '') }}"
+                                placeholder="https://colab.research.google.com/..."
+                                class="w-full px-6 py-4 bg-white border border-slate-200 rounded-2xl text-base text-slate-700 focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-600 outline-none"
+                            >
+                        </div>
+                        
+                        {{--
+                        <p class="text-base text-slate-900 leading-relaxed mt-3 mb-5 text-justify">
+                            Atau gunakan editor di bawah untuk mengerjakan sintaks Python sederhana
+                        </p>
 
                         <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm mb-6">
                             <div class="bg-[#1e1e2e] px-5 py-3 flex items-center gap-2 border-b border-white/5">
@@ -120,7 +149,7 @@
                             <textarea id="codeEditor" name="f4_code" class="w-full h-80 bg-[#1e1e2e] text-indigo-100 p-6 font-mono text-sm outline-none resize-none focus:ring-0">{{ old('f4_code', $group->f4_code ?? "# Tulis solusi Python di sini\n\nprint('Hello PBL Workspace!')") }}</textarea>
                         </div>
 
-                        <button type="button" onclick="runPythonCode()" id="runBtn" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black tracking-widest text-[13px] hover:bg-indigo-600 shadow-xl shadow-indigo-100 transition-all active:scale-[0.98] mb-8">
+                        <button type="button" onclick="runPythonCode()" id="runBtn" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black tracking-widest text-[12px] hover:bg-indigo-600 shadow-xl shadow-indigo-100 transition-all active:scale-[0.98] mb-8">
                             <i data-lucide="play" class="inline-block w-4 h-4 mr-2 fill-current"></i> JALANKAN PROGRAM
                         </button>
 
@@ -131,6 +160,7 @@
                             </div>
                             <div id="outputArea" class="font-mono text-sm text-emerald-400 min-h-[80px] whitespace-pre-wrap leading-relaxed">> Ready...</div>
                         </div>
+                        --}}
 
                         <div class="space-y-4 mt-10">
                             <p class="font-bold text-slate-800 leading-snug whitespace-pre-line text-justify">{{ $session->f4_question }}</p>
@@ -144,7 +174,7 @@
                             <div class="bg-indigo-600 text-white rounded-2xl p-3 shadow-lg shadow-indigo-100">
                                 <i data-lucide="sparkles" class="w-6 h-6"></i>
                             </div>
-                            <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Fase 5: Refleksi</h2>
+                            <h2 class="text-xl font-black text-slate-900 tracking-tight uppercase">Evaluasi</h2>
                         </div>
                         
                         <div class="space-y-8">
@@ -162,16 +192,16 @@
                 <div class="lg:col-span-4">
                     <div class="sticky top-8 space-y-4">
                         <div class="bg-white rounded-[2rem] border border-indigo-50 p-8 shadow-xl shadow-indigo-100/20">
-                            <h6 class="text-center text-[11px] font-black text-slate-900 tracking-[0.2em] uppercase mb-6">Panel Kontrol</h6>
+                            <h6 class="text-center text-[12px] font-black text-slate-900 tracking-[0.2em] uppercase mb-6">Panel Kontrol</h6>
                             
                             <div class="flex flex-col gap-3">
                                 <button type="submit" name="action" value="save" class="group flex items-center justify-center gap-3 bg-white border-2 border-slate-100 py-4 rounded-2xl font-black text-xs tracking-widest text-slate-600 hover:border-indigo-600 hover:text-indigo-600 transition-all">
-                                    <i data-lucide="cloud-upload" class="w-4 h-4 transition-transform group-hover:-translate-y-1"></i> SIMPAN PROGRES
+                                    <i data-lucide="cloud-upload" class="w-4 h-4 transition-transform group-hover:-translate-y-1"></i> SIMPAN PERUBAHAN
                                 </button>
 
                                 <button type="submit" name="action" value="submit" id="submitBtn" 
                                         class="flex items-center justify-center gap-3 bg-slate-900 text-white py-4 rounded-2xl font-black text-xs tracking-widest hover:bg-indigo-600 shadow-lg shadow-slate-200 transition-all active:scale-[0.98]">
-                                    <i data-lucide="send" class="w-4 h-4"></i> SUBMIT TUGAS
+                                    <i data-lucide="send" class="w-4 h-4"></i> KUMPULKAN TUGAS
                                 </button>
                             </div>
 
@@ -187,7 +217,7 @@
                                 <div class="flex gap-3">
                                     <i data-lucide="info" class="w-5 h-5 text-indigo-600 shrink-0"></i>
                                     <p class="text-[11px] font-medium text-indigo-900/70 leading-relaxed">
-                                        Setelah submit, tugas akan dikirim ke guru untuk diberi feedback dan kalian tidak bisa mengubah jawabannya lagi.
+                                        Setelah dikumpulkan, tugas akan dikirim ke guru untuk diberi umpan balik dan kalian tidak bisa mengubah jawabannya lagi.
                                     </p>
                                 </div>
                             </div>
@@ -358,11 +388,15 @@
                 alert('Terdapat nama anggota yang sudah terdaftar di sistem. Harap perbaiki sebelum mengirim.');
                 return;
             }
-
-            const textareas = document.querySelectorAll('textarea');
+            
+            const f4Link = document.querySelector('input[name="f4_link"]').value.trim();
+            const f4Code = document.getElementById('codeEditor').value.trim();
+            const otherTextareas = document.querySelectorAll('textarea:not(#codeEditor)');
+            
             let allFilled = true;
 
-            textareas.forEach(ta => {
+            // 1. Cek textarea selain editor kode (pertanyaan diskusi tetap wajib)
+            otherTextareas.forEach(ta => {
                 if (!ta.value.trim()) {
                     allFilled = false;
                     ta.classList.add('border-red-500', 'ring-4', 'ring-red-500/10');
@@ -371,9 +405,18 @@
                 }
             });
 
+            // 2. Logika BARU: Cek apakah salah satu (Link atau Code) sudah diisi
+            const isSolutionProvided = f4Link !== "" || f4Code !== "" && f4Code !== "# Tulis solusi Python di sini\n\nprint('Hello PBL Workspace!')";
+
             if (!allFilled) {
                 e.preventDefault();
-                alert('Mohon lengkapi semua jawaban diskusi dan analisis.');
+                alert('Mohon lengkapi semua jawaban diskusi.');
+                return;
+            }
+
+            if (!isSolutionProvided) {
+                e.preventDefault();
+                alert('Mohon berikan solusi: Lampirkan Link Google Colab ATAU tuliskan kode Python.');
                 return;
             }
 

@@ -45,9 +45,9 @@
         </div>
     </div>
 
-    <main class="max-w-5xl mx-auto px-6 pb-20">
+    <main class="max-w-5xl mx-auto px-6 pb-6">
         <div class="mb-10 mt-8">
-            <span class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-4 block">Modul Pembelajaran</span>
+            <span class="text-[10px] font-black text-indigo-500 uppercase tracking-[0.2em] mb-4 block">Materi Pembelajaran</span>
             @yield('materi_title')
         </div>
 
@@ -56,9 +56,40 @@
                 @yield('content')
             </div>
         </div>
+
+        <div class="mt-12 bg-slate-900 rounded-[3rem] p-8 md:p-10 text-white relative overflow-hidden shadow-2xl shadow-indigo-100/50 border border-slate-800 transition-all hover:border-indigo-500/30">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+            
+            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div class="flex items-center gap-6">
+                    <div class="hidden sm:flex bg-indigo-600/20 p-4 rounded-3xl border border-indigo-500/30 text-indigo-400">
+                        <i data-lucide="file-text" class="w-8 h-8"></i>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h6 class="text-xl font-bold mb-1 tracking-tight">E-Book Materi</h6>
+                        <p class="text-slate-400 !text-xs leading-relaxed max-w-sm">
+                            Tersedia teori dan contoh implementasi Python. 
+                        </p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-3">
+                    <a href="{{ asset('dokumen/MateriStrukturDataPython.pdf') }}" target="_blank" 
+                    class="group flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-5 py-3 rounded-xl font-bold transition-all border border-slate-700 !text-xs">
+                        <i data-lucide="eye" class="w-4 h-4 text-indigo-400"></i>
+                        <span>Lihat Materi</span>
+                    </a>
+
+                    <a href="{{ asset('dokumen/MateriStrukturDataPython.pdf') }}" download
+                    class="group flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-indigo-500/20 !text-xs">
+                        <i data-lucide="download-cloud" class="w-4 h-4"></i>
+                        <span>Unduh PDF</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </main>
     
-
     <footer class="text-center py-12">
         <p class="text-[10px] text-slate-400 font-bold uppercase tracking-[0.2em]">
             © 2026 Vilogic

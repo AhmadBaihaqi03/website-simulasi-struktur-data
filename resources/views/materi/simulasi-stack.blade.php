@@ -37,9 +37,73 @@
         <div class="p-5 rounded-[2rem] bg-slate-500 text-white shadow-lg shadow-slate-100 transition-transform hover:scale-[1.02]">
             <div class="flex items-center gap-3 mb-2">
                 <i data-lucide="eye" class="w-5 h-5"></i>
-                <h6 class="font-bold text-sm">Peek / Top</h6>
+                <h6 class="font-bold text-sm">Top</h6>
             </div>
             <p class="text-[11px] text-slate-100 leading-relaxed">Melihat nilai elemen teratas tanpa menghapusnya.</p>
+        </div>
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-[3rem] p-8 md:p-10 shadow-sm transition-all hover:shadow-md">
+        <div class="mb-10 p-6 bg-amber-50 border-l-4 border-amber-400 rounded-r-3xl">
+            <div class="flex gap-4 items-center">
+                <div>
+                    <h6 class="font-bold text-amber-900 !text-base">Zona Bebas Eksplorasi!</h6>
+                    <p class="!text-sm text-amber-800/80 leading-relaxed">
+                        Instruksi di bawah ini adalah <b>titik awal</b> untuk memahami tumpukan. Cobalah berbagai kombinasi untuk melihat bagaimana data terakhir selalu menjadi yang pertama diproses!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h5 class="text-2xl font-extrabold text-slate-800 flex items-center gap-3">
+                    <i data-lucide="compass" class="text-indigo-600"></i> Misi Eksplorasi
+                </h5>
+                <p class="!text-sm text-slate-500 mt-2">Uji skenario berikut untuk melihat mekanisme Stack:</p>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-indigo-200 shadow-sm">
+                <div class="bg-indigo-100 p-2 rounded-xl text-indigo-600">
+                    <i data-lucide="layers-2" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Menumpuk Data</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Gunakan <b>Push</b> untuk memasukkan beberapa data. Amati bagaimana data terbaru selalu berada di posisi paling atas (<b>Top</b>).</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-rose-200 shadow-sm">
+                <div class="bg-rose-100 p-2 rounded-xl text-rose-600">
+                    <i data-lucide="trash-2" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Prinsip Terakhir (LIFO)</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Klik <b>Pop</b>. Perhatikan bahwa data yang <b>terakhir kali</b> kamu masukkan adalah yang pertama kali dihapus. Mengapa demikian?</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-amber-200 shadow-sm">
+                <div class="bg-amber-100 p-2 rounded-xl text-amber-600">
+                    <i data-lucide="eye" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Intip Pucuk Tumpukan</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Gunakan tombol <b>Top</b>. Pastikan apakah kamu bisa melihat data teratas tanpa harus membuangnya dari tumpukan.</p>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-indigo-600 shadow-sm">
+                <div class="bg-indigo-600 p-2 rounded-xl text-white shadow-lg shadow-indigo-100">
+                    <i data-lucide="history" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <p class="!text-base font-bold text-slate-800">Simulasi Undo</p>
+                    <p class="!text-xs text-slate-500 leading-relaxed">Masukkan nama "Langkah 1" hingga "Langkah 3". Lakukan <b>Pop</b> berkali-kali. Lihat bagaimana Stack bekerja seperti fitur <i>Undo</i>!</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -122,7 +186,7 @@
                         <i data-lucide="arrow-up-from-dot" class="w-4 h-4"></i> POP
                     </button>
                     <button @click="peek()" class="w-full flex items-center justify-center gap-2 bg-slate-500 hover:bg-slate-600 text-white px-6 py-4 rounded-2xl font-bold transition-all active:scale-95">
-                        <i data-lucide="eye" class="w-4 h-4"></i> PEEK
+                        <i data-lucide="eye" class="w-4 h-4"></i> TOP
                     </button>
                     <button @click="resetStack()" class="w-full flex items-center justify-center gap-2 bg-slate-200 hover:bg-slate-300 text-slate-600 px-6 py-3 rounded-2xl font-bold transition-all text-xs">
                         <i data-lucide="rotate-ccw" class="w-4 h-4"></i> RESET

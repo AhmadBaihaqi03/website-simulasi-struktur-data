@@ -207,22 +207,49 @@
                 </div>
 
                 <div class="card card-eval p-4 mb-4 border-0 shadow-sm" style="border-radius: 20px;">
-                    <div class="phase-header mb-4">
+                    <div class="phase-header mb-1">
                         <div class="icon-box"><i class="bi bi-code-slash"></i></div>
                         <h5 class="phase-title m-0">MENGEMBANGKAN & MENYAJIKAN SOLUSI</h5>
                     </div>
 
-                    <div class="bg-light p-3 mb-0 d-flex align-items-start gap-3" style="border-radius: 15px; border-left: 4px solid #5c60f5;">
-                        <i class="bi bi-info-circle text-indigo mt-1"></i>
-                        <div class="text-muted">
-                            Guru dapat memodifikasi kode untuk pengujian. Perubahan bersifat sementara dan tidak mengubah jawaban asli siswa. Gunakan tombol <strong>Reset Kode</strong> untuk mengembalikan.
-                        </div>
-                    </div>
-
                     <div class="px-2">
-                        <div class="mb-2">
-                            <div class="question-text p-3">
+                        <div class="mb-3">
+                            <div class="question-text">
                                 {{ $session->f4_instruction ?? 'Implementasikan solusi koding di bawah ini.' }}
+                            </div>
+                        </div>
+
+                        @if($group->f4_link)
+                        <div class="px-2">
+                            <label class="label-mini mb-2" style="font-size: 1rem; color: #475569;">TAUTAN EKSTERNAL SISWA:</label>
+                            <a href="{{ $group->f4_link }}" target="_blank" 
+                            class="answer-box d-flex align-items-center gap-4 text-decoration-none hover-lift shadow-sm w-100" 
+                            style="transition: all 0.2s; border-color: #5c60f5; background: #f8faff; padding: 25px;">
+                                
+                                <div class="icon-box shadow-sm" style="width: 65px; height: 65px; min-width: 65px; font-size: 2rem; background: #eef0ff; border-radius: 15px; color: #5c60f5;">
+                                    <i class="bi bi-link-45deg"></i>
+                                </div>
+
+                                <div class="overflow-hidden flex-grow-1">
+                                    <div class="text-indigo fw-bold text-truncate" style="font-size: 1.25rem; letter-spacing: -0.01em; margin-bottom: 4px;">
+                                        {{ $group->f4_link }}
+                                    </div>
+                                    <div class="text-muted" style="font-size: 0.95rem; font-weight: 500;">
+                                        <i class="bi bi-box-arrow-up-right me-1"></i> Klik untuk meninjau hasil kode siswa di tab baru
+                                    </div>
+                                </div>
+
+                                <div class="ms-auto text-indigo opacity-50">
+                                    <i class="bi bi-chevron-right" style="font-size: 1.8rem;"></i>
+                                </div>
+                            </a>
+                        </div>
+
+                        @else
+                        <div class="bg-light p-3 mb-3 d-flex align-items-start gap-3" style="border-radius: 15px; border-left: 4px solid #5c60f5;">
+                            <i class="bi bi-info-circle text-indigo mt-1"></i>
+                            <div class="text-muted">
+                                Guru dapat memodifikasi kode untuk pengujian. Perubahan bersifat sementara dan tidak mengubah jawaban asli siswa. Gunakan tombol <strong>Reset Kode</strong> untuk mengembalikan.
                             </div>
                         </div>
 
@@ -253,6 +280,7 @@
                             <pre id="outputArea" class="p-3 m-0" 
                                 style="min-height: 120px; color: #10b981; font-family: 'Fira Code', monospace; font-size: 13px; white-space: pre-wrap;">&gt; Menunggu eksekusi...</pre>
                         </div>
+                        @endif
 
                         <div class="mb-3">
                             <div class="question-text mb-3" style="font-size: 0.95rem;">
