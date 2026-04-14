@@ -17,6 +17,7 @@
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #f8fafc;
+            overflow-x: hidden;
         }
 
         /* Aksen Utama Indigo */
@@ -35,7 +36,11 @@
             border-radius: 1.25rem;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
             background: white;
-            padding: 2rem;
+            padding: 1.25rem;
+        }
+
+        @media (min-width: 576px) {
+            .card-workspace { padding: 2rem; }
         }
 
         .btn-indigo {
@@ -48,6 +53,7 @@
             transition: all 0.3s ease;
             display: inline-block;
             text-decoration: none;
+            min-height: 44px;
         }
 
         .btn-indigo:hover {
@@ -58,29 +64,27 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top py-3 mb-5">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top py-2 mb-4">
+        <div class="container px-3 px-sm-4">
             <div class="d-flex align-items-center">
-                <div class="bg-indigo text-white rounded-3 p-1 me-3 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);">
-                    <i class="bi bi-grid-1x2-fill"></i>
+                <div class="bg-indigo text-white rounded-3 p-1 me-2 d-flex align-items-center justify-content-center" style="width: 32px; height: 32px; min-width:32px; box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);">
+                    <i class="bi bi-grid-1x2-fill" style="font-size: 0.8rem;"></i>
                 </div>
                 
-                <div class="d-flex align-items-center ms-2">
-                    <span class="inline-flex items-center px-1 pt-1 text-sm font-bold no-underline text-slate-600 cursor-default" style="font-size: 0.875rem; color: #475569;">
-                        PBL Workspace
-                    </span>
-                </div>
+                <span class="fw-bold text-slate-600" style="font-size: 0.875rem; color: #475569;">
+                    PBL Workspace
+                </span>
             </div>
         </div>
     </nav>
 
-    <main class="container">
+    <main class="container px-3 px-sm-4">
         {{ $slot }}
     </main>
 
-    <footer class="container text-center py-5 mt-5 border-top">
-        <p class="text-muted small">
-            &copy; {{ date('Y') }} Problem Based Learning System &bull; <span class="text-indigo fw-bold">Indigo Design</span>
+    <footer class="container text-center py-4 mt-5 border-top px-3">
+        <p class="text-muted small mb-0">
+            &copy; {{ date('Y') }} Problem Based Learning System &bull; <span class="text-indigo fw-bold">Vilogic</span>
         </p>
     </footer>
 

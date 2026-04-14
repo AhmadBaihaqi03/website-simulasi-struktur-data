@@ -41,19 +41,28 @@
             background: #4F46E5;
             border-radius: 10px 10px 0 0;
         }
+
+        /* Mobile Menu Animation */
+        .mobile-menu-panel {
+            animation: slideDown 0.25s ease-out;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20">
+        <div class="flex justify-between h-16">
             <div class="flex">
-                <div class="shrink-0 flex items-center">
-                    <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <div class="shrink-0 flex items-center gap-2">
+                    <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="6" y="22" width="10" height="10" rx="2" fill="#4F46E5"/>
                         <rect x="24" y="8" width="10" height="10" rx="2" fill="#1E293B"/>
                         <path d="M16 27C22 27 20 13 24 13" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 2"/>
                         <path d="M22 15L24 13L22 11" stroke="#6366F1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    <span class="text-xl font-bold tracking-tighter text-slate-900">
+                    <span class="text-lg font-bold tracking-tighter text-slate-900">
                         Vi<span class="text-indigo-600">logic</span>
                     </span>
                 </div>
@@ -66,12 +75,13 @@
                 </div>
             </div>
 
+            {{-- Desktop User Dropdown --}}
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <div class="ms-3 relative premium-dropdown">
                     <x-dropdown align="right" width="60">
                         <x-slot name="trigger">
-                            <button class="inline-flex items-center px-2 py-1 border-none text-sm font-bold rounded-2xl text-slate-700 bg-transparent hover:bg-slate-50 transition-all duration-200 gap-3">
-                                <div class="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 fs-5 border border-slate-200 group-hover:bg-indigo-50 group-hover:text-indigo-600 transition-colors">
+                            <button class="inline-flex items-center px-2 py-1 border-none text-sm font-bold rounded-2xl text-slate-700 bg-transparent hover:bg-slate-50 transition-all duration-200 gap-3" style="min-height:44px;">
+                                <div class="h-9 w-9 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 border border-slate-200">
                                     <i class="bi bi-person-fill"></i>
                                 </div>
                                 <div class="text-start hidden md:block leading-tight">
@@ -91,7 +101,7 @@
 
                                 <div class="p-2">
                                     <x-dropdown-link :href="route('profile.edit')" class="flex items-center gap-3 px-3 py-3 rounded-2xl font-bold text-slate-600 hover:bg-indigo-50 hover:text-indigo-600 border-none transition-all duration-200">
-                                        <div class="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400 group-hover:bg-indigo-100 group-hover:text-indigo-600 transition-colors">
+                                        <div class="w-8 h-8 rounded-xl bg-slate-100 flex items-center justify-center text-slate-400">
                                             <i class="bi bi-person-circle"></i>
                                         </div>
                                         <span>Profil Saya</span>
@@ -115,14 +125,69 @@
                 </div>
             </div>
 
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="p-2 rounded-xl text-slate-400 hover:bg-slate-50 transition-colors">
+            {{-- Mobile Hamburger Button --}}
+            <div class="flex items-center sm:hidden">
+                <button @click="open = ! open" 
+                        class="inline-flex items-center justify-center w-11 h-11 rounded-xl text-slate-400 hover:bg-slate-50 transition-colors"
+                        aria-label="Menu navigasi">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
             </div>
+        </div>
+    </div>
+
+    {{-- Mobile Menu Panel --}}
+    <div x-show="open" 
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0 -translate-y-2"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-150"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-2"
+         class="sm:hidden border-t border-slate-100 bg-white shadow-lg">
+
+        {{-- User Info --}}
+        <div class="px-4 pt-4 pb-3 border-b border-slate-50 bg-slate-50/50">
+            <div class="flex items-center gap-3">
+                <div class="h-10 w-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 border border-slate-200 shrink-0">
+                    <i class="bi bi-person-fill text-lg"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-slate-800 mb-0 leading-tight">{{ Auth::user()->name }}</p>
+                    <p class="text-[10px] text-indigo-500 font-bold uppercase tracking-widest mb-0">Guru</p>
+                </div>
+            </div>
+        </div>
+
+        {{-- Navigation Links --}}
+        <div class="px-4 pt-2 pb-2 space-y-1">
+            <a href="{{ route('dashboard') }}" 
+               class="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-colors {{ request()->routeIs('dashboard') ? 'bg-indigo-50 text-indigo-600' : 'text-slate-600 hover:bg-slate-50' }}"
+               @click="open = false">
+                <i class="bi bi-grid-1x2-fill {{ request()->routeIs('dashboard') ? 'text-indigo-500' : 'text-slate-400' }}"></i>
+                Dashboard
+            </a>
+
+            <a href="{{ route('profile.edit') }}" 
+               class="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm text-slate-600 hover:bg-slate-50 transition-colors"
+               @click="open = false">
+                <i class="bi bi-person-circle text-slate-400"></i>
+                Profil Saya
+            </a>
+        </div>
+
+        {{-- Logout --}}
+        <div class="px-4 pb-4 pt-2 border-t border-slate-100">
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm text-red-500 hover:bg-red-50 transition-colors">
+                    <i class="bi bi-power"></i>
+                    Keluar Sistem
+                </button>
+            </form>
         </div>
     </div>
 </nav>

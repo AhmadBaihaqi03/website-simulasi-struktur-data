@@ -18,6 +18,12 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <style>
+            /* Prevent horizontal overflow on all screens */
+            html, body {
+                overflow-x: hidden;
+                max-width: 100%;
+            }
+
             .force-pinned-nav {
                 position: fixed !important;
                 top: 0 !important;
@@ -27,8 +33,26 @@
                 z-index: 9999 !important;
             }
             .content-spacer {
-                /* Berikan jarak setinggi navbar agar konten tidak tenggelam */
-                margin-top: 60px !important; 
+                /* Jarak setinggi navbar agar konten tidak tertutup */
+                margin-top: 64px !important;
+            }
+
+            /* Minimum touch target untuk semua interaktif element */
+            button, .btn, a.btn, input[type="submit"], input[type="button"] {
+                min-height: 44px;
+            }
+
+            /* Bootstrap table scroll touch friendly */
+            .table-responsive {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Responsive container padding */
+            @media (max-width: 576px) {
+                .container, .container-fluid {
+                    padding-left: 1rem;
+                    padding-right: 1rem;
+                }
             }
         </style>
     </head>
@@ -41,7 +65,7 @@
             <div class="content-spacer">
                 @isset($header)
                     <header class="bg-white shadow-sm relative z-10">
-                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
                             {{ $header }}
                         </div>
                     </header>

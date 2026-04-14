@@ -1,19 +1,10 @@
 <x-app-layout>
    <style>
-    /* ---------------------------------------------------------
-       1. GLOBAL & BODY 
-    ------------------------------------------------------------ */
-    body { 
-        background-color: #f0f2f5; 
-    }
+    body { background-color: #f0f2f5; }
 
-    /* Utilitas Warna Utama */
     .text-indigo { color: #5c60f5 !important; }
     .bg-indigo   { background-color: #5c60f5 !important; }
 
-    /* ---------------------------------------------------------
-       2. KARTU & KONTEN (Fase PBL)
-    ------------------------------------------------------------ */
     .phase-card { 
         background: white;
         border-radius: 20px; 
@@ -23,27 +14,22 @@
         transition: 0.3s; 
     }
 
-    /* Ikon bulat di samping judul fase */
     .phase-icon { 
-        width: 54px; 
-        height: 54px; 
-        border-radius: 16px; 
+        width: 48px; 
+        height: 48px; 
+        border-radius: 14px; 
         display: flex; 
         align-items: center; 
         justify-content: center; 
         color: #5c60f5; 
         background-color: #eef0ff; 
-        margin-right: 18px; 
-        font-size: 1.6rem;
+        margin-right: 14px; 
+        font-size: 1.4rem;
+        flex-shrink: 0;
     }
 
-
-    /* ---------------------------------------------------------
-       3. FORMULIR & INPUT 
-    ------------------------------------------------------------ */
-    /* Label tiap fase */
     .phase-title {
-        font-size: 1.2rem; 
+        font-size: 1.05rem; 
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -51,32 +37,28 @@
         display: block;
     }
 
-    /* Label teks kecil di atas input (Uppercase) */
     .label-custom { 
         font-weight: 800; 
         color: #4a5568; 
-        font-size: 1rem; 
+        font-size: 0.9rem; 
         text-transform: uppercase; 
         letter-spacing: 1.2px; 
-        margin-bottom: 0.8rem; 
+        margin-bottom: 0.6rem; 
         display: block; 
     }
 
-    /* Desain Input & Textarea kustom */
     .form-control-custom { 
-        background-color: #ffffff; /* Ubah ke putih agar kontras dengan border */
-        border: 2px solid #e2e8f0; /* Pertegas border (sama dengan box evaluasi) */
+        background-color: #ffffff;
+        border: 2px solid #e2e8f0;
         border-radius: 15px; 
-        padding: 15px; 
+        padding: 12px 15px; 
         font-size: 1rem; 
         line-height: 1.6;
-        resize: vertical; /* Memungkinkan guru memperbesar kotak teks */
+        resize: vertical;
         transition: all 0.2s ease-in-out; 
-
-        
+        min-height: 44px;
     }
 
-    /* Efek saat input diklik (Focus) */
     .form-control-custom:focus { 
         background-color: white; 
         border-color: #5c60f5; 
@@ -84,18 +66,17 @@
         outline: none; 
     }
 
-
-    /* ---------------------------------------------------------
-       4. TOMBOL (BUTTONS)
-    ------------------------------------------------------------ */
     .btn-indigo-outline {  
         border: 2px solid #5c60f5; 
         color: #5c60f5; 
         font-weight: 700; 
         border-radius: 12px; 
-        padding: 8px 20px; 
+        padding: 10px 20px; 
         font-size: 0.9rem;
-        transition: 0.3s; 
+        transition: 0.3s;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
     }
 
     .btn-indigo-outline:hover { 
@@ -103,24 +84,18 @@
         color: white; 
     }
 
-    /* 5. Panel Kanan (Sticky Sidebar) */
+    /* Sidebar sticky — hanya desktop */
     .sticky-sidebar { 
         position: sticky; 
-        top: 100px; /* Jarak dari atas layar saat di-scroll */
+        top: 80px;
         z-index: 10; 
         background: white;
         border-radius: 20px; 
         align-self: flex-start;
-        
-        /* Mengatur ketinggian maksimal agar tidak melebihi layar */
-        max-height: calc(100vh - 110px); 
+        max-height: calc(100vh - 90px); 
         overflow-y: auto;
     }
 
-
-    /* ---------------------------------------------------------
-       6. ANIMASI
-    ------------------------------------------------------------ */
     .animate-fade-in {
         animation: fadeIn 0.4s ease-out forwards;
     }
@@ -129,21 +104,27 @@
         from { opacity: 0; transform: translateY(10px); }
         to { opacity: 1; transform: translateY(0); }
     }
+
+    /* Beri ruang agar konten tidak tertutup bottom bar di mobile */
+    @media (max-width: 991px) {
+        .form-bottom-spacer { padding-bottom: 90px; }
+    }
 </style>
 
-   <div class="container py-5">
-        <div class="text-center mb-5">
-            <h2 class="fw-black text-slate-900" style="font-size: 2rem; letter-spacing: -1px; font-weight: 700;">Buat Sesi PBL Anda</h2>
+   <div class="container py-4 py-md-5">
+        <div class="text-center mb-4 mb-md-5">
+            <h2 class="fw-black text-slate-900" style="font-size: clamp(1.4rem, 5vw, 2rem); letter-spacing: -1px; font-weight: 700;">Buat Sesi PBL Anda</h2>
         </div>
 
         <form action="{{ route('sessions.store') }}" method="POST" id="pblForm">
             @csrf
             
             <div class="row g-4">
-                <div class="col-lg-8">
+                {{-- Konten Form: full-width di mobile, 8-col di desktop (KIRI) --}}
+                <div class="col-12 col-lg-8 form-bottom-spacer">
                     
                     <div class="card phase-card p-4 p-md-5">
-                        <div class="d-flex align-items-center mb-5">
+                        <div class="d-flex align-items-center mb-4 mb-md-5">
                             <div class="phase-icon">
                                 <i class="bi bi-journal-richtext"></i>
                             </div>
@@ -165,7 +146,7 @@
                                     <textarea name="f1_learning_objectives[]" class="form-control form-control-custom" rows="2" placeholder="Contoh: Menganalisis cara kerja struktur data Queue..." required></textarea>
                                 </div>
                             </div>
-                            <button type="button" id="add-objective" class="btn btn-link text-indigo btn-sm p-0 text-decoration-none fw-bold">
+                            <button type="button" id="add-objective" class="btn btn-link text-indigo btn-sm p-0 text-decoration-none fw-bold" style="min-height: 36px;">
                                 <i class="bi bi-plus-circle-fill me-1"></i> Tambah Tujuan Pembelajaran
                             </button>
                         </div>
@@ -177,7 +158,7 @@
                     </div>
 
                     <div class="card phase-card p-4 p-md-5">
-                        <div class="d-flex align-items-center mb-5">
+                        <div class="d-flex align-items-center mb-4 mb-md-5">
                             <div class="phase-icon"><i class="bi bi-search"></i></div>
                             <div>
                                 <span class="phase-title">Penyelidikan</span>
@@ -195,7 +176,7 @@
                     </div>
 
                     <div class="card phase-card p-4 p-md-5">
-                        <div class="d-flex align-items-center mb-5">
+                        <div class="d-flex align-items-center mb-4 mb-md-5">
                             <div class="phase-icon"><i class="bi bi-code-square"></i></div>
                             <div>
                                 <span class="phase-title">Mengembangkan dan Menyajikan Solusi</span>
@@ -212,7 +193,7 @@
                     </div>
 
                     <div class="card phase-card p-4 p-md-5">
-                        <div class="d-flex align-items-center mb-5">
+                        <div class="d-flex align-items-center mb-4 mb-md-5">
                             <div class="phase-icon"><i class="bi bi-stars"></i></div>
                             <div>
                                 <span class="phase-title">Evaluasi</span>
@@ -231,22 +212,20 @@
 
                 </div>
 
-                <div class="col-lg-4">
+                {{-- Sidebar: HANYA tampil di desktop (lg+), posisi KANAN --}}
+                <div class="col-lg-4 d-none d-lg-block">
                     <div class="sticky-sidebar">
                         <div class="card phase-card p-4 text-center border-0">
-                            <div class="mb-4">
+                            <div class="mb-3">
                                 <h5 class="mb-1" style="font-size: 1rem; font-weight:700;">FINALISASI SESI</h5>
-                                <p style="font-size: 1rem;">Tinjau kembali data sebelum membuat sesi</p>
+                                <p class="text-muted mb-0" style="font-size: 0.9rem;">Tinjau kembali data sebelum membuat sesi</p>
                             </div>
-                            
-                            <hr class="mb-4 opacity-50">
-
-                            <button type="submit" class="btn bg-indigo text-white w-100 py-3 fw-bold shadow-lg mb-3" style="border-radius: 15px; font-size: 0.9rem;">
+                            <hr class="mb-3 opacity-50">
+                            <button type="submit" class="btn bg-indigo text-white w-100 py-3 fw-bold shadow-lg mb-3" style="border-radius: 15px; font-size: 0.9rem; min-height: 44px;">
                                 <i class="bi bi-rocket-takeoff-fill me-2"></i> BUAT SESI PBL
                             </button>
-
                             <div class="p-3 bg-light rounded-4">
-                                <p class="mb-0" style="font-size: 0.9rem; line-height: 1.4;">
+                                <p class="mb-0" style="font-size: 0.85rem; line-height: 1.5;">
                                     Pastikan semua fase telah terisi dengan instruksi yang jelas bagi siswa.
                                 </p>
                             </div>
@@ -258,10 +237,20 @@
         </form>
     </div>
 
+    {{-- ===== FIXED BOTTOM BAR — hanya mobile/tablet (< lg) ===== --}}
+    <div class="d-lg-none fixed-bottom border-top shadow-lg" 
+         style="background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); z-index: 1050; padding: 12px 16px;">
+        <div class="d-flex gap-2" style="max-width: 600px; margin: 0 auto;">
+            <button type="submit" form="pblForm"
+                    class="btn bg-indigo text-white fw-bold flex-grow-1 shadow-sm"
+                    style="border-radius: 14px; font-size: 0.9rem; min-height: 52px; letter-spacing: 0.05em;">
+                <i class="bi bi-rocket-takeoff-fill me-2"></i> BUAT SESI PBL
+            </button>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const form = document.getElementById('pblForm');
-            
             function setupDynamicContainer(containerId, buttonId, nameAttr, labelText, placeholder, rowCount) {
                 const container = document.getElementById(containerId);
                 const button = document.getElementById(buttonId);
@@ -282,12 +271,10 @@
                 });
             }
 
-            // Inisialisasi dengan baris (rows) yang berbeda-beda sesuai konteks
             setupDynamicContainer('objectives-container', 'add-objective', 'f1_learning_objectives[]', 'Tujuan', 'Tujuan selanjutnya...', 2);
             setupDynamicContainer('questions-container', 'add-question', 'f3_questions[]', 'Pertanyaan', 'Pertanyaan selanjutnya...', 3);
             setupDynamicContainer('reflection-container', 'add-reflection', 'f5_questions[]', 'Pertanyaan', 'Pertanyaan selanjutnya...', 2);
 
-            // Logic Remove
             document.addEventListener('click', function(e) {
                 if (e.target.classList.contains('remove-btn')) {
                     const parent = e.target.closest('.mb-3');

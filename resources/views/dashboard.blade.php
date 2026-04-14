@@ -1,23 +1,40 @@
 <x-app-layout>
     <style>
         body { background-color: #f8f9fa; }
-        .card-stat { border-radius: 15px; border: none; min-height: 75px; transition: transform 0.2s; }
+
+        .card-stat {
+            border-radius: 15px;
+            border: none;
+            min-height: 75px;
+            transition: transform 0.2s;
+        }
         .card-stat:hover { transform: translateY(-3px); }
         .text-indigo { color: #5c60f5; }
         .bg-indigo { background-color: #5c60f5; }
-        .btn-indigo { background-color: #5c60f5; color: white; border-radius: 20px; padding: 10px 25px; transition: 0.3s; }
+        .btn-indigo {
+            background-color: #5c60f5;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            transition: 0.3s;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            white-space: nowrap;
+        }
         .btn-indigo:hover { background-color: #4a4ed4; color: white; box-shadow: 0 4px 12px rgba(92, 96, 245, 0.3); }
-        .status-badge { border-radius: 20px; padding: 5px 15px; font-size: 0.75rem; font-weight: bold; }
+        .status-badge { border-radius: 20px; padding: 5px 12px; font-size: 0.75rem; font-weight: bold; }
         
-        /* Custom Styling for Action Buttons */
+        /* Tombol aksi lonjong, minimum 44x44 */
         .btn-action-custom { 
             border-radius: 12px; 
-            width: 40px; 
-            height: 40px; 
+            width: 44px; 
+            height: 44px; 
             display: inline-flex; 
             align-items: center; 
             justify-content: center;
             transition: all 0.2s;
+            flex-shrink: 0;
         }
         .btn-outline-indigo { color: #5c60f5; border: 1.5px solid #5c60f5; background: transparent; }
         .btn-outline-indigo:hover { background-color: #5c60f5; color: white; }
@@ -25,9 +42,24 @@
         /* Pagination Styling */
         .pagination-wrapper nav svg { width: 20px; }
         .pagination-wrapper .relative.z-0.inline-flex { border-radius: 10px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+        /* Mobile: search dan tombol stack */
+        @media (max-width: 575px) {
+            .search-action-row {
+                flex-direction: column !important;
+                gap: 0.75rem !important;
+            }
+            .search-action-row .btn-indigo {
+                width: 100%;
+                justify-content: center;
+            }
+            .session-table-actions {
+                justify-content: flex-end;
+            }
+        }
     </style>
 
-    <div class="container py-5">
+    <div class="container py-4 py-md-5">
         @if(session('success'))
             <div x-data="{ show: true }" 
                  x-show="show" 
@@ -44,13 +76,14 @@
         @endif
         
         <div class="mb-4">
-            <h1 class="fw-bold h2 mb-1">Halo, {{ Auth::user()->name }}</h1>
-            <p class="text-muted">Kelola sesi pembelajaran berbasis masalah (Problem-Based Learning) Anda</p>
+            <h1 class="fw-bold mb-1" style="font-size: clamp(1.4rem, 5vw, 2rem);">Halo, {{ Auth::user()->name }}</h1>
+            <p class="text-muted mb-0" style="font-size: 0.95rem;">Kelola sesi pembelajaran berbasis masalah (Problem-Based Learning) Anda</p>
         </div>
 
+        {{-- Stat Cards: 2-kolom di mobile, 3-kolom di md --}}
         <div class="row g-3 mb-4">
-            <div class="col-md-4">
-                <div class="card card-stat shadow-sm p-3 border-0">
+            <div class="col-6 col-md-4">
+                <div class="card card-stat shadow-sm p-3 border-0 h-100">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
                         <span>BELUM PENILAIAN</span>
                         <i class="bi bi-pencil-square text-warning"></i>
@@ -58,8 +91,8 @@
                     <h1 class="fw-bold mt-2 mb-0 display-6 text-indigo">{{ sprintf('%02d', $stats['pending']) }}</h1>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-stat shadow-sm p-3 border-0">
+            <div class="col-6 col-md-4">
+                <div class="card card-stat shadow-sm p-3 border-0 h-100">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
                         <span>SUDAH DINILAI</span>
                         <i class="bi bi-check-all text-success"></i>
@@ -67,8 +100,8 @@
                     <h1 class="fw-bold mt-2 mb-0 display-6 text-indigo">{{ sprintf('%02d', $stats['graded']) }}</h1>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-stat shadow-sm p-3 border-0">
+            <div class="col-6 col-md-4">
+                <div class="card card-stat shadow-sm p-3 border-0 h-100">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
                         <span>TOTAL KELOMPOK</span>
                         <i class="bi bi-people text-primary"></i>
@@ -76,8 +109,8 @@
                     <h1 class="fw-bold mt-2 mb-0 display-6 text-indigo">{{ sprintf('%02d', $stats['total_groups']) }}</h1>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-stat shadow-sm p-3 border-0">
+            <div class="col-6 col-md-4">
+                <div class="card card-stat shadow-sm p-3 border-0 h-100">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
                         <span>SESI AKTIF</span>
                         <i class="bi bi-broadcast text-success"></i>
@@ -85,8 +118,8 @@
                     <h1 class="fw-bold mt-2 mb-0 display-6 text-indigo">{{ sprintf('%02d', $stats['active']) }}</h1>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-stat shadow-sm p-3 border-0">
+            <div class="col-6 col-md-4">
+                <div class="card card-stat shadow-sm p-3 border-0 h-100">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
                         <span>SESI TIDAK AKTIF</span>
                         <i class="bi bi-pause-circle text-secondary"></i>
@@ -94,8 +127,8 @@
                     <h1 class="fw-bold mt-2 mb-0 display-6 text-indigo">{{ sprintf('%02d', $stats['total'] - $stats['active']) }}</h1>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card card-stat shadow-sm p-3 border-0">
+            <div class="col-6 col-md-4">
+                <div class="card card-stat shadow-sm p-3 border-0 h-100">
                     <div class="d-flex justify-content-between text-muted small fw-bold">
                         <span>TOTAL SESI</span>
                         <i class="bi bi-layers text-indigo"></i>
@@ -106,29 +139,33 @@
         </div>
 
         <div class="card border-0 shadow-sm mb-4" style="border-radius: 15px;">
-            <div class="card-body p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4 gap-3">
-                    <div class="input-group shadow-sm flex-grow-1" style="border-radius: 12px; overflow: hidden;">
+            <div class="card-body p-3 p-md-4">
+                {{-- Search + Tombol: stack di mobile, row di sm+ --}}
+                <div class="d-flex align-items-stretch align-items-sm-center gap-2 mb-4 flex-column flex-sm-row search-action-row">
+                    <div class="input-group shadow-sm" style="border-radius: 12px; overflow: hidden;">
                         <span class="input-group-text bg-white border-0 ps-3">
                             <i class="bi bi-search text-indigo"></i>
                         </span>
-                        <input type="text" id="searchInput" class="form-control bg-white border-0 py-2 fw-medium text-indigo" placeholder="Cari berdasarkan nama atau kode sesi..." style="box-shadow: none;">
+                        <input type="text" id="searchInput" 
+                               class="form-control bg-white border-0 py-2 fw-medium text-indigo" 
+                               placeholder="Cari nama atau kode sesi..." 
+                               style="box-shadow: none; min-height: 44px;">
                     </div>
 
                     <div class="flex-shrink-0">
-                        <a href="{{ route('sessions.create') }}" class="btn btn-indigo shadow-sm fw-bold px-4 py-2 d-inline-flex align-items-center">
+                        <a href="{{ route('sessions.create') }}" class="btn btn-indigo shadow-sm fw-bold w-100 w-sm-auto">
                             <i class="bi bi-plus-lg me-2"></i> Tambah Sesi
                         </a>
                     </div>
                 </div>
 
                 <div class="table-responsive">
-                    <table class="table align-middle" id="sessionTable">
+                    <table class="table align-middle" id="sessionTable" style="min-width: 500px;">
                         <thead class="text-muted small">
                             <tr>
                                 <th>NAMA SESI</th>
                                 <th>KODE</th>
-                                <th>MURID</th>
+                                <th class="d-none d-sm-table-cell">MURID</th>
                                 <th>STATUS</th>
                                 <th class="text-end">AKSI</th>
                             </tr>
@@ -137,13 +174,13 @@
                             @forelse($sessions as $session)
                             <tr>
                                 <td>
-                                    <div class="fw-bold text-dark session-title">{{ $session->title }}</div>
-                                    <small class="text-muted">Dibuat: {{ $session->created_at->format('d M Y') }}</small>
+                                    <div class="fw-bold text-dark session-title" style="font-size: 0.9rem;">{{ $session->title }}</div>
+                                    <small class="text-muted">{{ $session->created_at->format('d M Y') }}</small>
                                 </td>
                                 <td>
-                                    <span class="badge bg-light text-dark border px-2 py-1 font-monospace session-code">{{ $session->session_code }}</span>
+                                    <span class="badge bg-light text-dark border px-2 py-1 font-monospace session-code" style="font-size: 0.75rem;">{{ $session->session_code }}</span>
                                 </td>
-                                <td>
+                                <td class="d-none d-sm-table-cell">
                                     <span class="text-muted small">
                                         <i class="bi bi-people me-1"></i> {{ $session->groups_count ?? $session->groups->count() }} Kelompok
                                     </span>
@@ -152,11 +189,11 @@
                                     @if($session->is_active)
                                         <span class="status-badge bg-success-subtle text-success border border-success">Aktif</span>
                                     @else
-                                        <span class="status-badge bg-light text-muted border">Tidak Aktif</span>
+                                        <span class="status-badge bg-light text-muted border">Nonaktif</span>
                                     @endif
                                 </td>
                                 <td class="text-end">
-                                    <div class="d-flex justify-content-end align-items-center gap-2">
+                                    <div class="d-flex justify-content-end align-items-center gap-1 session-table-actions">
                                         <form action="{{ route('sessions.toggle', $session) }}" method="POST" class="m-0">
                                             @csrf @method('PATCH')
                                             <button type="submit" class="btn btn-sm btn-action-custom shadow-sm {{ $session->is_active ? 'btn-success' : 'btn-secondary' }}" title="Toggle Active">
@@ -188,14 +225,14 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5" class="text-center py-5 text-muted">No sessions found.</td>
+                                <td colspan="5" class="text-center py-5 text-muted">Belum ada sesi. Buat sesi pertama Anda!</td>
                             </tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
 
-                <div class="mt-4 pagination-wrapper d-flex justify-content-between align-items-center px-2">
+                <div class="mt-4 pagination-wrapper d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 px-1">
                     <div class="text-muted small">
                         Showing {{ $sessions->firstItem() ?? 0 }} to {{ $sessions->lastItem() ?? 0 }} of {{ $sessions->total() }} entries
                     </div>

@@ -1,22 +1,13 @@
 <x-app-layout>
     <style>
-        /* ---------------------------------------------------------
-           1. GLOBAL & BODY 
-        ------------------------------------------------------------ */
-        body { 
-            background-color: #f0f2f5; 
-        }
+        body { background-color: #f0f2f5; }
 
-        /* Utilitas Warna Utama */
         .text-indigo { color: #5c60f5 !important; }
         .bg-indigo   { background-color: #5c60f5 !important; }
         .bg-indigo-subtle { background-color: #eef0ff !important; }
 
-        /* ---------------------------------------------------------
-           2. KARTU & KONTEN (Fase PBL)
-        ------------------------------------------------------------ */
         .phase-title {
-            font-size: 1.2rem; 
+            font-size: 1.05rem; 
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -34,30 +25,29 @@
         }
 
         .phase-icon { 
-            width: 54px; height: 54px; border-radius: 16px; 
+            width: 48px; height: 48px; border-radius: 14px; 
             display: flex; align-items: center; justify-content: center; 
             color: #5c60f5; background-color: #eef0ff; 
-            margin-right: 18px; font-size: 1.6rem;
+            margin-right: 14px; font-size: 1.4rem;
+            flex-shrink: 0;
         }
 
-        /* ---------------------------------------------------------
-           3. FORMULIR & INPUT 
-        ------------------------------------------------------------ */
         .label-custom { 
-            font-weight: 800; color: #4a5568; font-size: 1rem; 
+            font-weight: 800; color: #4a5568; font-size: 0.9rem; 
             text-transform: uppercase; letter-spacing: 1.2px; 
-            margin-bottom: 0.8rem; display: block; 
+            margin-bottom: 0.6rem; display: block; 
         }
 
         .form-control-custom { 
-            background-color: #ffffff; /* Ubah ke putih agar kontras dengan border */
-            border: 2px solid #e2e8f0; /* Pertegas border (sama dengan box evaluasi) */
+            background-color: #ffffff;
+            border: 2px solid #e2e8f0;
             border-radius: 15px; 
-            padding: 15px; 
+            padding: 12px 15px; 
             font-size: 1rem; 
             line-height: 1.6;
-            resize: vertical; /* Memungkinkan guru memperbesar kotak teks */
+            resize: vertical;
             transition: all 0.2s ease-in-out;
+            min-height: 44px;
         }
 
         .form-control-custom:focus { 
@@ -65,32 +55,26 @@
             box-shadow: 0 0 0 5px rgba(92, 96, 245, 0.08); outline: none; 
         }
 
-        /* Error Feedback */
         .is-invalid { border-color: #e53e3e !important; background-color: #fff5f5 !important; }
 
-        /* ---------------------------------------------------------
-           4. TOMBOL (BUTTONS)
-        ------------------------------------------------------------ */
         .btn-indigo-outline { 
             border: 2px solid #5c60f5; color: #5c60f5; 
             font-weight: 700; border-radius: 12px; transition: 0.3s; 
-            padding: 8px 20px; font-size: 0.9rem;
+            padding: 10px 20px; font-size: 0.9rem;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
         }
 
         .btn-indigo-outline:hover { background-color: #5c60f5; color: white; }
 
-        /* ---------------------------------------------------------
-           5. SIDEBAR & NAVIGATION (Sticky Logic)
-        ------------------------------------------------------------ */
+        /* Sidebar — hanya desktop */
         .sticky-sidebar { 
-            position: sticky; top: 100px; z-index: 10; 
+            position: sticky; top: 80px; z-index: 10; 
             background: white; border-radius: 20px; align-self: flex-start;
-            max-height: calc(100vh - 110px); overflow-y: auto;
+            max-height: calc(100vh - 90px); overflow-y: auto;
         }
 
-        /* ---------------------------------------------------------
-           6. ANIMASI
-        ------------------------------------------------------------ */
         .animate-fade-in {
             animation: fadeIn 0.4s ease-out forwards;
         }
@@ -98,11 +82,15 @@
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @media (max-width: 991px) {
+            .form-bottom-spacer { padding-bottom: 90px; }
+        }
     </style>
 
-    <div class="container py-5">
-        <div class="text-center mb-5">
-            <h2 class="fw-black text-slate-900" style="font-size: 2rem; letter-spacing: -1px; font-weight: 700;">Perbarui Sesi PBL Anda</h2>
+    <div class="container py-4 py-md-5">
+        <div class="text-center mb-4 mb-md-5">
+            <h2 class="fw-black text-slate-900" style="font-size: clamp(1.4rem, 5vw, 2rem); letter-spacing: -1px; font-weight: 700;">Perbarui Sesi PBL Anda</h2>
         </div>
 
         <form action="{{ route('sessions.update', $session) }}" method="POST" id="editPblForm">
@@ -110,14 +98,13 @@
             @method('PUT')
             
             <div class="row g-4">
-                <div class="col-lg-8">
-                    
+                {{-- Konten Form: full-width di mobile, 8-col di desktop (KIRI) --}}
+                <div class="col-12 col-lg-8 form-bottom-spacer">
+
                     <div class="card phase-card p-4 p-md-5">
-                        <div class="d-flex align-items-center mb-5">
+                        <div class="d-flex align-items-center mb-4 mb-md-5">
                             <div class="phase-icon"><i class="bi bi-journal-richtext"></i></div>
-                            <div>
-                                <span class="phase-title">Orientasi Masalah</span>
-                            </div>
+                            <div><span class="phase-title">Orientasi Masalah</span></div>
                         </div>
 
                         <div class="mb-4">
@@ -139,7 +126,7 @@
                                 </div>
                                 @endforeach
                             </div>
-                            <button type="button" id="add-objective" class="btn btn-link text-indigo btn-sm p-0 text-decoration-none fw-bold">
+                            <button type="button" id="add-objective" class="btn btn-link text-indigo btn-sm p-0 text-decoration-none fw-bold" style="min-height:36px;">
                                 <i class="bi bi-plus-circle-fill me-1"></i> Tambah Tujuan Pembelajaran
                             </button>
                         </div>
@@ -151,11 +138,9 @@
                     </div>
 
                     <div class="card phase-card p-4 p-md-5">
-                        <div class="d-flex align-items-center mb-5">
+                        <div class="d-flex align-items-center mb-4 mb-md-5">
                             <div class="phase-icon"><i class="bi bi-search"></i></div>
-                            <div>
-                                <span class="phase-title">Penyelidikan</span>
-                            </div>
+                            <div><span class="phase-title">Penyelidikan</span></div>
                         </div>
                         
                         <div id="questions-container">
@@ -177,11 +162,9 @@
                     </div>
 
                     <div class="card phase-card p-4 p-md-5">
-                        <div class="d-flex align-items-center mb-5">
+                        <div class="d-flex align-items-center mb-4 mb-md-5">
                             <div class="phase-icon"><i class="bi bi-code-square"></i></div>
-                            <div>
-                                <span class="phase-title">Mengembangkan dan Menyajikan Solusi</span>
-                            </div>
+                            <div><span class="phase-title">Mengembangkan dan Menyajikan Solusi</span></div>
                         </div>
                         <div class="mb-4">
                             <label class="label-custom">Instruksi Implementasi</label>
@@ -194,11 +177,9 @@
                     </div>
 
                     <div class="card phase-card p-4 p-md-5">
-                        <div class="d-flex align-items-center mb-5">
+                        <div class="d-flex align-items-center mb-4 mb-md-5">
                             <div class="phase-icon"><i class="bi bi-stars"></i></div>
-                            <div>
-                                <span class="phase-title">Evaluasi</span>
-                            </div>
+                            <div><span class="phase-title">Evaluasi</span></div>
                         </div>
 
                         <div id="reflection-container">
@@ -219,35 +200,25 @@
                         </button>
                     </div>
                 </div>
-
-                <div class="col-lg-4">
-                    <div class="sticky-sidebar">
-                        <div class="card phase-card p-4 text-center border-0">
-                            <div class="mb-4">
-                                <h5 class="fw-black mb-1" style="font-size: 1rem; font-weight:700;">Simpan Perubahan</h5>
-                                <p class="text-muted" style="font-size: 1rem;">Pastikan konten sudah sesuai sebelum melakukan pembaruan.</p>
-                            </div>
-                            
-                            <hr class="mb-4 opacity-50">
-
-                            <button type="submit" class="btn bg-indigo text-white w-100 py-3 fw-bold shadow-lg mb-3" style="border-radius: 15px; font-size: 0.9rem;">
-                                <i class="bi bi-cloud-check-fill me-2"></i> PERBARUI SESI
-                            </button>
-
-                            <a href="{{ route('dashboard') }}" class="btn btn-light w-100 py-2 fw-bold text-muted" style="border-radius: 12px; font-size: 0.9rem;">
-                                Batalkan Perubahan
-                            </a>
-
-                            <div class="mt-4 p-3 bg-light rounded-4">
-                                <p class="text-muted mb-0" style="font-size: 0.9rem; line-height: 1.4;">
-                                    Siswa akan langsung melihat perubahan ini pada dashboard mereka setelah Anda menekan tombol perbarui sesi.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </form>
+    </div>
+
+    {{-- ===== FIXED BOTTOM BAR — hanya mobile/tablet (< lg) ===== --}}
+    <div class="d-lg-none fixed-bottom border-top shadow-lg"
+         style="background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); z-index: 1050; padding: 12px 16px;">
+        <div class="d-flex gap-2" style="max-width: 600px; margin: 0 auto;">
+            <a href="{{ route('dashboard') }}" 
+               class="btn btn-light fw-bold text-muted"
+               style="border-radius: 14px; min-height: 52px; font-size: 0.85rem; display:flex; align-items:center; padding: 0 16px;">
+                Batal
+            </a>
+            <button type="submit" form="editPblForm"
+                    class="btn bg-indigo text-white fw-bold flex-grow-1 shadow-sm"
+                    style="border-radius: 14px; font-size: 0.9rem; min-height: 52px; letter-spacing: 0.05em;">
+                <i class="bi bi-cloud-check-fill me-2"></i> PERBARUI SESI
+            </button>
+        </div>
     </div>
 
     <script>
@@ -278,7 +249,6 @@
             setupDynamicContainer('questions-container', 'add-question', 'f3_questions[]', 'Pertanyaan', 'Pertanyaan selanjutnya...', 3);
             setupDynamicContainer('reflection-container', 'add-reflection', 'f5_questions[]', 'Pertanyaan', 'Pertanyaan selanjutnya...', 2);
 
-            // Logic Remove & Re-indexing
             document.addEventListener('click', function(e) {
                 if (e.target.classList.contains('remove-btn')) {
                     const parent = e.target.closest('.mb-3');
@@ -304,7 +274,6 @@
                 }
             });
 
-            // Form Validation
             form.addEventListener('submit', function(e) {
                 let isValid = true;
                 const requiredInputs = form.querySelectorAll('[required]');
