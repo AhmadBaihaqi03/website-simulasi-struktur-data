@@ -207,7 +207,7 @@
         <a href="{{ url('/materi/materi-queue') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
             <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i> Kembali ke Queue
         </a>
-         <a href="{{ url('/materi/operasi-queue-python') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
+         <a href="{{ url('/materi/operasi-queue') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
             Lanjut ke Operasi Queue dengan Python
             <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
         </a>
@@ -254,7 +254,7 @@
                     return; 
                 }
                 this.lastAccessed = 0;
-                this.explanation = `Peek: Murid terdepan saat ini adalah "${this.items[0]}".`;
+                this.explanation = `Front: Murid terdepan saat ini adalah "${this.items[0]}".`;
                 setTimeout(() => { this.lastAccessed = null; }, 1500);
             },
 

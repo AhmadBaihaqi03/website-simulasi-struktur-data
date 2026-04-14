@@ -87,7 +87,7 @@
     </div>
 
     <div class="mt-20 pt-10 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
-        <a href="{{ url('/materi/operasi-queue-python') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
+        <a href="{{ url('/materi/operasi-queue') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
             <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i> Kembali ke Operasi Queue
         </a>
          <a href="{{ url('/materi/simulasi-stack') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">

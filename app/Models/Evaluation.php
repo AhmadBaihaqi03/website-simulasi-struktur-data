@@ -11,7 +11,6 @@ class Evaluation extends Model
     
     protected $fillable = [
         'student_group_id',
-        'score',
         'feedback_comment'
     ];
 

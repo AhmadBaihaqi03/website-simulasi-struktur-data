@@ -100,7 +100,7 @@
                     </div>
 
                     <button type="submit" class="w-full bg-slate-900 text-white py-5 rounded-2xl font-black tracking-widest text-[13px] hover:bg-indigo-600 shadow-xl shadow-indigo-100 transition-all active:scale-[0.98] uppercase">
-                        Masuk Workspace <i data-lucide="chevron-right" class="inline-block w-4 h-4 ml-2"></i>
+                        Masuk Ruang Kerja<i data-lucide="chevron-right" class="inline-block w-4 h-4 ml-2"></i>
                     </button>
                 </form>
             </div>

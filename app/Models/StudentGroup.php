@@ -9,21 +9,19 @@ class StudentGroup extends Model
 {
     use HasFactory;
 
-    // 1. Daftarkan kolom agar bisa diisi data (Mass Assignment)
+    // Mendaftarkan kolom agar bisa diisi data (Mass Assignment)
     protected $fillable = [
         'session_id', 
         'group_name', 
-        'current_phase', 
         'student_data', 
+        'class_name',
         'is_submitted',
         'f3_answers',
         'f4_link', 
-        'f4_code', 
         'f4_answers', 
         'f5_answers',
     ];
 
-    // 2. Beritahu Laravel kalau student_data itu bentuknya Array/JSON
     protected $casts = [
         'student_data' => 'array',
         'is_submitted' => 'boolean',
@@ -41,11 +39,11 @@ class StudentGroup extends Model
     }
 
     /**
-     * Relasi ke hasil evaluasi (Nilai)
+     * Relasi ke hasil evaluasi
      */
     public function evaluation()
     {
-        // Tambahkan 'student_group_id' agar Laravel tidak bingung mencari foreign key-nya
+        // Menambahkan 'student_group_id' agar Laravel tidak bingung mencari foreign key-nya
         return $this->hasOne(Evaluation::class, 'student_group_id');
     }
 }

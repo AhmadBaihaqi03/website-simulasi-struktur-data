@@ -220,7 +220,7 @@
                         </div>
                         <div id="reflection-container">
                             <div class="mb-3 p-4 bg-light rounded-4 shadow-sm border-0 position-relative">
-                                <label class="label-custom">Pertanyaan Refleksi 1</label>
+                                <label class="label-custom">Pertanyaan 1</label>
                                 <textarea name="f5_questions[]" class="form-control form-control-custom" rows="2" placeholder="Pertanyaan untuk menutup sesi pembelajaran..." required></textarea>
                             </div>
                         </div>
@@ -284,8 +284,8 @@
 
             // Inisialisasi dengan baris (rows) yang berbeda-beda sesuai konteks
             setupDynamicContainer('objectives-container', 'add-objective', 'f1_learning_objectives[]', 'Tujuan', 'Tujuan selanjutnya...', 2);
-            setupDynamicContainer('questions-container', 'add-question', 'f3_questions[]', 'Pertanyaan', 'Pertanyaan investigasi selanjutnya...', 3);
-            setupDynamicContainer('reflection-container', 'add-reflection', 'f5_questions[]', 'Pertanyaan Refleksi', 'Pertanyaan refleksi selanjutnya...', 2);
+            setupDynamicContainer('questions-container', 'add-question', 'f3_questions[]', 'Pertanyaan', 'Pertanyaan selanjutnya...', 3);
+            setupDynamicContainer('reflection-container', 'add-reflection', 'f5_questions[]', 'Pertanyaan', 'Pertanyaan selanjutnya...', 2);
 
             // Logic Remove
             document.addEventListener('click', function(e) {

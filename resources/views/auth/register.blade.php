@@ -46,9 +46,9 @@
                     </div>
 
                     <div class="space-y-2">
-                        <label for="email" class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Email Sekolah</label>
+                        <label for="email" class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Email</label>
                         <x-text-input id="email" class="block w-full px-5 py-4 bg-slate-50 border-slate-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-sm font-semibold text-slate-700" 
-                            type="email" name="email" :value="old('email')" required placeholder="nama@guru.com" />
+                            type="email" name="email" :value="old('email')" required placeholder="nama@gmail.com" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2 text-xs font-bold text-red-500" />
                     </div>
 

@@ -206,7 +206,7 @@
         <a href="{{ url('/materi/materi-list') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
             <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i> Kembali ke List
         </a>
-         <a href="{{ url('/materi/operasi-list-python') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
+         <a href="{{ url('/materi/operasi-list') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
             Lanjut ke Operasi List dengan Python
             <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
         </a>

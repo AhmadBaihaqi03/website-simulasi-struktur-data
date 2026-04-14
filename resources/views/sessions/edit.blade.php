@@ -206,7 +206,7 @@
                             @foreach($reflections as $index => $reflection)
                             <div class="mb-3 p-4 bg-light rounded-4 shadow-sm border-0 position-relative animate-fade-in">
                                 <div class="d-flex justify-content-between mb-2">
-                                    <label class="label-custom">Pertanyaan Refleksi {{ $index + 1 }}</label>
+                                    <label class="label-custom">Pertanyaan {{ $index + 1 }}</label>
                                     @if($index > 0) <button type="button" class="btn-close btn-sm remove-btn"></button> @endif
                                 </div>
                                 <textarea name="f5_questions[]" class="form-control form-control-custom" rows="2" required>{{ $reflection }}</textarea>
@@ -215,7 +215,7 @@
                         </div>
 
                         <button type="button" id="add-reflection" class="btn btn-indigo-outline btn-sm px-4 mt-2">
-                            <i class="bi bi-plus-lg me-1"></i> Tambah Pertanyaan Refleksi
+                            <i class="bi bi-plus-lg me-1"></i> Tambah Pertanyaan
                         </button>
                     </div>
                 </div>
@@ -275,8 +275,8 @@
             }
 
             setupDynamicContainer('objectives-container', 'add-objective', 'f1_learning_objectives[]', 'Tujuan', 'Tujuan selanjutnya...', 2);
-            setupDynamicContainer('questions-container', 'add-question', 'f3_questions[]', 'Pertanyaan', 'Pertanyaan investigasi selanjutnya...', 3);
-            setupDynamicContainer('reflection-container', 'add-reflection', 'f5_questions[]', 'Pertanyaan Refleksi', 'Pertanyaan refleksi selanjutnya...', 2);
+            setupDynamicContainer('questions-container', 'add-question', 'f3_questions[]', 'Pertanyaan', 'Pertanyaan selanjutnya...', 3);
+            setupDynamicContainer('reflection-container', 'add-reflection', 'f5_questions[]', 'Pertanyaan', 'Pertanyaan selanjutnya...', 2);
 
             // Logic Remove & Re-indexing
             document.addEventListener('click', function(e) {

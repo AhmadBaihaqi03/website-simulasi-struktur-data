@@ -201,7 +201,7 @@
         <a href="{{ url('/materi/materi-stack') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
             <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i> Kembali ke Stack
         </a>
-         <a href="{{ url('/materi/operasi-stack-python') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
+         <a href="{{ url('/materi/operasi-stack') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
             Lanjut ke Operasi Stack dengan Python
             <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
         </a>
@@ -243,7 +243,7 @@
                     return; 
                 }
                 let topItem = this.items[this.items.length - 1];
-                this.explanation = `Peek: Elemen teratas saat ini adalah "${topItem}".`;
+                this.explanation = `Top: Elemen teratas saat ini adalah "${topItem}".`;
             },
 
             resetStack() {

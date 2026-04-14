@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\StudentGroup;
-// use App\Models\Evaluation;   // Untuk proses simpan nilai nanti
+use App\Models\StudentGroup;  
 use Illuminate\Http\Request;
 
 class EvaluationController extends Controller
@@ -28,7 +27,6 @@ class EvaluationController extends Controller
     public function store(Request $request, StudentGroup $group)
     {
         $request->validate([
-            //'score' => 'required|integer|min:0|max:100',
             'feedback_comment' => 'nullable|string'
         ]);
 
@@ -36,9 +34,6 @@ class EvaluationController extends Controller
         $group->evaluation()->updateOrCreate(
             ['student_group_id' => $group->id],
             [
-                //'score' => $request->score,
-                // sementara pakai kode ini untuk bisa disimpan feedbacknya
-                'score' => 0,
                 'feedback_comment' => $request->feedback_comment
             ]
         );

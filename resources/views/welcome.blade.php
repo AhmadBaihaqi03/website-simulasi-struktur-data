@@ -124,11 +124,14 @@
                     ['02', 'Konsep Struktur Data', 'Memahami definisi, fungsi, dan jenis struktur data.', 'theory'],
                     ['03', 'Materi List', 'Pelajari representasi data berurutan secara dinamis.', 'theory'],
                     ['04', 'Simulasi List', 'Visualisasi interaktif penambahan & penghapusan pada List.', 'simulation'],
-                    ['05', 'Materi Queue', 'Pahami konsep antrean dengan prinsip First In First Out (FIFO).', 'theory'],
-                    ['06', 'Simulasi Queue', 'Lihat bagaimana data masuk dan keluar dalam antrean secara visual.', 'simulation'],
-                    ['07', 'Materi Stack', 'Pahami konsep tumpukan dengan prinsip Last In First Out (LIFO).', 'theory'],
-                    ['08', 'Simulasi Stack', 'Simulasikan proses Push dan Pop pada tumpukan data.', 'simulation'],
-                    ['09', 'Simulasi Sistem', 'Studi kasus implementasi struktur data pada sistem antrean TU.', 'simulation'],
+                    ['05', 'Operasi List', 'Pelajari Operasi List dengan bahasa Python', 'theory'],
+                    ['06', 'Materi Queue', 'Pahami konsep antrean dengan prinsip First In First Out (FIFO).', 'theory'],
+                    ['07', 'Simulasi Queue', 'Lihat bagaimana data masuk dan keluar dalam antrean secara visual.', 'simulation'],
+                    ['08', 'Operasi Queue', 'Pelajari Operasi Queue dengan bahasa Python', 'theory'],
+                    ['09', 'Materi Stack', 'Pahami konsep tumpukan dengan prinsip Last In First Out (LIFO).', 'theory'],
+                    ['10', 'Simulasi Stack', 'Simulasikan proses Push dan Pop pada tumpukan data.', 'simulation'],
+                    ['11', 'Operasi Stack', 'Pelajari Operasi Stack dengan bahasa Python', 'theory'],
+                    ['12', 'Integrasi Struktur Data', 'Contoh implementasi struktur data pada sistem antrean TU dengan integrasi list, queue, dan stack.', 'theory'],
                 ];
             @endphp
 
@@ -180,7 +183,6 @@
                 </a>
             @endforeach
         </section>
-    
     </main>
 
     <footer class="text-center py-12">

@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('student_groups', function (Blueprint $table) {
-        // Menambah f4_link tepat sebelum f4_code (setelah f3_answers)
-        $table->text('f4_link')->nullable()->after('f3_answers');
+        Schema::create('evaluations', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('student_group_id')->constrained('student_groups')->onDelete('cascade');
+            $table->text('feedback_comment')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -22,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('student_groups', function (Blueprint $table) {
-        $table->dropColumn('f4_link');
-        });
+        Schema::dropIfExists('evaluations');
     }
 };

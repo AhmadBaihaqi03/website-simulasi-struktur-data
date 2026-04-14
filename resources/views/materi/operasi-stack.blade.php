@@ -103,8 +103,8 @@
         <a href="{{ url('/materi/Simulasi-stack') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
             <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i> Kembali ke Simulasi Stack
         </a>
-         <a href="{{ url('/materi/simulasi-sistem') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
-            Lanjut ke Simulasi Sistem
+         <a href="{{ url('/materi/integrasi-struktur-data') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
+            Lanjut ke Integrasi Struktur Data
             <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
         </a>
     </div>

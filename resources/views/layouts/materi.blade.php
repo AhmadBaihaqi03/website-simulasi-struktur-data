@@ -68,19 +68,19 @@
                     <div class="text-center md:text-left">
                         <h6 class="text-xl font-bold mb-1 tracking-tight">E-Book Materi</h6>
                         <p class="text-slate-400 !text-xs leading-relaxed max-w-sm">
-                            Tersedia teori dan contoh implementasi Python. 
+                            Untuk materi yang lebih detail silahkan buka atau unduh e-book materi ini 
                         </p>
                     </div>
                 </div>
 
                 <div class="flex flex-wrap justify-center gap-3">
-                    <a href="{{ asset('dokumen/MateriStrukturDataPython.pdf') }}" target="_blank" 
+                    <a href="{{ asset('dokumen/MateriStrukturData.pdf') }}" target="_blank" 
                     class="group flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-5 py-3 rounded-xl font-bold transition-all border border-slate-700 !text-xs">
                         <i data-lucide="eye" class="w-4 h-4 text-indigo-400"></i>
                         <span>Lihat Materi</span>
                     </a>
 
-                    <a href="{{ asset('dokumen/MateriStrukturDataPython.pdf') }}" download
+                    <a href="{{ asset('dokumen/MateriStrukturData.pdf') }}" download
                     class="group flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-xl font-bold transition-all shadow-lg shadow-indigo-500/20 !text-xs">
                         <i data-lucide="download-cloud" class="w-4 h-4"></i>
                         <span>Unduh PDF</span>

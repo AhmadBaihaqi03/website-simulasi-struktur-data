@@ -5,9 +5,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EvaluationController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\CodeExecutionController;
 use App\Http\Controllers\MateriController;
-use App\Http\Controllers\CompilerController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,15 +13,6 @@ Route::get('/', function () {
 }) ->name('beranda');
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    // API untuk menjalankan kode C
-    Route::post('/api/execute-c', [CodeExecutionController::class, 'executeC'])->name('execute.c');
-
-    // Debug route untuk test koneksi
-    Route::get('/api/test-connectivity', [CodeExecutionController::class, 'testConnectivity'])->name('test.connectivity');
-
-    // Route untuk check environment
-    Route::get('/api/system-info', [CodeExecutionController::class, 'systemInfo'])->name('system.info');
-
     // Rute untuk dashboard utama guru
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -50,31 +39,26 @@ Route::middleware(['auth', 'verified'])->group(function () {
 require __DIR__.'/auth.php';
 
 Route::prefix('pbl')->group(function () {
-    // 1. Pintu Masuk
+
+    // Pintu Masuk
     Route::get('/join', [StudentController::class, 'showJoinForm'])->name('student.join');
     Route::post('/join', [StudentController::class, 'checkSession'])->name('student.join.check');
 
-    // 2. Fase 1 & Modal Nama Kelompok
-    Route::get('/{session_code}/introduction', [StudentController::class, 'showPhase1'])->name('student.phase1');
+    // Join Group
     Route::post('/{session_code}/join-group', [StudentController::class, 'joinGroup'])->name('student.join.group');
 
-
-    //percobaan untuk halaman pakai tailwind
+    // Orientasi
     Route::get('/{session_code}/orientasi', [StudentController::class, 'showOrientasi'])->name('student.orientasi');
 
-    // 3. Halaman Workspace Utama (Satu Halaman untuk Semua Fase)
-    Route::get('/{session_code}/workspace/{group_id}/{phase?}', [StudentController::class, 'showPhase'])->name('student.phase');
+    // WORKSPACE (TANPA PHASE)
+    Route::get('/{session_code}/workspace/{group_id}', [StudentController::class, 'showWorkspace'])->name('student.workspace');
 
-    // 4. Proses Simpan Massal & Submit
+    // Save All
     Route::post('/{session_code}/workspace/{group_id}/save-all', [StudentController::class, 'saveAll'])->name('student.save.all');
 
-    // 5. Halaman Selesai
+    // Complete
     Route::get('/{session_code}/complete/{group_id}', [StudentController::class, 'complete'])->name('student.complete');
 });
 
 // Halaman Materi
 Route::get('/materi/{slug}', [MateriController::class, 'show'])->name('materi.show');
-
-// Halaman Percobaan Compiler
-Route::get('/compiler', [CompilerController::class, 'index']); 
-Route::post('/run-python', [CompilerController::class, 'run'])->name('run.python');

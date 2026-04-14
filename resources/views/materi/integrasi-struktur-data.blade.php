@@ -4,7 +4,7 @@
 
 @section('materi_title')
     <h1 class="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-        Studi Kasus: <span class="text-indigo-600">Sistem Antrean TU</span>
+        <span class="text-indigo-600">Integrasi Struktur Data</span>
     </h1>
 @endsection
 
@@ -15,10 +15,10 @@
         <div class="absolute bottom-0 right-0 w-80 h-80 bg-white/10 rounded-full -mb-32 -mr-32 blur-3xl"></div>
         <div class="relative z-10">
             <h5 class="text-2xl font-bold mb-4 flex items-center gap-3">
-                <i data-lucide="combine" class="text-white"></i> Integrasi Struktur Data
+                <i data-lucide="combine" class="text-white"></i> Integrasi Struktur Data List, Queue, dan stack untuk Sistem Antrean TU
             </h5>
             <p class="text-indigo-100 leading-relaxed text-lg max-w-4xl">
-                Kali ini, kita akan menggabungkan konsep <strong>Queue</strong> (untuk antrean siswa) dan <strong>Stack</strong> (untuk fitur <em>Undo</em>) menggunakan bahasa Python.
+                Kali ini, kita akan menggabungkan konsep <strong>list</strong> (untuk fitur edit, dan hapus), <strong>Queue</strong> (untuk antrean siswa), dan <strong>Stack</strong> (untuk fitur <em>Undo</em>) menggunakan bahasa Python.
             </p>
         </div>
     </div>
@@ -62,7 +62,7 @@
             <div id="fullCode" class="overflow-x-auto custom-scrollbar font-mono text-sm leading-relaxed pr-4" style="max-height: 600px;">
                 <div class="bg-slate-900 rounded-lg p-6 font-mono text-sm leading-relaxed shadow-xl border border-slate-700">
                     <pre class="text-slate-500"># =============================================================</pre>
-                    <pre class="text-slate-500"># SIMULASI SISTEM ANTREAN TU</pre>
+                    <pre class="text-slate-500"># SISTEM ANTREAN TU</pre>
                     <pre class="text-slate-500"># =============================================================</pre>
                     <br>
 
@@ -112,9 +112,9 @@
                     <br>
 
                     <pre class="text-slate-500"># ======================================</pre>
-                    <pre class="text-slate-500"># BAGIAN PRAKTEK SIMULASI</pre>
+                    <pre class="text-slate-500"># BAGIAN MENJALANKAN FUNGSI SISTEM</pre>
                     <pre class="text-slate-500"># ======================================</pre>
-                    <pre><span class="text-yellow-400">print</span>(<span class="text-emerald-400">">>> MEMULAI SIMULASI <<<"</span>)</pre>
+                    <pre><span class="text-yellow-400">print</span>(<span class="text-emerald-400">">>> MEMULAI SISTEM <<<"</span>)</pre>
                     <pre class="text-slate-500"># 1. Masukkan data</pre>
                     <pre><span class="text-white">tambah_data(<span class="text-emerald-400">"Budi - Legalisir"</span>)</span></pre>
                     <pre><span class="text-white">tambah_data(<span class="text-emerald-400">"Hani - Surat Magang"</span>)</span></pre>
@@ -140,6 +140,7 @@
                     <pre class="text-slate-500"># 5. Batalkan pelayanan</pre>
                     <pre><span class="text-white">batal_layanan()</span></pre>
                     <pre><span class="text-white">cek_antrean()</span></pre>
+                    <pre><span class="text-yellow-400">print</span>(<span class="text-emerald-400">">>> SISTEM SELESAI <<<"</span>)</pre>
                 </div>
             </div>
         </div>
@@ -184,7 +185,7 @@
     </div>
 
     <div class="mt-20 pt-10 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
-        <a href="{{ url('/materi/operasi-stack-python') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
+        <a href="{{ url('/materi/operasi-stack') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
             <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i> Kembali ke Operasi Stack
         </a>
     </div>

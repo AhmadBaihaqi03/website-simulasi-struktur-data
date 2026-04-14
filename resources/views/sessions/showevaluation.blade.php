@@ -177,7 +177,7 @@
                         </div>
                     </div>
 
-                    <div class="px-2 mt-4 pt-3 border-top">
+                    <div class="mb-4 px-2 mt-4 pt-3 border-top">
                         <label class="label-mini mb-2">Anggota Kelompok:</label>
                         <div class="content-text d-flex flex-wrap gap-2">
                             @php
@@ -186,6 +186,17 @@
                             @foreach($members ?? [] as $name)
                                 <span class="member-tag"><i class="bi bi-person-fill me-1"></i> {{ $name }}</span>
                             @endforeach
+                        </div>
+                    </div>
+
+                    <div class="px-2 ">
+                        <label class="label-mini mb-2" style="margin-left: 2px;">KELAS:</label>
+                        <div>
+                            <span class="member-tag d-flex align-items-center" 
+                                style="background-color: #eef0ff; color: #5c60f5; border: 1.5px solid #d0d7ff; width: fit-content;">
+                                <i class="bi bi-door-open-fill me-2" style="font-size: 0.85rem;"></i>
+                                {{ $group->class_name ?? '-' }}
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -197,7 +208,7 @@
                     </div>
                     @foreach($session->f3_questions ?? [] as $index => $q)
                         <div class="mb-4 px-2">
-                            <div class="question-text mb-2">{{ $index + 1 }}. {{ $q }}</div>
+                            <div class="question-text mb-2">{{ $q }}</div>
                             <div class="answer-box">
                                 <span class="label-mini d-block mb-2">Jawaban Kelompok:</span>
                                 <div class="content-text">{{ $group->f3_answers[$index] ?? 'Kosong.' }}</div>
@@ -219,7 +230,6 @@
                             </div>
                         </div>
 
-                        @if($group->f4_link)
                         <div class="px-2">
                             <label class="label-mini mb-2" style="font-size: 1rem; color: #475569;">TAUTAN EKSTERNAL SISWA:</label>
                             <a href="{{ $group->f4_link }}" target="_blank" 
@@ -245,50 +255,13 @@
                             </a>
                         </div>
 
-                        @else
-                        <div class="bg-light p-3 mb-3 d-flex align-items-start gap-3" style="border-radius: 15px; border-left: 4px solid #5c60f5;">
-                            <i class="bi bi-info-circle text-indigo mt-1"></i>
-                            <div class="text-muted">
-                                Guru dapat memodifikasi kode untuk pengujian. Perubahan bersifat sementara dan tidak mengubah jawaban asli siswa. Gunakan tombol <strong>Reset Kode</strong> untuk mengembalikan.
-                            </div>
-                        </div>
-
-                        <div class="code-window mb-3" style="background: #1e1e2e; border-radius: 15px; border: none;">
-                            <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom border-secondary" style="background: rgba(255,255,255,0.05);">
-                                <span class="text-secondary" style="font-size: 0.7rem; font-family: monospace; letter-spacing: 1px;">MAIN.PY</span>
-                                <button type="button" onclick="resetCode()" class="btn btn-link btn-sm text-secondary text-decoration-none p-0" style="font-size: 0.7rem;">
-                                    <i class="bi bi-arrow-counterclockwise"></i> RESET KODE
-                                </button>
-                            </div>
-                            <textarea id="codeEditor" class="code-editor-textarea" 
-                                style="height: 320px; background: transparent; color: #e0e0e0; border: none; width: 100%; padding: 20px; font-family: 'Fira Code', monospace; outline: none; resize: none;" 
-                                spellcheck="false">{{ $group->f4_code ?? '' }}</textarea>
-                        </div>
-
-                        <button type="button" onclick="runCode()" class="btn w-100 py-3 mb-4 shadow-sm hover-lift" 
-                            style="background: #1e1e2e; color: white; border-radius: 12px; font-weight: 700; letter-spacing: 1px;">
-                            <i class="bi bi-play-fill me-2"></i> JALANKAN PROGRAM
-                        </button>
-
-                        <div class="terminal-box mb-2" style="background: #0f172a; border-radius: 15px; overflow: hidden;">
-                            <div class="px-3 py-2 border-bottom border-secondary" style="background: rgba(255,255,255,0.03);">
-                                <div class="d-flex justify-content-between">
-                                    <span class="text-secondary fw-bold" style="font-size: 0.65rem; letter-spacing: 1px;">TERMINAL OUTPUT</span>
-                                    <span id="statusBadge" class="text-secondary" style="font-size: 0.65rem;">&gt; Ready...</span>
-                                </div>
-                            </div>
-                            <pre id="outputArea" class="p-3 m-0" 
-                                style="min-height: 120px; color: #10b981; font-family: 'Fira Code', monospace; font-size: 13px; white-space: pre-wrap;">&gt; Menunggu eksekusi...</pre>
-                        </div>
-                        @endif
-
                         <div class="mb-3">
                             <div class="question-text mb-3" style="font-size: 0.95rem;">
                                 {{ $session->f4_question ?? 'Jelaskan bagaimana sistem yang Anda buat bekerja.' }}
                             </div>
                             
                             <div class="answer-box">
-                                <small class="label-mini d-block mb-2 text-muted">Jawaban Deskripsi Siswa:</small>
+                                <small class="label-mini d-block mb-2 text-muted">Jawaban Kelompok:</small>
                                 <div class="content-text">{{ $group->f4_answers ?? 'Siswa tidak memberikan penjelasan.' }}</div>
                             </div>
                         </div>
@@ -304,7 +277,7 @@
                         <div class="mb-4 px-2">
                             <div class="question-text mb-2">{{ $r }}</div>
                             <div class="answer-box">
-                                <small class="label-mini d-block mb-2">Refleksi Kelompok:</small>
+                                <small class="label-mini d-block mb-2">Jawaban Kelompok:</small>
                                 <div class="content-text">{{ $group->f5_answers[$index] ?? 'Kosong.' }}</div>
                             </div>
                         </div>
@@ -321,17 +294,6 @@
 
                     <form action="{{ route('groups.evaluate', $group->id) }}" method="POST">
                         @csrf
-                        {{--
-                        <div class="mb-4 text-center">
-                            <label class="label-mini d-block mb-3">Final Score</label>
-                            <input type="number" name="score" 
-                                class="form-control form-control-lg fw-bold text-center text-indigo border-indigo" 
-                                style="font-size: 2.5rem; border-radius: 18px; height: 90px;" 
-                                value="{{ $group->evaluation->score ?? '' }}" 
-                                required min="0" max="100">
-                        </div>
-                        --}}
-                        
                         <div class="mb-4">
                             <label class="label-mini d-block mb-2">Umpan Balik</label>
                             <textarea name="feedback_comment" class="form-control bg-light border-0 p-3" 
@@ -347,64 +309,4 @@
             </div>
         </div>
     </div>
-
-    <script>
-    // Simpan kode asli murid di variabel JavaScript agar bisa di-reset
-    const originalCode = `{!! addslashes($group->f4_code ?? '') !!}`;
-
-    function resetCode() {
-        if(confirm('Kembalikan kode ke jawaban asli siswa?')) {
-            document.getElementById('codeEditor').value = originalCode;
-            const outputArea = document.getElementById('outputArea');
-            const statusBadge = document.getElementById('statusBadge');
-            
-            outputArea.innerText = 'Kode telah di-reset.';
-            outputArea.style.color = "#aaa";
-            statusBadge.innerText = "Ready";
-            statusBadge.className = "label-mini text-secondary";
-        }
-    }
-
-    async function runCode() {
-        const editor = document.getElementById('codeEditor');
-        const outputArea = document.getElementById('outputArea');
-        const statusBadge = document.getElementById('statusBadge');
-        
-        const codeValue = editor.value;
-        
-        statusBadge.innerText = "Running...";
-        statusBadge.className = "label-mini text-warning";
-        outputArea.innerText = "Executing...";
-
-        try {
-            const response = await fetch('/run-python', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify({ code: codeValue })
-            });
-
-            const data = await response.json();
-
-            if (data.error) {
-                statusBadge.innerText = "Error";
-                statusBadge.className = "label-mini text-danger";
-                outputArea.style.color = "#ff6b6b";
-                outputArea.innerText = data.error + (data.output ? "\n" + data.output : "");
-            } else {
-                statusBadge.innerText = "Success";
-                statusBadge.className = "label-mini text-success";
-                outputArea.style.color = "#a3be8c"; 
-                outputArea.innerText = data.output || "Program selesai (tanpa output).";
-            }
-        } catch (e) {
-            statusBadge.innerText = "Network Error";
-            statusBadge.className = "label-mini text-danger";
-            outputArea.innerText = "Gagal menghubungi server: " + e.message;
-        }
-    }
-</script>
 </x-app-layout>
