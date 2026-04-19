@@ -84,21 +84,21 @@
 <script>
 (function() {
     'use strict';
-    
+
     function initializeAlerts() {
         const alerts = document.querySelectorAll('[data-alert-dismissible]');
-        
+
         alerts.forEach(alert => {
             let timeoutId;
-            
+
             // Function to hide alert
             const hideAlert = () => {
                 alert.classList.add('alert-hidden');
             };
-            
+
             // Set auto-hide after 3 seconds
             timeoutId = setTimeout(hideAlert, 3000);
-            
+
             // Close button handler
             const closeBtn = alert.querySelector('.btn-close-custom');
             if (closeBtn) {
@@ -110,7 +110,7 @@
             }
         });
     }
-    
+
     // Run immediately and on DOMContentLoaded
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initializeAlerts);
