@@ -7,7 +7,7 @@
         .bg-indigo-subtle { background-color: #eef0ff !important; }
 
         .phase-title {
-            font-size: 1.05rem; 
+            font-size: 1.05rem;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -15,51 +15,73 @@
             display: block;
         }
 
-        .phase-card { 
+        .phase-card {
             background: white;
-            border-radius: 20px; 
-            border: none; 
-            margin-bottom: 1rem; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.02); 
-            transition: 0.3s; 
+            border-radius: 20px;
+            border: none;
+            margin-bottom: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+            transition: 0.3s;
         }
 
-        .phase-icon { 
-            width: 48px; height: 48px; border-radius: 14px; 
-            display: flex; align-items: center; justify-content: center; 
-            color: #5c60f5; background-color: #eef0ff; 
+        .phase-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            color: #5c60f5; background-color: #eef0ff;
             margin-right: 14px; font-size: 1.4rem;
             flex-shrink: 0;
         }
 
-        .label-custom { 
-            font-weight: 800; color: #4a5568; font-size: 0.9rem; 
-            text-transform: uppercase; letter-spacing: 1.2px; 
-            margin-bottom: 0.6rem; display: block; 
+        .label-custom {
+            font-weight: 800;
+            color: #2d3748;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 0.6rem;
+            display: block;
         }
 
-        .form-control-custom { 
+        .form-control-custom {
             background-color: #ffffff;
-            border: 2px solid #e2e8f0;
-            border-radius: 15px; 
-            padding: 12px 15px; 
-            font-size: 1rem; 
+            border: 2px solid #cbd5e0;
+            border-radius: 15px;
+            padding: 12px 15px;
+            font-size: 1rem;
             line-height: 1.6;
             resize: vertical;
             transition: all 0.2s ease-in-out;
             min-height: 44px;
+            color: #1a202c !important;
+            font-weight: 500;
         }
 
-        .form-control-custom:focus { 
-            background-color: white; border-color: #5c60f5; 
-            box-shadow: 0 0 0 5px rgba(92, 96, 245, 0.08); outline: none; 
+        .form-control-custom::placeholder {
+            color: #a0aec0;
+            font-weight: 400;
+        }
+
+        .form-control-custom:focus {
+            background-color: #ffffff;
+            border-color: #5c60f5;
+            box-shadow: 0 0 0 5px rgba(92, 96, 245, 0.12);
+            outline: none;
+            color: #1a202c;
+        }
+
+        input.form-control-custom {
+            font-weight: 600;
+        }
+
+        input.form-control-custom::placeholder {
+            font-weight: 400;
         }
 
         .is-invalid { border-color: #e53e3e !important; background-color: #fff5f5 !important; }
 
-        .btn-indigo-outline { 
-            border: 2px solid #5c60f5; color: #5c60f5; 
-            font-weight: 700; border-radius: 12px; transition: 0.3s; 
+        .btn-indigo-outline {
+            border: 2px solid #5c60f5; color: #5c60f5;
+            font-weight: 700; border-radius: 12px; transition: 0.3s;
             padding: 10px 20px; font-size: 0.9rem;
             min-height: 44px;
             display: inline-flex;
@@ -69,10 +91,13 @@
         .btn-indigo-outline:hover { background-color: #5c60f5; color: white; }
 
         /* Sidebar — hanya desktop */
-        .sticky-sidebar { 
-            position: sticky; top: 80px; z-index: 10; 
-            background: white; border-radius: 20px; align-self: flex-start;
-            max-height: calc(100vh - 90px); overflow-y: auto;
+        .sticky-sidebar {
+            position: fixed;
+            z-index: 1000;
+            background: white;
+            border-radius: 20px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
         }
 
         .animate-fade-in {
@@ -96,7 +121,7 @@
         <form action="{{ route('sessions.update', $session) }}" method="POST" id="editPblForm">
             @csrf
             @method('PUT')
-            
+
             <div class="row g-4">
                 {{-- Konten Form: full-width di mobile, 8-col di desktop (KIRI) --}}
                 <div class="col-12 col-lg-8 form-bottom-spacer">
@@ -109,20 +134,23 @@
 
                         <div class="mb-4">
                             <label class="label-custom">Judul Sesi</label>
-                            <input type="text" name="title" class="form-control form-control-custom font-bold" value="{{ old('title', $session->title) }}" required>
+                            <input type="text" name="title" class="form-control form-control-custom font-bold" value="{{ $session->title }}" required>
                         </div>
 
                         <div class="mb-4">
                             <label class="label-custom">Tujuan Pembelajaran</label>
                             <div id="objectives-container">
-                                @php $outcomes = old('f1_learning_objectives', $session->f1_learning_objectives ?? ['']); @endphp
+                                @php
+                                    $outcomes = is_array($session->f1_learning_objectives) ? $session->f1_learning_objectives : [];
+                                    if (empty($outcomes)) $outcomes = [''];
+                                @endphp
                                 @foreach($outcomes as $index => $outcome)
-                                <div class="mb-3 p-3 bg-light rounded-4 border-0 shadow-sm position-relative animate-fade-in">
+                                <div class="mb-3 p-3 bg-white rounded-4 border-2 border-indigo-100 shadow-sm position-relative animate-fade-in">
                                     <div class="d-flex justify-content-between mb-2">
                                         <label class="label-custom">Tujuan {{ $index + 1 }}</label>
                                         @if($index > 0) <button type="button" class="btn-close btn-sm remove-btn"></button> @endif
                                     </div>
-                                    <textarea name="f1_learning_objectives[]" class="form-control form-control-custom" rows="2" required>{{ $outcome }}</textarea>
+                                    <textarea name="f1_learning_objectives[]" class="form-control form-control-custom" rows="2" required>{{ trim(is_string($outcome) ? $outcome : '') }}</textarea>
                                 </div>
                                 @endforeach
                             </div>
@@ -133,7 +161,7 @@
 
                         <div class="mb-2">
                             <label class="label-custom">Konteks/Narasi Masalah</label>
-                            <textarea name="f1_context" class="form-control form-control-custom" rows="6" required>{{ old('f1_context', $session->f1_context) }}</textarea>
+                            <textarea name="f1_context" class="form-control form-control-custom" rows="6" required style="background-color: #ffffff; color: #1a202c;">{{ trim($session->f1_context) }}</textarea>
                         </div>
                     </div>
 
@@ -142,16 +170,19 @@
                             <div class="phase-icon"><i class="bi bi-search"></i></div>
                             <div><span class="phase-title">Penyelidikan</span></div>
                         </div>
-                        
+
                         <div id="questions-container">
-                            @php $questions = old('f3_questions', $session->f3_questions ?? ['']); @endphp
+                            @php
+                                $questions = is_array($session->f3_questions) ? $session->f3_questions : [];
+                                if (empty($questions)) $questions = [''];
+                            @endphp
                             @foreach($questions as $index => $question)
-                            <div class="mb-3 p-4 bg-light rounded-4 shadow-sm border-0 position-relative animate-fade-in">
+                            <div class="mb-3 p-4 bg-white rounded-4 border-2 border-indigo-100 shadow-sm position-relative animate-fade-in">
                                 <div class="d-flex justify-content-between mb-2">
                                     <label class="label-custom">Pertanyaan {{ $index + 1 }}</label>
                                     @if($index > 0) <button type="button" class="btn-close btn-sm remove-btn"></button> @endif
                                 </div>
-                                <textarea name="f3_questions[]" class="form-control form-control-custom" rows="3" required>{{ $question }}</textarea>
+                                <textarea name="f3_questions[]" class="form-control form-control-custom" rows="3" required>{{ trim(is_string($question) ? $question : '') }}</textarea>
                             </div>
                             @endforeach
                         </div>
@@ -168,11 +199,11 @@
                         </div>
                         <div class="mb-4">
                             <label class="label-custom">Instruksi Implementasi</label>
-                            <textarea name="f4_instruction" class="form-control form-control-custom" rows="5" required>{{ old('f4_instruction', $session->f4_instruction) }}</textarea>
+                            <textarea name="f4_instruction" class="form-control form-control-custom" rows="5" required style="background-color: #ffffff; color: #1a202c;">{{ trim($session->f4_instruction) }}</textarea>
                         </div>
                         <div class="mb-2">
                             <label class="label-custom">Deskripsi Kode</label>
-                            <textarea name="f4_question" class="form-control form-control-custom" rows="3" required>{{ old('f4_question', $session->f4_question) }}</textarea>
+                            <textarea name="f4_question" class="form-control form-control-custom" rows="3" required style="background-color: #ffffff; color: #1a202c;">{{ trim($session->f4_question) }}</textarea>
                         </div>
                     </div>
 
@@ -183,14 +214,17 @@
                         </div>
 
                         <div id="reflection-container">
-                            @php $reflections = old('f5_questions', $session->f5_questions ?? ['']); @endphp
+                            @php
+                                $reflections = is_array($session->f5_questions) ? $session->f5_questions : [];
+                                if (empty($reflections)) $reflections = [''];
+                            @endphp
                             @foreach($reflections as $index => $reflection)
-                            <div class="mb-3 p-4 bg-light rounded-4 shadow-sm border-0 position-relative animate-fade-in">
+                            <div class="mb-3 p-4 bg-white rounded-4 border-2 border-indigo-100 shadow-sm position-relative animate-fade-in">
                                 <div class="d-flex justify-content-between mb-2">
                                     <label class="label-custom">Pertanyaan {{ $index + 1 }}</label>
                                     @if($index > 0) <button type="button" class="btn-close btn-sm remove-btn"></button> @endif
                                 </div>
-                                <textarea name="f5_questions[]" class="form-control form-control-custom" rows="2" required>{{ $reflection }}</textarea>
+                                <textarea name="f5_questions[]" class="form-control form-control-custom" rows="2" required>{{ trim(is_string($reflection) ? $reflection : '') }}</textarea>
                             </div>
                             @endforeach
                         </div>
@@ -199,7 +233,30 @@
                             <i class="bi bi-plus-lg me-1"></i> Tambah Pertanyaan
                         </button>
                     </div>
+
                 </div>
+
+                {{-- Sidebar: HANYA tampil di desktop (lg+), posisi KANAN --}}
+                <div class="col-lg-4 d-none d-lg-block">
+                    <div class="sticky-sidebar">
+                        <div class="card phase-card p-4 text-center border-0">
+                            <div class="mb-3">
+                                <h5 class="mb-1" style="font-size: 1rem; font-weight:700;">FINALISASI SESI</h5>
+                                <p class="text-muted mb-0" style="font-size: 0.9rem;">Tinjau kembali data sebelum memperbarui sesi</p>
+                            </div>
+                            <hr class="mb-3 opacity-50">
+                            <button type="submit" form="editPblForm" class="btn bg-indigo text-white w-100 py-3 fw-bold shadow-lg mb-3" style="border-radius: 15px; font-size: 0.9rem; min-height: 44px;">
+                                <i class="bi bi-cloud-check-fill me-2"></i> PERBARUI SESI
+                            </button>
+                            <div class="p-3 bg-light rounded-4">
+                                <p class="mb-0" style="font-size: 0.85rem; line-height: 1.5;">
+                                    Pastikan semua fase telah terisi dengan instruksi yang jelas bagi siswa.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </form>
     </div>
@@ -208,7 +265,7 @@
     <div class="d-lg-none fixed-bottom border-top shadow-lg"
          style="background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); z-index: 1050; padding: 12px 16px;">
         <div class="d-flex gap-2" style="max-width: 600px; margin: 0 auto;">
-            <a href="{{ route('dashboard') }}" 
+            <a href="{{ route('dashboard') }}"
                class="btn btn-light fw-bold text-muted"
                style="border-radius: 14px; min-height: 52px; font-size: 0.85rem; display:flex; align-items:center; padding: 0 16px;">
                 Batal
@@ -224,15 +281,62 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('editPblForm');
-            
+            const stickySidebar = document.querySelector('.sticky-sidebar');
+
+            // ===== FIX SIDEBAR POSITION =====
+            function fixSidebarPosition() {
+                if (!stickySidebar) {
+                    console.warn('sticky-sidebar not found');
+                    return;
+                }
+
+                const colLg4 = stickySidebar.closest('.col-lg-4');
+                if (!colLg4) {
+                    console.warn('col-lg-4 parent not found');
+                    return;
+                }
+
+                const rect = colLg4.getBoundingClientRect();
+
+                // Find first phase card to align sidebar top with it
+                const firstCard = document.querySelector('.phase-card');
+                let topValue = 60; // Default fallback
+
+                if (firstCard) {
+                    const cardRect = firstCard.getBoundingClientRect();
+                    topValue = Math.max(cardRect.top, 60);
+                }
+
+                // Set fixed positioning with calculated left position
+                stickySidebar.style.position = 'fixed';
+                stickySidebar.style.left = rect.left + 'px';
+                stickySidebar.style.width = rect.width + 'px';
+                stickySidebar.style.top = topValue + 'px';
+
+                console.log('Sidebar fixed at:', {
+                    left: rect.left + 'px',
+                    width: rect.width + 'px',
+                    top: topValue + 'px'
+                });
+            }
+
+            // Initial positioning
+            setTimeout(fixSidebarPosition, 100);
+
+            // Fix position on all scroll/resize events
+            window.addEventListener('scroll', fixSidebarPosition, true);
+            window.addEventListener('resize', fixSidebarPosition);
+            window.addEventListener('orientationchange', fixSidebarPosition);
+
+            // ===== DYNAMIC CONTAINER SETUP =====
             function setupDynamicContainer(containerId, buttonId, nameAttr, labelText, placeholder, rowCount) {
                 const container = document.getElementById(containerId);
                 const button = document.getElementById(buttonId);
-                
+
                 button.addEventListener('click', function() {
                     const count = container.querySelectorAll('textarea').length + 1;
                     const div = document.createElement('div');
-                    
+
                     div.className = 'mb-3 p-4 bg-light rounded-4 shadow-sm border-0 position-relative mt-3 animate-fade-in';
                     div.innerHTML = `
                         <div class="d-flex justify-content-between mb-2">
@@ -253,10 +357,10 @@
                 if (e.target.classList.contains('remove-btn')) {
                     const parent = e.target.closest('.mb-3');
                     const container = parent.parentElement;
-                    
+
                     parent.style.opacity = '0';
                     parent.style.transform = 'translateY(10px)';
-                    
+
                     setTimeout(() => {
                         parent.remove();
                         const labelTextMap = {
@@ -264,7 +368,7 @@
                             'questions-container': 'Pertanyaan',
                             'reflection-container': 'Pertanyaan Refleksi'
                         };
-                        
+
                         if (labelTextMap[container.id]) {
                             container.querySelectorAll('.label-custom').forEach((label, idx) => {
                                 label.innerText = `${labelTextMap[container.id]} ${idx + 1}`;

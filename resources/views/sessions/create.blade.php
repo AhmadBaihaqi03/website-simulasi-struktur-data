@@ -5,31 +5,31 @@
     .text-indigo { color: #5c60f5 !important; }
     .bg-indigo   { background-color: #5c60f5 !important; }
 
-    .phase-card { 
+    .phase-card {
         background: white;
-        border-radius: 20px; 
-        border: none; 
-        margin-bottom: 1rem; 
-        box-shadow: 0 10px 25px rgba(0,0,0,0.02); 
-        transition: 0.3s; 
+        border-radius: 20px;
+        border: none;
+        margin-bottom: 1rem;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.02);
+        transition: 0.3s;
     }
 
-    .phase-icon { 
-        width: 48px; 
-        height: 48px; 
-        border-radius: 14px; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        color: #5c60f5; 
-        background-color: #eef0ff; 
-        margin-right: 14px; 
+    .phase-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #5c60f5;
+        background-color: #eef0ff;
+        margin-right: 14px;
         font-size: 1.4rem;
         flex-shrink: 0;
     }
 
     .phase-title {
-        font-size: 1.05rem; 
+        font-size: 1.05rem;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 1px;
@@ -37,41 +37,46 @@
         display: block;
     }
 
-    .label-custom { 
-        font-weight: 800; 
-        color: #4a5568; 
-        font-size: 0.9rem; 
-        text-transform: uppercase; 
-        letter-spacing: 1.2px; 
-        margin-bottom: 0.6rem; 
-        display: block; 
+    .label-custom {
+        font-weight: 800;
+        color: #4a5568;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        margin-bottom: 0.6rem;
+        display: block;
     }
 
-    .form-control-custom { 
+    .form-control-custom {
         background-color: #ffffff;
         border: 2px solid #e2e8f0;
-        border-radius: 15px; 
-        padding: 12px 15px; 
-        font-size: 1rem; 
+        border-radius: 15px;
+        padding: 12px 15px;
+        font-size: 1rem;
         line-height: 1.6;
+        color: #2d3748;
         resize: vertical;
-        transition: all 0.2s ease-in-out; 
+        transition: all 0.2s ease-in-out;
         min-height: 44px;
     }
 
-    .form-control-custom:focus { 
-        background-color: white; 
-        border-color: #5c60f5; 
-        box-shadow: 0 0 0 5px rgba(92, 96, 245, 0.08); 
-        outline: none; 
+    .form-control-custom:focus {
+        background-color: white;
+        border-color: #5c60f5;
+        box-shadow: 0 0 0 5px rgba(92, 96, 245, 0.08);
+        outline: none;
     }
 
-    .btn-indigo-outline {  
-        border: 2px solid #5c60f5; 
-        color: #5c60f5; 
-        font-weight: 700; 
-        border-radius: 12px; 
-        padding: 10px 20px; 
+    .form-control-custom::placeholder {
+        color: #a0aec0;
+    }
+
+    .btn-indigo-outline {
+        border: 2px solid #5c60f5;
+        color: #5c60f5;
+        font-weight: 700;
+        border-radius: 12px;
+        padding: 10px 20px;
         font-size: 0.9rem;
         transition: 0.3s;
         min-height: 44px;
@@ -79,20 +84,18 @@
         align-items: center;
     }
 
-    .btn-indigo-outline:hover { 
-        background-color: #5c60f5; 
-        color: white; 
+    .btn-indigo-outline:hover {
+        background-color: #5c60f5;
+        color: white;
     }
 
-    /* Sidebar sticky — hanya desktop */
-    .sticky-sidebar { 
-        position: sticky; 
-        top: 80px;
-        z-index: 10; 
+    /* Sidebar fixed — hanya desktop */
+    .sticky-sidebar {
+        position: fixed;
+        z-index: 1000;
         background: white;
-        border-radius: 20px; 
-        align-self: flex-start;
-        max-height: calc(100vh - 90px); 
+        border-radius: 20px;
+        max-height: calc(100vh - 100px);
         overflow-y: auto;
     }
 
@@ -118,11 +121,11 @@
 
         <form action="{{ route('sessions.store') }}" method="POST" id="pblForm">
             @csrf
-            
+
             <div class="row g-4">
                 {{-- Konten Form: full-width di mobile, 8-col di desktop (KIRI) --}}
                 <div class="col-12 col-lg-8 form-bottom-spacer">
-                    
+
                     <div class="card phase-card p-4 p-md-5">
                         <div class="d-flex align-items-center mb-4 mb-md-5">
                             <div class="phase-icon">
@@ -238,7 +241,7 @@
     </div>
 
     {{-- ===== FIXED BOTTOM BAR — hanya mobile/tablet (< lg) ===== --}}
-    <div class="d-lg-none fixed-bottom border-top shadow-lg" 
+    <div class="d-lg-none fixed-bottom border-top shadow-lg"
          style="background: rgba(255,255,255,0.97); backdrop-filter: blur(12px); z-index: 1050; padding: 12px 16px;">
         <div class="d-flex gap-2" style="max-width: 600px; margin: 0 auto;">
             <button type="submit" form="pblForm"
@@ -251,14 +254,62 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            const stickySidebar = document.querySelector('.sticky-sidebar');
+
+            // ===== FIX SIDEBAR POSITION =====
+            function fixSidebarPosition() {
+                if (!stickySidebar) {
+                    console.warn('sticky-sidebar not found');
+                    return;
+                }
+
+                const colLg4 = stickySidebar.closest('.col-lg-4');
+                if (!colLg4) {
+                    console.warn('col-lg-4 parent not found');
+                    return;
+                }
+
+                const rect = colLg4.getBoundingClientRect();
+
+                // Find first phase card to align sidebar top with it
+                const firstCard = document.querySelector('.phase-card');
+                let topValue = 60; // Default fallback
+
+                if (firstCard) {
+                    const cardRect = firstCard.getBoundingClientRect();
+                    topValue = Math.max(cardRect.top, 60);
+                }
+
+                // Set fixed positioning with calculated left position
+                stickySidebar.style.position = 'fixed';
+                stickySidebar.style.left = rect.left + 'px';
+                stickySidebar.style.width = rect.width + 'px';
+                stickySidebar.style.top = topValue + 'px';
+
+                console.log('Sidebar fixed at:', {
+                    left: rect.left + 'px',
+                    width: rect.width + 'px',
+                    top: topValue + 'px'
+                });
+            }
+
+            // Initial positioning
+            setTimeout(fixSidebarPosition, 100);
+
+            // Fix position on all scroll/resize events
+            window.addEventListener('scroll', fixSidebarPosition, true);
+            window.addEventListener('resize', fixSidebarPosition);
+            window.addEventListener('orientationchange', fixSidebarPosition);
+
+            // ===== DYNAMIC CONTAINER SETUP =====
             function setupDynamicContainer(containerId, buttonId, nameAttr, labelText, placeholder, rowCount) {
                 const container = document.getElementById(containerId);
                 const button = document.getElementById(buttonId);
-                
+
                 button.addEventListener('click', function() {
                     const count = container.querySelectorAll('textarea').length + 1;
                     const div = document.createElement('div');
-                    
+
                     div.className = 'mb-3 p-4 bg-light rounded-4 shadow-sm border-0 position-relative mt-3 animate-fade-in';
                     div.innerHTML = `
                         <div class="d-flex justify-content-between mb-2">

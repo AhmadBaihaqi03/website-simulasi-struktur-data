@@ -39,7 +39,7 @@
                     </p>
 
                     @if (session('status') === 'verification-link-sent')
-                        <p class="mt-2 font-medium text-sm text-green-600">
+                        <p class="mt-2 font-medium text-sm text-indigo-600 p-3 bg-indigo-50 border-l-4 border-indigo-600 rounded-lg">
                             {{ __('Tautan verifikasi baru telah dikirim ke alamat email Anda.') }}
                         </p>
                     @endif
@@ -56,7 +56,7 @@
                     x-show="show"
                     x-transition
                     x-init="setTimeout(() => show = false, 2000)"
-                    class="text-sm text-gray-600"
+                    class="text-sm text-indigo-600 font-medium p-2 bg-indigo-50 px-3 rounded-lg"
                 >{{ __('Saved.') }}</p>
             @endif
         </div>

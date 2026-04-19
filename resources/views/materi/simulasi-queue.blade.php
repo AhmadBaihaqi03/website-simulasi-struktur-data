@@ -3,14 +3,14 @@
 @section('title', 'Vilogic - Simulasi Interaktif Queue')
 
 @section('materi_title')
-    <h1 class="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
         Simulasi <span class="text-indigo-600">Queue</span>
     </h1>
 @endsection
 
 @section('content')
 <div x-data="queueSimulator()" class="space-y-12">
-    
+
     <div class="text-center max-w-2xl mx-auto">
         <p class="text-slate-500 font-medium leading-relaxed">
             Pahami konsep <strong>FIFO (First In, First Out)</strong>. Di sini, elemen yang pertama kali masuk akan menjadi yang pertama kali keluar, persis seperti antrean di dunia nyata.
@@ -37,7 +37,7 @@
             </div>
             <p class="text-[11px] text-indigo-100 leading-relaxed">Menambah elemen ke urutan paling belakang (Rear). Data baru harus menunggu antrean.</p>
         </div>
-        
+
         <div class="p-5 rounded-[2rem] bg-slate-800 text-white shadow-lg shadow-slate-200 transition-transform hover:scale-[1.02]">
             <div class="flex items-center gap-3 mb-2">
                 <i data-lucide="log-out" class="w-5 h-5"></i>
@@ -75,7 +75,7 @@
                 <p class="!text-sm text-slate-500 mt-2">Uji skenario berikut untuk melihat cara kerja Queue:</p>
             </div>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-indigo-200 shadow-sm">
                 <div class="bg-indigo-100 p-2 rounded-xl text-indigo-600">
@@ -145,14 +145,14 @@
         <h6 class="font-bold text-slate-800 mb-6 flex items-center gap-2">
             <i data-lucide="terminal" class="text-indigo-600"></i> Console Kendali
         </h6>
-        
+
         <div class="space-y-2 mb-8">
             <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-2">Nilai Elemen (Nama Murid/Data)</label>
             <input type="text" x-model="inputValue" @keyup.enter="enqueue()"
-                class="w-full py-4 px-6 rounded-2xl border-2 border-white bg-white shadow-sm focus:border-indigo-500 focus:ring-0 transition-all outline-none" 
+                class="w-full py-4 px-6 rounded-2xl border-2 border-white bg-white shadow-sm focus:border-indigo-500 focus:ring-0 transition-all outline-none"
                 placeholder="Masukkan data antrean...">
         </div>
-        
+
         <div class="flex flex-wrap gap-3 justify-center">
             <button @click="enqueue()" class="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-2xl font-bold shadow-lg shadow-indigo-100 transition-all active:scale-95 text-xs tracking-wide">
                 <i data-lucide="log-in" class="w-4 h-4"></i> ENQUEUE
@@ -171,8 +171,8 @@
 
     <div class="bg-slate-100/50 rounded-[3rem] p-10 min-h-[300px] flex flex-col items-center justify-center border-2 border-dashed border-slate-200 shadow-inner shadow-slate-100">
         <h6 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-12 text-center">Visualisasi Antrean (FIFO)</h6>
-        
-        
+
+
 
         <div class="flex flex-wrap gap-6 justify-center items-center">
             <template x-for="(item, index) in items" :key="index">
@@ -188,8 +188,8 @@
                             <span x-text="item"></span>
                         </div>
                     </div>
-                    <div class="font-black text-[10px] transition-colors uppercase tracking-wider" 
-                        :class="lastAccessed === index ? 'text-indigo-600' : 'text-slate-400'" 
+                    <div class="font-black text-[10px] transition-colors uppercase tracking-wider"
+                        :class="lastAccessed === index ? 'text-indigo-600' : 'text-slate-400'"
                         x-text="'Index [' + index + ']'"></div>
                 </div>
             </template>
@@ -203,13 +203,13 @@
         </div>
     </div>
 
-    <div class="mt-20 pt-10 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
-        <a href="{{ url('/materi/materi-queue') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
-            <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i> Kembali ke Queue
+    <div class="mt-20 pt-10 border-t border-slate-100 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+        <a href="{{ url('/materi/materi-queue') }}" class="group w-full sm:w-auto text-slate-400 hover:text-indigo-600 font-bold flex items-center justify-center sm:justify-start gap-2 transition text-sm sm:text-base order-2 sm:order-1 text-center sm:text-left">
+            <i data-lucide="arrow-left" class="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-1 transition-transform hidden sm:block"></i> Kembali ke Queue
         </a>
-         <a href="{{ url('/materi/operasi-queue') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
+        <a href="{{ url('/materi/operasi-queue') }}" class="group flex items-center justify-center gap-2 sm:gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base transition-all shadow-lg shadow-indigo-200 order-1 sm:order-2 w-full sm:w-auto">
             Lanjut ke Operasi Queue dengan Python
-            <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform"></i>
         </a>
     </div>
 </div>
@@ -226,9 +226,9 @@
             explanation: 'Sistem antrean siap digunakan.',
 
             enqueue() {
-                if (!this.inputValue) { 
-                    this.explanation = "Gagal: Masukkan nilai data!"; 
-                    return; 
+                if (!this.inputValue) {
+                    this.explanation = "Gagal: Masukkan nilai data!";
+                    return;
                 }
                 this.items.push(this.inputValue);
                 this.lastAccessed = this.items.length - 1;
@@ -238,20 +238,20 @@
             },
 
             dequeue() {
-                if (this.items.length === 0) { 
-                    this.explanation = "Gagal: Antrean sudah kosong!"; 
-                    return; 
+                if (this.items.length === 0) {
+                    this.explanation = "Gagal: Antrean sudah kosong!";
+                    return;
                 }
                 let removed = this.items.shift();
-                this.lastAccessed = 0; 
+                this.lastAccessed = 0;
                 this.explanation = `Dequeue: "${removed}" di urutan terdepan telah diproses.`;
                 setTimeout(() => { this.lastAccessed = null; }, 800);
             },
 
             peek() {
-                if (this.items.length === 0) { 
-                    this.explanation = "Gagal: Antrean kosong."; 
-                    return; 
+                if (this.items.length === 0) {
+                    this.explanation = "Gagal: Antrean kosong.";
+                    return;
                 }
                 this.lastAccessed = 0;
                 this.explanation = `Front: Murid terdepan saat ini adalah "${this.items[0]}".`;

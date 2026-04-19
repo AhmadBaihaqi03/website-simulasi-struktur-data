@@ -3,14 +3,14 @@
 @section('title', 'Simulasi Interaktif Stack - Vilogic')
 
 @section('materi_title')
-    <h1 class="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
         Simulasi <span class="text-indigo-600">Stack</span>
     </h1>
 @endsection
 
 @section('content')
 <div x-data="stackSimulator()" class="space-y-12">
-    
+
     <div class="text-center max-w-2xl mx-auto">
         <p class="text-slate-500 font-medium leading-relaxed">
             Pahami konsep <strong>LIFO (Last In, First Out)</strong>. Di sini, elemen yang terakhir kali ditumpuk akan menjadi yang pertama kali keluar.
@@ -25,7 +25,7 @@
             </div>
             <p class="text-[11px] text-indigo-100 leading-relaxed">Menambah elemen baru ke posisi paling atas (Top).</p>
         </div>
-        
+
         <div class="p-5 rounded-[2rem] bg-slate-800 text-white shadow-lg shadow-slate-200 transition-transform hover:scale-[1.02]">
             <div class="flex items-center gap-3 mb-2">
                 <i data-lucide="arrow-up-from-dot" class="w-5 h-5"></i>
@@ -63,7 +63,7 @@
                 <p class="!text-sm text-slate-500 mt-2">Uji skenario berikut untuk melihat mekanisme Stack:</p>
             </div>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div class="flex items-start gap-4 p-5 rounded-3xl bg-slate-50 border border-slate-100 transition-all hover:bg-white hover:border-indigo-200 shadow-sm">
                 <div class="bg-indigo-100 p-2 rounded-xl text-indigo-600">
@@ -126,11 +126,11 @@
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-        
+
         <div class="lg:col-span-8 bg-slate-100/50 rounded-[3rem] p-10 min-h-[500px] flex flex-col items-center border-2 border-dashed border-slate-200 shadow-inner shadow-slate-100 overflow-hidden order-2 lg:order-1">
             <h6 class="text-[10px] font-black text-slate-400 uppercase tracking-[0.3em] mb-12 text-center">Visualisasi Tumpukan (LIFO)</h6>
 
-            
+
 
             <div class="flex flex-col-reverse w-full max-w-md gap-3 overflow-y-auto pr-2" style="max-height: 400px;">
                 <template x-for="(item, index) in items" :key="index">
@@ -138,10 +138,10 @@
                         <div class="w-24 text-right font-black text-[10px] text-slate-300 group-hover:text-indigo-400 transition-colors uppercase tracking-tighter">
                             Index <span x-text="'[' + index + ']'"></span>
                         </div>
-                        
+
                         <div class="flex-grow py-4 px-6 bg-white rounded-2xl flex items-center justify-between text-sm font-black shadow-sm border-2 transition-all duration-500 relative overflow-hidden"
                             :class="index === items.length - 1 ? 'border-indigo-500 text-indigo-600 bg-indigo-50 shadow-xl shadow-indigo-100 scale-[1.02]' : 'border-white text-slate-700'">
-                            
+
                             <span x-text="item"></span>
 
                             <template x-if="index === items.length - 1">
@@ -170,15 +170,15 @@
                 <h6 class="font-bold text-slate-800 mb-6 flex items-center gap-2">
                     <i data-lucide="terminal" class="text-indigo-600"></i> Console
                 </h6>
-                
+
                 <div class="space-y-4">
                     <div>
                         <label class="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-2">Nilai Elemen</label>
                         <input type="text" x-model="inputValue" @keyup.enter="push()"
-                            class="w-full py-4 px-6 rounded-2xl border-2 border-white bg-white shadow-sm focus:border-indigo-500 transition-all outline-none mt-1" 
+                            class="w-full py-4 px-6 rounded-2xl border-2 border-white bg-white shadow-sm focus:border-indigo-500 transition-all outline-none mt-1"
                             placeholder="Input data...">
                     </div>
-                    
+
                     <button @click="push()" class="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-4 rounded-2xl font-bold shadow-lg shadow-indigo-100 transition-all active:scale-95">
                         <i data-lucide="arrow-down-to-dot" class="w-4 h-4"></i> PUSH
                     </button>
@@ -197,13 +197,13 @@
 
     </div>
 
-    <div class="mt-20 pt-10 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
-        <a href="{{ url('/materi/materi-stack') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
-            <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i> Kembali ke Stack
+    <div class="mt-20 pt-10 border-t border-slate-100 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+        <a href="{{ url('/materi/materi-stack') }}" class="group w-full sm:w-auto text-slate-400 hover:text-indigo-600 font-bold flex items-center justify-center sm:justify-start gap-2 transition text-sm sm:text-base order-2 sm:order-1 text-center sm:text-left">
+            <i data-lucide="arrow-left" class="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-1 transition-transform hidden sm:block"></i> Kembali ke Stack
         </a>
-         <a href="{{ url('/materi/operasi-stack') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
+        <a href="{{ url('/materi/operasi-stack') }}" class="group flex items-center justify-center gap-2 sm:gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base transition-all shadow-lg shadow-indigo-200 order-1 sm:order-2 w-full sm:w-auto">
             Lanjut ke Operasi Stack dengan Python
-            <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform"></i>
         </a>
     </div>
 </div>
@@ -219,9 +219,9 @@
             explanation: 'Sistem stack siap digunakan.',
 
             push() {
-                if (!this.inputValue) { 
-                    this.explanation = "Gagal: Masukkan nilai data!"; 
-                    return; 
+                if (!this.inputValue) {
+                    this.explanation = "Gagal: Masukkan nilai data!";
+                    return;
                 }
                 this.items.push(this.inputValue);
                 this.explanation = `Push: "${this.inputValue}" ditambahkan di atas tumpukan.`;
@@ -229,18 +229,18 @@
             },
 
             pop() {
-                if (this.items.length === 0) { 
-                    this.explanation = "Gagal: Stack sudah kosong!"; 
-                    return; 
+                if (this.items.length === 0) {
+                    this.explanation = "Gagal: Stack sudah kosong!";
+                    return;
                 }
                 let removed = this.items.pop();
                 this.explanation = `Pop: "${removed}" (paling atas) telah dihapus.`;
             },
 
             peek() {
-                if (this.items.length === 0) { 
-                    this.explanation = "Gagal: Stack kosong."; 
-                    return; 
+                if (this.items.length === 0) {
+                    this.explanation = "Gagal: Stack kosong.";
+                    return;
                 }
                 let topItem = this.items[this.items.length - 1];
                 this.explanation = `Top: Elemen teratas saat ini adalah "${topItem}".`;

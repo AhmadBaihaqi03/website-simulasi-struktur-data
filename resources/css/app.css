@@ -1,3 +1,670 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ============================================
+   FORCE LIGHT MODE - OVERRIDE FORM PLUGIN
+   ============================================ */
+
+html {
+  color-scheme: light !important;
+}
+
+/* Override @tailwindcss/forms dark mode */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+  background-color: #ffffff !important;
+  color: #4b5563 !important;
+  border-color: #e5e7eb !important;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+input[type="number"]::placeholder,
+input[type="search"]::placeholder,
+textarea::placeholder {
+  color: #a8adb7 !important;
+  opacity: 1 !important;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  background-color: #ffffff !important;
+  border-color: #4F46E5 !important;
+  color: #4b5563 !important;
+}
+
+/* ============================================
+   MOBILE-FIRST OPTIMIZATION
+   ============================================ */
+
+/* Base mobile improvements */
+@media (max-width: 575px) {
+  html, body {
+    font-size: 15px;
+  }
+
+  /* Improved spacing */
+  body {
+    --tw-space-y-reverse: 0;
+    letter-spacing: 0.3px;
+  }
+
+  /* Container padding for mobile */
+  .container,
+  .container-fluid {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Better padding for sections */
+  main {
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Form controls - larger touch targets */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  textarea,
+  select,
+  .form-control,
+  .form-control-custom {
+    min-height: 48px;
+    font-size: 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background-color: #ffffff !important;
+    color: #4b5563 !important;
+    border: 1px solid #e5e7eb !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  /* Button improvements */
+  button,
+  .btn,
+  a.btn,
+  input[type="submit"],
+  input[type="button"],
+  .btn-indigo {
+    min-height: 48px;
+    font-size: 15px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Link touch targets */
+  a, button {
+    outline-offset: 2px;
+  }
+
+  /* Improved card spacing */
+  .card {
+    border-radius: 16px;
+    margin-bottom: 1rem;
+  }
+
+  /* Better label spacing */
+  label {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    display: block;
+  }
+
+  /* Text sizing for mobile */
+  h1 {
+    font-size: clamp(1.4rem, 5vw, 1.8rem);
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    margin-bottom: 0.4rem;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Improved alert spacing */
+  .alert {
+    padding: 0.875rem 1rem;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+  }
+
+  /* Table improvements for mobile */
+  .table {
+    font-size: 0.9rem;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .table-responsive {
+    border-radius: 12px;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Icon sizing */
+  i {
+    line-height: 1;
+  }
+
+  /* Better spacing between elements */
+  .mb-3,
+  .my-3 {
+    margin-bottom: 0.875rem !important;
+  }
+
+  .mb-4,
+  .my-4 {
+    margin-bottom: 1rem !important;
+  }
+
+  /* Modal improvements */
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .modal-content {
+    border-radius: 16px;
+    border: none;
+  }
+
+  /* Dropdown improvements */
+  .dropdown-menu {
+    border-radius: 12px;
+    padding: 0.5rem 0;
+    min-width: 200px;
+  }
+
+  .dropdown-item {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Input group improvements */
+  .input-group {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .input-group-text {
+    padding: 12px 14px;
+  }
+}
+
+/* Small devices (landscape) */
+@media (max-width: 767px) {
+  /* Optimize navbar spacing */
+  .navbar {
+    padding: 0.75rem 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.1rem;
+  }
+
+  /* Stack layout for small screens */
+  .row.flex-column-mobile {
+    flex-direction: column;
+  }
+
+  .col-mobile-full {
+    width: 100% !important;
+  }
+
+  /* Improve form group spacing */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  /* Better button groups */
+  .btn-group-vertical .btn {
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Pagination improvements */
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+
+  .page-link {
+    padding: 0.5rem 0.75rem;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Medium devices and up - preserve original desktop design */
+@media (min-width: 768px) {
+  /* Desktop spacing returns to normal */
+  .container,
+  .container-fluid {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  main {
+    padding-top: 1rem;
+  }
+
+  /* Form controls - comfortable sizing */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  textarea,
+  select,
+  .form-control {
+    min-height: 44px;
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  /* Desktop text sizing */
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Table shows headers */
+  .table thead {
+    display: table-header-group;
+  }
+
+  /* Better spacing on desktop */
+  .mb-3,
+  .my-3 {
+    margin-bottom: 1rem !important;
+  }
+
+  .mb-4,
+  .my-4 {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .dropdown-menu {
+    min-width: 240px;
+  }
+}
+
+/* Large devices */
+@media (min-width: 992px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  p {
+    line-height: 1.7;
+  }
+}
+
+/* Accessibility improvements - reduce motion for mobile */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark mode support (optional) */
+@media (prefers-color-scheme: dark) {
+  /* Add dark mode adjustments if needed */
+  .form-control-custom {
+    background-color: #1a1a1a;
+    border-color: #333;
+    color: #fff;
+  }
+
+  .form-control-custom:focus {
+    background-color: #222;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background-color: white;
+  }
+
+  .navbar,
+  .pagination,
+  .btn-group {
+    display: none;
+  }
+
+  p {
+    page-break-inside: avoid;
+  }
+}
+
+/* ============================================
+   MATERI PAGE MOBILE OPTIMIZATION
+   ============================================ */
+@media (max-width: 640px) {
+  /* Main content container */
+  main.max-w-5xl {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Heading sizing */
+  h1.text-4xl.lg\:text-5xl {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h5.text-2xl {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  h5.text-xl {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  h6 {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Main content box padding */
+  .bg-white.rounded-\[2rem\].sm\:rounded-\[2\.5rem\].p-4.sm\:p-8.lg\:p-12 {
+    padding: 1rem;
+    border-radius: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Card spacing improvements */
+  .rounded-\[2rem\].shadow-sm {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    border-radius: 1rem;
+  }
+
+  /* Grid layouts */
+  .grid.grid-cols-1.md\:grid-cols-2.gap-6 {
+    gap: 0.75rem;
+  }
+
+  .grid.grid-cols-1.md\:grid-cols-2.gap-4 {
+    gap: 0.5rem;
+  }
+
+  .grid.grid-cols-1.md\:grid-cols-3.gap-4 {
+    gap: 0.5rem;
+  }
+
+  /* Card margins */
+  .mb-16 {
+    margin-bottom: 2rem;
+  }
+
+  .mb-8 {
+    margin-bottom: 1.25rem;
+  }
+
+  .mb-6 {
+    margin-bottom: 1rem;
+  }
+
+  /* Padding in cards */
+  .p-6 {
+    padding: 0.75rem;
+  }
+
+  .p-5 {
+    padding: 0.75rem;
+  }
+
+  .p-8 {
+    padding: 1rem;
+  }
+
+  .p-4 {
+    padding: 0.75rem;
+  }
+
+  /* Left margin for sections */
+  .ml-0.md\:ml-10 {
+    margin-left: 0;
+  }
+
+  .ml-0 {
+    margin-left: 0;
+  }
+
+  /* Space between sections */
+  .space-y-6 {
+    gap: 1rem;
+  }
+
+  .space-y-8 {
+    gap: 1.25rem;
+  }
+
+  /* Border styling */
+  .ps-6 {
+    padding-left: 1rem;
+  }
+
+  .border-l-4 {
+    border-left-width: 3px;
+  }
+
+  /* Text sizing */
+  p.text-base,
+  p.\!text-base {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  p.\!text-sm {
+    font-size: 0.85rem;
+  }
+
+  /* Flex layouts */
+  .flex.flex-col.md\:flex-row {
+    flex-direction: column;
+  }
+
+  .flex.items-center.justify-between {
+    gap: 0.75rem;
+  }
+
+  /* Table responsive */
+  .overflow-hidden.border.border-slate-200.rounded-\[2rem\] {
+    border-radius: 1rem;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .overflow-hidden.border table {
+    font-size: 0.85rem;
+  }
+
+  .overflow-hidden.border table td,
+  .overflow-hidden.border table th {
+    padding: 0.5rem;
+  }
+
+  /* E-book section */
+  .bg-slate-900.rounded-\[2rem\].sm\:rounded-\[3rem\].p-6.sm\:p-8.md\:p-10 {
+    padding: 1.25rem;
+    border-radius: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .flex.flex-col.lg\:flex-row {
+    flex-direction: column;
+  }
+
+  /* Button sizing */
+  .min-h-\[44px\] {
+    min-height: 44px;
+    font-size: 0.85rem;
+  }
+
+  a.px-8.py-4 {
+    padding: 0.75rem 1rem;
+  }
+
+  /* Alert/Info box */
+  .p-6.bg-indigo-50.rounded-3xl,
+  .p-6.bg-amber-50 {
+    padding: 0.75rem;
+    border-radius: 1.25rem;
+  }
+
+  /* Sticky header optimization */
+  .sticky.top-0.z-50 {
+    top: 0;
+  }
+
+  header.glass-header {
+    padding: 0.75rem;
+    border-radius: 1.25rem;
+  }
+
+  .max-w-5xl.mx-auto.px-4.sm\:px-6 {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  /* Gap and spacing utility */
+  .gap-4 {
+    gap: 0.5rem;
+  }
+
+  .gap-6 {
+    gap: 0.75rem;
+  }
+
+  /* Flex wrap for buttons */
+  .w-full.sm\:w-auto {
+    width: 100%;
+  }
+
+  /* Icon sizing */
+  i[data-lucide] {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* Prose adjustments */
+  .prose.max-w-none {
+    max-width: 100%;
+  }
+
+  .prose p {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Link styling */
+  a.flex.items-center.gap-2 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Footer optimization */
+  footer.text-center {
+    padding: 1.5rem 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small devices */
+  h1.text-4xl.lg\:text-5xl {
+    font-size: 1.25rem;
+  }
+
+  h5.text-2xl {
+    font-size: 1rem;
+  }
+
+  .bg-white.rounded-\[2rem\].sm\:rounded-\[2\.5rem\].p-4.sm\:p-8.lg\:p-12 {
+    padding: 0.75rem;
+  }
+
+  .grid.grid-cols-1.md\:grid-cols-2.gap-6 {
+    gap: 0.5rem;
+  }
+
+  .p-6 {
+    padding: 0.5rem;
+  }
+
+  .ps-6 {
+    padding-left: 0.75rem;
+  }
+}
+
+/* Tablet optimization (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  h1.text-4xl.lg\:text-5xl {
+    font-size: 2rem;
+  }
+
+  h5.text-2xl {
+    font-size: 1.5rem;
+  }
+
+  .grid.grid-cols-1.md\:grid-cols-2.gap-6 {
+    gap: 1rem;
+  }
+
+  .grid.grid-cols-1.md\:grid-cols-3.gap-4 {
+    gap: 1rem;
+  }
+
+  .bg-white.rounded-\[2rem\].sm\:rounded-\[2\.5rem\].p-4.sm\:p-8.lg\:p-12 {
+    padding: 1.5rem;
+  }
+}

@@ -34,6 +34,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/sessions/{session}/evaluations', [SessionController::class, 'evaluations'])->name('sessions.evaluations');
     Route::get('/groups/{group}/work', [EvaluationController::class, 'show'])->name('groups.work');
     Route::post('/groups/{group}/evaluate', [EvaluationController::class, 'store'])->name('groups.evaluate');
+    Route::post('/groups/{group}/evaluation', [EvaluationController::class, 'storeAjax'])->name('groups.evaluation.ajax');
 });
 
 require __DIR__.'/auth.php';

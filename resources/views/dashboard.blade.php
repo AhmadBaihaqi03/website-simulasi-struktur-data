@@ -24,20 +24,27 @@
         }
         .btn-indigo:hover { background-color: #4a4ed4; color: white; box-shadow: 0 4px 12px rgba(92, 96, 245, 0.3); }
         .status-badge { border-radius: 20px; padding: 5px 12px; font-size: 0.75rem; font-weight: bold; }
-        
+
         /* Tombol aksi lonjong, minimum 44x44 */
-        .btn-action-custom { 
-            border-radius: 12px; 
-            width: 44px; 
-            height: 44px; 
-            display: inline-flex; 
-            align-items: center; 
+        .btn-action-custom {
+            border-radius: 12px;
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
             transition: all 0.2s;
             flex-shrink: 0;
         }
         .btn-outline-indigo { color: #5c60f5; border: 1.5px solid #5c60f5; background: transparent; }
         .btn-outline-indigo:hover { background-color: #5c60f5; color: white; }
+
+        /* Table Responsive Styling */
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
 
         /* Pagination Styling */
         .pagination-wrapper nav svg { width: 20px; }
@@ -61,20 +68,20 @@
 
     <div class="container py-4 py-md-5">
         @if(session('success'))
-            <div x-data="{ show: true }" 
-                 x-show="show" 
+            <div x-data="{ show: true }"
+                 x-show="show"
                  x-init="setTimeout(() => show = false, 3000)"
                  x-transition:leave="transition ease-in duration-500"
                  x-transition:leave-start="opacity-100"
                  x-transition:leave-end="opacity-0"
-                 class="alert alert-success border-0 shadow-sm mb-4 alert-dismissible fade show" 
-                 style="border-radius: 15px;">
-                <i class="bi bi-check-circle-fill me-2"></i>
-                {{ session('success') }}
-                <button type="button" class="btn-close" @click="show = false" aria-label="Close"></button>
+                 class="alert border-0 shadow-sm mb-4 d-flex align-items-center gap-3"
+                 style="border-radius: 15px; background-color: #eef0ff; border-left: 4px solid #5c60f5; color: #4c2a85;">
+                <i class="bi bi-check-circle-fill" style="color: #5c60f5; font-size: 1.2rem;"></i>
+                <span style="font-weight: 600; flex: 1;">{{ session('success') }}</span>
+                <button type="button" class="btn-close" @click="show = false" aria-label="Close" style="opacity: 0.7;"></button>
             </div>
         @endif
-        
+
         <div class="mb-4">
             <h1 class="fw-bold mb-1" style="font-size: clamp(1.4rem, 5vw, 2rem);">Halo, {{ Auth::user()->name }}</h1>
             <p class="text-muted mb-0" style="font-size: 0.95rem;">Kelola sesi pembelajaran berbasis masalah (Problem-Based Learning) Anda</p>
@@ -146,9 +153,9 @@
                         <span class="input-group-text bg-white border-0 ps-3">
                             <i class="bi bi-search text-indigo"></i>
                         </span>
-                        <input type="text" id="searchInput" 
-                               class="form-control bg-white border-0 py-2 fw-medium text-indigo" 
-                               placeholder="Cari nama atau kode sesi..." 
+                        <input type="text" id="searchInput"
+                               class="form-control bg-white border-0 py-2 fw-medium text-indigo"
+                               placeholder="Cari nama atau kode sesi..."
                                style="box-shadow: none; min-height: 44px;">
                     </div>
 
@@ -252,7 +259,7 @@
             rows.forEach(row => {
                 let title = row.querySelector('.session-title')?.textContent.toLowerCase() || "";
                 let code = row.querySelector('.session-code')?.textContent.toLowerCase() || "";
-                
+
                 if (title.includes(filter) || code.includes(filter)) {
                     row.style.display = "";
                 } else {

@@ -5,7 +5,7 @@
         <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-100/40 rounded-full blur-3xl"></div>
 
         <div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-            
+
             <div class="hidden lg:flex flex-col space-y-8 pl-10">
                 <div class="flex items-center gap-2 cursor-pointer" onclick="window.location='{{ route('beranda') }}'">
                     <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,16 +42,16 @@
 
                     <div class="space-y-2">
                         <label for="email" class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Email</label>
-                        <x-text-input id="email" class="block w-full px-5 py-4 bg-slate-50 border-slate-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-sm font-semibold" 
-                            type="email" name="email" :value="old('email')" required autofocus placeholder="nama@gmail.com" />
+                        <x-text-input id="email" class="block w-full px-5 py-4 bg-white border-slate-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-sm font-semibold"
+                            style="color: #757575 !important;" type="email" name="email" :value="old('email')" required autofocus placeholder="nama@gmail.com" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2 text-xs font-bold text-red-500" />
                     </div>
 
                     <div class="space-y-2">
                         <label for="password" class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Password</label>
-                        <x-text-input id="password" class="block w-full px-5 py-4 bg-slate-50 border-slate-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-sm font-semibold"
-                            type="password" name="password" required placeholder="••••••••" />
-                        
+                        <x-text-input id="password" class="block w-full px-5 py-4 bg-white border-slate-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-sm font-semibold"
+                            style="color: #757575 !important;" type="password" name="password" required placeholder="••••••••" />
+
                         <div class="flex items-center justify-between mt-4 px-1">
                             <label for="remember_me" class="inline-flex items-center cursor-pointer">
                                 <input id="remember_me" type="checkbox" class="rounded border-slate-300 text-indigo-600 shadow-sm focus:ring-indigo-500 w-4 h-4" name="remember">
@@ -76,7 +76,7 @@
 
                 <div class="mt-10 text-center pt-8 border-t border-slate-50">
                     <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">
-                        Belum punya akun? 
+                        Belum punya akun?
                         <a href="{{ route('register') }}" class="text-indigo-600 hover:underline ml-1">Daftar Guru</a>
                     </p>
                 </div>

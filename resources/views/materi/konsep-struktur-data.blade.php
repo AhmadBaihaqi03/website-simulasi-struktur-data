@@ -3,7 +3,7 @@
 @section('title', 'Vilogic - Konsep Struktur Data')
 
 @section('materi_title')
-    <h1 class="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
         Konsep <span class="text-indigo-600">Struktur Data</span>
     </h1>
 @endsection
@@ -70,7 +70,7 @@
             <p class="!text-base text-slate-600 leading-relaxed">
                 Berdasarkan penyusunannya, struktur data dibagi menjadi dua kategori utama:
             </p>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div class="bg-indigo-600 rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-xl shadow-indigo-100">
                     <div class="relative z-10">
@@ -137,13 +137,13 @@
         </div>
     </div>
 
-    <div class="mt-20 pt-10 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-6">
-        <a href="{{ url('/materi/pengantar-struktur-data') }}" class="group text-slate-400 hover:text-indigo-600 font-bold flex items-center gap-2 transition">
-            <i data-lucide="arrow-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i> Kembali ke Pengantar
+    <div class="mt-20 pt-10 border-t border-slate-100 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+        <a href="{{ url('/materi/pengantar-struktur-data') }}" class="group w-full sm:w-auto text-slate-400 hover:text-indigo-600 font-bold flex items-center justify-center sm:justify-start gap-2 transition text-sm sm:text-base order-2 sm:order-1 text-center sm:text-left">
+            <i data-lucide="arrow-left" class="w-4 h-4 sm:w-5 sm:h-5 group-hover:-translate-x-1 transition-transform hidden sm:block"></i> Kembali ke Pengantar
         </a>
-        <a href="{{ url('/materi/materi-list') }}" class="group flex items-center gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold transition-all shadow-lg shadow-indigo-200">
+        <a href="{{ url('/materi/materi-list') }}" class="group flex items-center justify-center gap-2 sm:gap-3 bg-indigo-600 hover:bg-indigo-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-bold text-sm sm:text-base transition-all shadow-lg shadow-indigo-200 order-1 sm:order-2 w-full sm:w-auto">
             Lanjut ke Materi List
-            <i data-lucide="arrow-right" class="group-hover:translate-x-1 transition-transform"></i>
+            <i data-lucide="arrow-right" class="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform"></i>
         </a>
     </div>
 @endsection

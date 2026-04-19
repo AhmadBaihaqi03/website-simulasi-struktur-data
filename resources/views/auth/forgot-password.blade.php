@@ -4,7 +4,7 @@
         <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-purple-100/40 rounded-full blur-3xl"></div>
 
         <div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-            
+
             <div class="hidden lg:flex flex-col space-y-8 pl-10">
                 <a href="/" class="flex items-center gap-4">
                     <div class="w-14 h-14 bg-indigo-600 rounded-2xl flex items-center justify-center shadow-xl shadow-indigo-600/20">
@@ -40,8 +40,8 @@
 
                     <div class="space-y-2">
                         <label for="email" class="text-[11px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Email Sekolah</label>
-                        <x-text-input id="email" class="block w-full px-5 py-4 bg-slate-50 border-slate-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-sm font-semibold text-slate-700" 
-                            type="email" name="email" :value="old('email')" required autofocus placeholder="nama@guru.com" />
+                        <x-text-input id="email" class="block w-full px-5 py-4 bg-white border-slate-100 rounded-2xl focus:bg-white focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all text-sm font-semibold"
+                            style="color: #757575 !important;" type="email" name="email" :value="old('email')" required autofocus placeholder="nama@guru.com" />
                         <x-input-error :messages="$errors->get('email')" class="mt-2 text-xs font-bold text-red-500" />
                     </div>
 

@@ -3,7 +3,7 @@
 @section('title', 'Vilogic - Pengantar Struktur Data')
 
 @section('materi_title')
-    <h1 class="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
         Pengantar <span class="text-indigo-600">Struktur Data</span>
     </h1>
 @endsection
@@ -11,7 +11,7 @@
 @section('content')
     <div class="mb-10">
         <p class="text-xl text-slate-600 border-l-4 border-indigo-600 ps-6 italic leading-relaxed">
-            Dalam aktivitas di sekolah seperti di Tata Usaha (TU), pengelolaan data adalah hal yang tidak bisa dihindari. 
+            Dalam aktivitas di sekolah seperti di Tata Usaha (TU), pengelolaan data adalah hal yang tidak bisa dihindari.
             Ternyata, proses rutin ini membutuhkan <span class="text-indigo-600 font-semibold">ketelitian dan keteraturan</span> yang berkaitan erat dengan konsep pemrograman.
         </p>
     </div>
@@ -20,7 +20,7 @@
         <h5 class="flex items-center gap-3 font-bold text-slate-800 text-lg">
             <i data-lucide="book-marked" class="text-indigo-600"></i> Studi Kasus: Administrasi Sekolah
         </h5>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
             <div class="p-6 bg-slate-50 rounded-3xl border border-slate-100 hover:shadow-md transition-all">
                 <i data-lucide="user-plus" class="text-indigo-500 mb-4 w-8 h-8"></i>
@@ -65,7 +65,7 @@
 
     <div class="mb-12 bg-indigo-50/50 p-6 md:p-8 rounded-[2rem] border border-indigo-100 shadow-sm">
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            
+
             <div class="lg:col-span-3 flex flex-col">
                 <h6 class="font-bold text-indigo-900 mb-6 flex items-center gap-3 text-lg underline decoration-indigo-200 underline-offset-8">
                     <i data-lucide="target" class="w-6 h-6 text-indigo-600"></i> Tujuan Pembelajaran
@@ -93,8 +93,8 @@
                 <div class="bg-white p-6 rounded-3xl border border-indigo-100 shadow-sm relative overflow-hidden flex-grow flex items-center">
                     <div class="absolute -top-4 -right-4 w-20 h-20 bg-indigo-50 rounded-full blur-2xl opacity-60"></div>
                     <p class="!text-base text-slate-600 leading-relaxed italic relative z-10 text-left">
-                        "Pembelajaran ini melatihmu berpikir 
-                        <span class="text-indigo-600 font-bold uppercase tracking-widest text-[10px] bg-indigo-50 px-2 py-0.5 rounded mx-1 inline-block">logis & sistematis</span>, 
+                        "Pembelajaran ini melatihmu berpikir
+                        <span class="text-indigo-600 font-bold uppercase tracking-widest text-[10px] bg-indigo-50 px-2 py-0.5 rounded mx-1 inline-block">logis & sistematis</span>,
                         serta mampu merancang solusi berbasis teknologi."
                     </p>
                 </div>
@@ -103,7 +103,7 @@
     </div>
 
     <p class="!text-base text-slate-600 leading-relaxed border-l-4 border-indigo-600 ps-6 mb-12">
-        Di sini, kita akan mempelajari <b>List, Stack, dan Queue</b> dengan menggunakan bahasa <b>Python</b>. 
+        Di sini, kita akan mempelajari <b>List, Stack, dan Queue</b> dengan menggunakan bahasa <b>Python</b>.
         Ketiganya akan kita gunakan untuk membuat sistem antrean. Yuk, kita mulai!
     </p>
 

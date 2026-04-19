@@ -3,14 +3,14 @@
 @section('title', 'Vilogic - Proyek Sistem Antrean TU')
 
 @section('materi_title')
-    <h1 class="text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
         <span class="text-indigo-600">Integrasi Struktur Data</span>
     </h1>
 @endsection
 
 @section('content')
 <div class="space-y-12">
-    
+
     <div class="bg-indigo-600 rounded-[3rem] p-8 md:p-12 text-white relative overflow-hidden shadow-2xl shadow-indigo-200">
         <div class="absolute bottom-0 right-0 w-80 h-80 bg-white/10 rounded-full -mb-32 -mr-32 blur-3xl"></div>
         <div class="relative z-10">
@@ -48,100 +48,112 @@
     </div>
 
     <section class="space-y-6">
-        <div class="flex items-center justify-between px-2">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 px-2">
             <h3 class="text-2xl font-black text-slate-800 tracking-tight flex items-center gap-3">
                 <i data-lucide="code-2" class="text-indigo-600"></i> Implementasi Python
             </h3>
-            <button onclick="copyCode()" class="flex items-center gap-2 bg-slate-100 hover:bg-indigo-600 hover:text-white text-slate-600 px-4 py-2 rounded-xl transition-all font-bold text-xs group">
+            <button onclick="copyCode()" class="flex items-center gap-2 bg-indigo-100 hover:bg-indigo-600 hover:text-white text-indigo-600 px-4 py-2 rounded-lg transition-all font-bold text-sm group shadow-sm hover:shadow-md">
                 <i data-lucide="copy" class="w-4 h-4"></i>
-                <span id="copyText">Salin Semua Kode</span>
+                <span id="copyText" class="hidden sm:inline">Salin Semua Kode</span>
+                <span id="copyText" class="sm:hidden">Salin</span>
             </button>
         </div>
-        
-        <div class="bg-[#1e1e1e] rounded-[3rem] p-6 md:p-10 shadow-2xl border border-slate-800 relative">
-            <div id="fullCode" class="overflow-x-auto custom-scrollbar font-mono text-sm leading-relaxed pr-4" style="max-height: 600px;">
-                <div class="bg-slate-900 rounded-lg p-6 font-mono text-sm leading-relaxed shadow-xl border border-slate-700">
-                    <pre class="text-slate-500"># =============================================================</pre>
-                    <pre class="text-slate-500"># SISTEM ANTREAN TU</pre>
-                    <pre class="text-slate-500"># =============================================================</pre>
-                    <br>
 
-                    <pre class="text-slate-500"># PERSIAPAN LIST (Tempat menyimpan data)</pre>
-                    <pre><span class="text-white">antrean = []</span></pre>
-                    <pre><span class="text-white">riwayat_undo = []</span></pre>
-                    <br>
-
-                    <pre class="text-slate-500"># FUNGSI MENGELOLA DATA</pre>
-                    <pre class="text-purple-400">def <span class="text-blue-400">tambah_data</span><span class="text-white">(data):</span></pre>
-                    <pre><span class="text-white">    antrean.<span class="text-yellow-400">append</span>(data)</span></pre>
-                    <pre><span class="text-white">    <span class="text-yellow-400">print</span>(<span class="text-emerald-400">f"[TAMBAH] {data} berhasil masuk antrean."</span>)</span></pre>
-                    <br>
-
-                    <pre class="text-purple-400">def <span class="text-blue-400">edit_data</span><span class="text-white">(nomor_urutan, data_baru):</span></pre>
-                    <pre><span class="text-slate-500">    # Mengubah urutan manusia (1,2,3) ke urutan komputer (0,1,2)</span></pre>
-                    <pre><span class="text-white">    index = nomor_urutan - <span class="text-orange-400">1</span></span></pre>
-                    <pre><span class="text-white">    <span class="text-purple-400">if</span> <span class="text-orange-400">0</span> <= index < <span class="text-yellow-400">len</span>(antrean):</span></pre>
-                    <pre><span class="text-white">        data_lama = antrean[index]</span></pre>
-                    <pre><span class="text-white">        antrean[index] = data_baru</span></pre>
-                    <pre><span class="text-white">        <span class="text-yellow-400">print</span>(<span class="text-emerald-400">f"[EDIT] Data nomor {nomor_urutan} diganti: {data_lama} -> {data_baru}"</span>)</span></pre>
-                    <pre><span class="text-white">    <span class="text-purple-400">else</span>:</span></pre>
-                    <pre><span class="text-white">        <span class="text-yellow-400">print</span>(<span class="text-emerald-400">"[Gagal] Nomor urutan tidak ada!"</span>)</span></pre>
-                    <br>
-
-                    <pre class="text-purple-400">def <span class="text-blue-400">hapus_data</span><span class="text-white">(nomor_urutan):</span></pre>
-                    <pre><span class="text-white">    index = nomor_urutan - <span class="text-orange-400">1</span></span></pre>
-                    <pre><span class="text-white">    <span class="text-purple-400">if</span> <span class="text-orange-400">0</span> <= index < <span class="text-yellow-400">len</span>(antrean):</span></pre>
-                    <pre><span class="text-white">        data_dibuang = antrean.<span class="text-yellow-400">pop</span>(index)</span></pre>
-                    <pre><span class="text-white">        <span class="text-yellow-400">print</span>(<span class="text-emerald-400">f"[HAPUS] {data_dibuang} telah keluar dari antrean."</span>)</span></pre>
-                    <br>
-
-                    <pre class="text-purple-400">def <span class="text-blue-400">layani_pertama</span><span class="text-white">():</span></pre>
-                    <pre><span class="text-white">    <span class="text-purple-400">if</span> <span class="text-yellow-400">len</span>(antrean) > <span class="text-orange-400">0</span>:</span></pre>
-                    <pre><span class="text-white">        diproses = antrean.<span class="text-yellow-400">pop</span>(<span class="text-orange-400">0</span>) <span class="text-slate-500"># FIFO</span></span></pre>
-                    <pre><span class="text-white">        riwayat_undo.<span class="text-yellow-400">append</span>(diproses)</span></pre>
-                    <pre><span class="text-white">        <span class="text-yellow-400">print</span>(<span class="text-emerald-400">f"[PROSES] Melayani: {diproses}"</span>)</span></pre>
-                    <pre><span class="text-white">    <span class="text-purple-400">else</span>:</span></pre>
-                    <pre><span class="text-white">        <span class="text-yellow-400">print</span>(<span class="text-emerald-400">"[KOSONG] Antrean sudah habis."</span>)</span></pre>
-                    <br>
-
-                    <pre class="text-purple-400">def <span class="text-blue-400">batal_layanan</span><span class="text-white">():</span></pre>
-                    <pre><span class="text-white">    <span class="text-purple-400">if</span> <span class="text-yellow-400">len</span>(riwayat_undo) > <span class="text-orange-400">0</span>:</span></pre>
-                    <pre><span class="text-white">        data_balik = riwayat_undo.<span class="text-yellow-400">pop</span>() <span class="text-slate-500"># LIFO</span></span></pre>
-                    <pre><span class="text-white">        antrean.<span class="text-yellow-400">insert</span>(<span class="text-orange-400">0</span>, data_balik)</span></pre>
-                    <pre><span class="text-white">        <span class="text-yellow-400">print</span>(<span class="text-emerald-400">f"[UNDO] Pelayanan {data_balik} dibatalkan."</span>)</span></pre>
-                    <br>
-
-                    <pre class="text-slate-500"># ======================================</pre>
-                    <pre class="text-slate-500"># BAGIAN MENJALANKAN FUNGSI SISTEM</pre>
-                    <pre class="text-slate-500"># ======================================</pre>
-                    <pre><span class="text-yellow-400">print</span>(<span class="text-emerald-400">">>> MEMULAI SISTEM <<<"</span>)</pre>
-                    <pre class="text-slate-500"># 1. Masukkan data</pre>
-                    <pre><span class="text-white">tambah_data(<span class="text-emerald-400">"Budi - Legalisir"</span>)</span></pre>
-                    <pre><span class="text-white">tambah_data(<span class="text-emerald-400">"Hani - Surat Magang"</span>)</span></pre>
-                    <pre><span class="text-white">cek_antrean()</span></pre>
-                    <br>
-
-                    <pre class="text-slate-500"># 2. Edit data (Contoh: Ganti Hani jadi Hani Putri)</pre>
-                    <pre class="text-slate-500"># Format: edit_data(nomor_urutan, "data baru")</pre>
-                    <pre><span class="text-white">edit_data(<span class="text-orange-400">2</span>, <span class="text-emerald-400">"Hani Putri - Surat Magang"</span>)</span></pre>
-                    <pre><span class="text-white">cek_antrean()</span></pre>
-                    <br>
-
-                    <pre class="text-slate-500"># 3. Hapus data (Contoh: Hapus Hani Putri)</pre>
-                    <pre><span class="text-white">hapus_data(<span class="text-orange-400">2</span>)</span></pre>
-                    <pre><span class="text-white">cek_antrean()</span></pre>
-                    <br>
-
-                    <pre class="text-slate-500"># 4. Layani siswa pertama</pre>
-                    <pre><span class="text-white">layani_pertama()</span></pre>
-                    <pre><span class="text-white">cek_antrean()</span></pre>
-                    <br>
-                    
-                    <pre class="text-slate-500"># 5. Batalkan pelayanan</pre>
-                    <pre><span class="text-white">batal_layanan()</span></pre>
-                    <pre><span class="text-white">cek_antrean()</span></pre>
-                    <pre><span class="text-yellow-400">print</span>(<span class="text-emerald-400">">>> SISTEM SELESAI <<<"</span>)</pre>
+        <div class="bg-slate-900 rounded-2xl shadow-2xl border border-slate-700 overflow-hidden">
+            <!-- Header bar -->
+            <div class="bg-slate-800 px-4 md:px-6 py-3 flex items-center gap-2 border-b border-slate-700">
+                <div class="flex gap-1.5">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
+                <span class="text-xs text-slate-400 font-mono ml-3">sistem-antrean.py</span>
+            </div>
+
+            <!-- Code container -->
+            <div id="fullCode" class="overflow-x-auto custom-scrollbar font-mono text-xs md:text-sm leading-7 md:leading-8 p-4 md:p-6" style="max-height: 700px;">
+                <code>
+                    <span class="text-slate-500"># =============================================================</span><br>
+                    <span class="text-slate-500"># SISTEM ANTREAN TU</span><br>
+                    <span class="text-slate-500"># =============================================================</span><br>
+                    <br>
+
+                    <span class="text-slate-500"># PERSIAPAN LIST (Tempat menyimpan data)</span><br>
+                    <span class="text-white">antrean = []</span><br>
+                    <span class="text-white">riwayat_undo = []</span><br>
+                    <br>
+
+                    <span class="text-slate-500"># FUNGSI MENGELOLA DATA</span><br>
+                    <span class="text-purple-400">def</span> <span class="text-blue-400">tambah_data</span><span class="text-white">(data):</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;antrean.<span class="text-yellow-400">append</span>(data)</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">print</span>(<span class="text-emerald-400">f"[TAMBAH] {data} berhasil masuk antrean."</span>)</span><br>
+                    <br>
+
+                    <span class="text-purple-400">def</span> <span class="text-blue-400">edit_data</span><span class="text-white">(nomor_urutan, data_baru):</span><br>
+                    <span class="text-slate-500">&nbsp;&nbsp;&nbsp;&nbsp;# Mengubah urutan manusia (1,2,3) ke urutan komputer (0,1,2)</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;index = nomor_urutan - <span class="text-orange-400">1</span></span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">if</span> <span class="text-orange-400">0</span> <= index < <span class="text-yellow-400">len</span>(antrean):</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data_lama = antrean[index]</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;antrean[index] = data_baru</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">print</span>(<span class="text-emerald-400">f"[EDIT] Data nomor {nomor_urutan} diganti: {data_lama} -> {data_baru}"</span>)</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">else</span>:</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">print</span>(<span class="text-emerald-400">"[Gagal] Nomor urutan tidak ada!"</span>)</span><br>
+                    <br>
+
+                    <span class="text-purple-400">def</span> <span class="text-blue-400">hapus_data</span><span class="text-white">(nomor_urutan):</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;index = nomor_urutan - <span class="text-orange-400">1</span></span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">if</span> <span class="text-orange-400">0</span> <= index < <span class="text-yellow-400">len</span>(antrean):</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data_dibuang = antrean.<span class="text-yellow-400">pop</span>(index)</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">print</span>(<span class="text-emerald-400">f"[HAPUS] {data_dibuang} telah keluar dari antrean."</span>)</span><br>
+                    <br>
+
+                    <span class="text-purple-400">def</span> <span class="text-blue-400">layani_pertama</span><span class="text-white">():</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">if</span> <span class="text-yellow-400">len</span>(antrean) > <span class="text-orange-400">0</span>:</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;diproses = antrean.<span class="text-yellow-400">pop</span>(<span class="text-orange-400">0</span>) <span class="text-slate-500"># FIFO</span></span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;riwayat_undo.<span class="text-yellow-400">append</span>(diproses)</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">print</span>(<span class="text-emerald-400">f"[PROSES] Melayani: {diproses}"</span>)</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">else</span>:</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">print</span>(<span class="text-emerald-400">"[KOSONG] Antrean sudah habis."</span>)</span><br>
+                    <br>
+
+                    <span class="text-purple-400">def</span> <span class="text-blue-400">batal_layanan</span><span class="text-white">():</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-purple-400">if</span> <span class="text-yellow-400">len</span>(riwayat_undo) > <span class="text-orange-400">0</span>:</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data_balik = riwayat_undo.<span class="text-yellow-400">pop</span>() <span class="text-slate-500"># LIFO</span></span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;antrean.<span class="text-yellow-400">insert</span>(<span class="text-orange-400">0</span>, data_balik)</span><br>
+                    <span class="text-white">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-yellow-400">print</span>(<span class="text-emerald-400">f"[UNDO] Pelayanan {data_balik} dibatalkan."</span>)</span><br>
+                    <br>
+
+                    <span class="text-slate-500"># ======================================</span><br>
+                    <span class="text-slate-500"># BAGIAN MENJALANKAN FUNGSI SISTEM</span><br>
+                    <span class="text-slate-500"># ======================================</span><br>
+                    <span class="text-yellow-400">print</span>(<span class="text-emerald-400">">>> MEMULAI SISTEM <<<"</span>)<br>
+                    <span class="text-slate-500"># 1. Masukkan data</span><br>
+                    <span class="text-white">tambah_data(<span class="text-emerald-400">"Budi - Legalisir"</span>)</span><br>
+                    <span class="text-white">tambah_data(<span class="text-emerald-400">"Hani - Surat Magang"</span>)</span><br>
+                    <span class="text-white">cek_antrean()</span><br>
+                    <br>
+
+                    <span class="text-slate-500"># 2. Edit data (Contoh: Ganti Hani jadi Hani Putri)</span><br>
+                    <span class="text-slate-500"># Format: edit_data(nomor_urutan, "data baru")</span><br>
+                    <span class="text-white">edit_data(<span class="text-orange-400">2</span>, <span class="text-emerald-400">"Hani Putri - Surat Magang"</span>)</span><br>
+                    <span class="text-white">cek_antrean()</span><br>
+                    <br>
+
+                    <span class="text-slate-500"># 3. Hapus data (Contoh: Hapus Hani Putri)</span><br>
+                    <span class="text-white">hapus_data(<span class="text-orange-400">2</span>)</span><br>
+                    <span class="text-white">cek_antrean()</span><br>
+                    <br>
+
+                    <span class="text-slate-500"># 4. Layani siswa pertama</span><br>
+                    <span class="text-white">layani_pertama()</span><br>
+                    <span class="text-white">cek_antrean()</span><br>
+                    <br>
+
+                    <span class="text-slate-500"># 5. Batalkan pelayanan</span><br>
+                    <span class="text-white">batal_layanan()</span><br>
+                    <span class="text-white">cek_antrean()</span><br>
+                    <span class="text-yellow-400">print</span>(<span class="text-emerald-400">">>> SISTEM SELESAI <<<"</span>)
+                </code>
             </div>
         </div>
     </section>
@@ -195,21 +207,52 @@
     function copyCode() {
         const codeElement = document.getElementById('fullCode');
         const textToCopy = codeElement.innerText;
-        const copyBtn = document.getElementById('copyText');
+        const copyBtn = document.querySelector('[onclick="copyCode()"]');
+        const copyText = document.getElementById('copyText');
 
         navigator.clipboard.writeText(textToCopy).then(() => {
-            copyBtn.innerText = "Tersalin ke Clipboard!";
+            copyText.innerText = "✓ Tersalin!";
+            copyBtn.classList.add('bg-emerald-600', 'text-white');
+            copyBtn.classList.remove('bg-indigo-100', 'hover:bg-indigo-600', 'text-indigo-600');
+            
             setTimeout(() => {
-                copyBtn.innerText = "Salin Semua Kode";
+                copyText.innerText = "Salin";
+                copyBtn.classList.remove('bg-emerald-600', 'text-white');
+                copyBtn.classList.add('bg-indigo-100', 'hover:bg-indigo-600', 'text-indigo-600');
             }, 2000);
         });
     }
 </script>
 
 <style>
-    .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
-    .custom-scrollbar::-webkit-scrollbar-track { background: #1e1e1e; border-radius: 10px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #475569; }
+    .custom-scrollbar {
+        scrollbar-color: #475569 #1e293b;
+        scrollbar-width: thin;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar { 
+        width: 8px; 
+        height: 8px; 
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-track { 
+        background: #1e293b;
+        border-radius: 10px; 
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-thumb { 
+        background: #475569; 
+        border-radius: 10px;
+        border: 2px solid #1e293b;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover { 
+        background: #64748b;
+    }
+    
+    /* Smooth scrolling */
+    .custom-scrollbar {
+        scroll-behavior: smooth;
+    }
 </style>
 @endsection

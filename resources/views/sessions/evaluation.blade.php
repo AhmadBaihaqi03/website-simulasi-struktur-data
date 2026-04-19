@@ -5,7 +5,7 @@
         .bg-indigo { background-color: #5c60f5 !important; }
         .card-custom { border-radius: 15px; border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
         .table-hover tbody tr:hover { background-color: #f8fafc; transition: 0.2s; }
-        
+
         .session-code-box {
             background-color: #ffffff;
             border: 2px dashed #5c60f5;
@@ -15,36 +15,67 @@
         }
 
         .filter-row {
-            background-color: #f8fafc;
-            border-radius: 12px;
-            padding: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-radius: 15px;
+            padding: 16px;
             margin-bottom: 20px;
-            border: 1px solid #e2e8f0;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
         }
+
+        .filter-row:hover {
+            border-color: #5c60f5;
+            box-shadow: 0 4px 12px rgba(92, 96, 245, 0.08);
+        }
+
         .search-wrapper-full {
             position: relative;
             flex-grow: 1;
-        }
-        .search-wrapper-full i {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #64748b;
-        }
-        .search-input-full {
-            padding-left: 45px;
-            height: 48px;
-            border-radius: 10px;
-            border: 1px solid #cbd5e1;
-            font-size: 0.9rem;
-            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 2px solid #cbd5e1;
+            transition: all 0.3s ease;
+            padding: 0 12px;
+            height: 50px;
             width: 100%;
         }
-        .search-input-full:focus {
+
+        .search-wrapper-full:hover {
+            border-color: #a0aec0;
+        }
+
+        .search-wrapper-full:focus-within {
             border-color: #5c60f5;
-            box-shadow: 0 0 0 4px rgba(92, 96, 245, 0.1);
-            background-color: #fff;
+            box-shadow: 0 0 0 4px rgba(92, 96, 245, 0.12);
+        }
+
+        .search-icon {
+            flex-shrink: 0;
+            width: 20px;
+            height: 20px;
+            color: #64748b;
+            margin-right: 12px;
+        }
+
+        .search-input-full {
+            flex-grow: 1;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1a202c;
+            background-color: transparent;
+            outline: none;
+            padding: 0;
+        }
+
+        .search-input-full::placeholder {
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        .search-input-full:focus {
             outline: none;
         }
 
@@ -57,6 +88,13 @@
             font-weight: 700;
             font-size: 0.85rem;
             white-space: nowrap;
+        }
+
+        /* Table Responsive Styling */
+        .table-responsive {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
         }
     </style>
 
@@ -89,8 +127,11 @@
 
             <div class="filter-row">
                 <div class="search-wrapper-full">
-                    <i class="bi bi-search fs-5"></i>
-                    <input type="text" id="groupSearch" class="search-input-full" placeholder="Ketik nama kelompok untuk mencari...">
+                    <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="groupSearch" class="search-input-full" placeholder="Cari nama kelompok...">
                 </div>
             </div>
 
